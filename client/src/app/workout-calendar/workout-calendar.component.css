@@ -1,0 +1,47 @@
+.awm-calendar {
+    display: flex;
+    min-height: 100%;
+}
+
+.awm-dialog {
+    padding: 0px;
+}
+
+.week-day {
+    border: 1px solid #e6e6e6;
+}
+
+.day-name {
+    color: #7e7e7e;
+}
+
+.day-header {
+    margin: 4px 6px 4px 6px;
+}
+
+.day-content {
+    font-size: 12px;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    margin-right: 3px;
+}
+
+.awm-block {
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+.awm-block-cycle {
+    color: #7e7e7e;   
+}
+
+.current-date {
+    font-size: 20px;
+}
+
+.flipped {
+    -o-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

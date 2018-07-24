@@ -1,0 +1,19 @@
+.awm-ms-block {
+    background-color: #99ccff;
+}
+
+table {
+    width: 100%;
+}
+
+.ms-row {
+    height: 1.1em;
+}
+
+.ms-cell-name {
+    vertical-align: top; 
+}
+
+.ms-cell-sets {
+    padding-left: 15px;
+}

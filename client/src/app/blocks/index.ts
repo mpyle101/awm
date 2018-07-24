@@ -1,0 +1,10 @@
+export { DayOffComponent }            from './off-block/off-block.component'
+export { EnduranceComponent }         from './en-block/en-block.component'
+export { GeneralConditionComponent }  from './gc-block/gc-block.component'
+export { HighIntensityComponent }     from './hic-block/hic-block.component'
+export { HighIntensityGCComponent }   from './hgc-block/hgc-block.component'
+export { MaxStrengthComponent }       from './ms-block/ms-block.component'
+export { StrengthEnduranceComponent } from './se-block/se-block.component'
+export { SuperSetComponent }          from './ss-block/ss-block.component'
+
+export { TrainingBlockComponent }     from './training-block.component'

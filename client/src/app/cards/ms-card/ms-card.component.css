@@ -1,0 +1,21 @@
+.block {
+    width: 100%;
+    background-color: rgb(179, 255, 255);
+}
+
+.label {
+    width: 3em;
+}
+
+.mat-row {
+    height: 24px;
+}
+
+.table {
+    width: 100%;
+    background-color: rgb(179, 255, 255);
+}
+
+.mat-column-keys {
+    justify-content: flex-start;
+}

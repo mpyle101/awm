@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="mode">
+    <div *ngSwitchCase="'header'" class="awm-hic-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <mat-icon>directions_running</mat-icon>
+        <div>HIC</div>
+    </div>
+    <div *ngSwitchCase="'horz'" class="awm-hic-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+        <mat-icon>directions_running</mat-icon>
+        <span>HIC: {{block.style}} - {{block.key}} - {{work}}</span>
+    </div>
+    <div *ngSwitchCase="'vert'" class="awm-hic-vert" [ngStyle]="styles">
+        <div>{{block.style}}</div>
+        <div>{{block.key}}</div>
+        <div>{{work}}</div>
+        <div>{{block.meta}}</div>
+    </div>
+    <div *ngSwitchDefault class="awm-hic-block" [ngStyle]="styles">
+        HIC: {{block.style}} - {{block.key}} - {{work}}
+    </div>
+</ng-container>

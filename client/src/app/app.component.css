@@ -1,0 +1,51 @@
+.awm-container {
+    /* This keeps the sidenav menu from scrolling */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.awm-toolbar {
+    position: fixed;
+
+    /* Make sure the toolbar will stay on top of the content as it scrolls past */
+    z-index: 2;
+}
+
+.awm-title {
+    /* Put a little gap between the icon and the title */
+    margin-left: 8px;
+}
+
+.sidenav-container {
+    /* This causes <mat-sidenav-content> to act as our scrolling element */
+    flex: 1;
+}
+
+.sidenav {
+    /* Drawer slide out size */
+    width: 250px;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+}
+
+.flip-icon {
+    -o-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.valign-center {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}

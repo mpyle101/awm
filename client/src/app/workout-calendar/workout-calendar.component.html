@@ -1,0 +1,26 @@
+<div class="awm-calendar" fxLayout="column" *ngIf="loaded; else loading">
+    <div *ngFor="let week of weeks; let i = index" fxFlex>
+        <div *ngFor="let item of week" fxFlex fxLayout="row nowrap">
+            <div class="week-day" (click)="doClick($event, item)" fxLayout="column" fxFlex>
+                <div class="day-header">
+                    <div class="day-name" *ngIf="i == 0">{{item.date | date: 'E'}}</div>
+                    <div fxLayout>
+                        <div *ngIf="item.num == 1 ? 'LLL d' : 'd'; let fmt" fxFlex>
+                            {{item.date | date: fmt}}
+                        </div>
+                        <div class="awm-block-cycle">{{item.workout.cycle}}</div>
+                    </div>
+                </div>
+                <div class="day-content" *ngFor="let block of blocks(item)">
+                    <div [class.awm-block]="block.type != 'OFF'" fxLayout>
+                        <awm-tr-block [block]="block" [styles]="styles" fxFlex></awm-tr-block>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>

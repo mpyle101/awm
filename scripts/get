@@ -1,0 +1,8 @@
+#! /usr/local/bin/bash
+
+if [ -n "$2" ]
+then
+    curl --header "Range: items=0-9" http://localhost:9000/api/$1
+else
+    curl http://localhost:9000/api/$1
+fi

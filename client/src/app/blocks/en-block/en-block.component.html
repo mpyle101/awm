@@ -1,0 +1,18 @@
+<ng-container [ngSwitch]="mode">
+    <div *ngSwitchCase="'header'" class="awm-en-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <app-icon [icon]="icon"></app-icon>
+        <div>EN</div>
+    </div>
+    <div *ngSwitchCase="'horz'" class="awm-en-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">        
+        <app-icon [icon]="icon"></app-icon>
+        <span>EN: {{block.key}} - {{meta}} - {{block.work | duration}}</span>
+    </div>
+    <div *ngSwitchCase="'vert'" class="awm-en-vert" [ngStyle]="styles" fxLayout="column">
+        <div>{{block.key}}</div>
+        <div>{{meta}}</div>
+        <div>{{block.work | duration}}</div>
+    </div>
+    <div *ngSwitchDefault class="awm-en-block" [ngStyle]="styles">
+        EN: {{block.key}} - {{meta}} - {{block.work | duration}}
+    </div>
+</ng-container>

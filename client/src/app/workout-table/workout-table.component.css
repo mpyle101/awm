@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+
+.week-day {
+    font-size: 12px;
+    color: #888888;
+}
+
+.mat-column-date {
+    width: 90px;
+}
+
+.mat-column-cycle {
+    width: 70px;
+    text-align: center;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}

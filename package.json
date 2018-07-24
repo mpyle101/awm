@@ -1,0 +1,23 @@
+{
+    "name": "awn",
+    "version": "1.0.0",
+    "description": "Awesome Workout Manager",
+    "author": "Michael Pyle",
+    "license": "ISC",
+    "keywords": [
+        "node",
+        "mongodb",
+        "angular",
+        "express"
+    ],
+    "scripts": {
+        "build": "npm --prefix ./client run build",
+        "build:watch": "npm --prefix ./client run build:watch",
+        "clean": "rm -r public/*",
+        "serve": "npm --prefix ./client start",
+        "serve:open": "npm --previx ./client serve:open",
+        "start": "npm --prefix ./server start",
+        "start:watch": "npm --prefix ./server run start:watch"
+    },
+    "dependencies": {}
+}

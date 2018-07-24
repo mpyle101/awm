@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="block.type">
+    <awm-en-block class="block" *ngSwitchCase="'EN'" [block]="block" [mode]="mode" [styles]="styles"></awm-en-block>
+    <awm-gc-block class="block" *ngSwitchCase="'GC'" [block]="block" [mode]="mode" [styles]="styles"></awm-gc-block>
+    <awm-hgc-block class="block" *ngSwitchCase="'HGC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hgc-block>
+    <awm-hic-block class="block" *ngSwitchCase="'HIC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hic-block>
+    <awm-ms-block class="block" *ngSwitchCase="'MS'" [block]="block" [mode]="mode" [styles]="styles"></awm-ms-block>
+    <awm-off-block class="block" *ngSwitchCase="'OFF'" [block]="block" [mode]="mode" [styles]="styles"></awm-off-block>
+    <awm-se-block class="block" *ngSwitchCase="'SE'" [block]="block" [mode]="mode" [styles]="styles"></awm-se-block>
+    <awm-ss-block class="block" *ngSwitchCase="'SS'" [block]="block" [mode]="mode" [styles]="styles"></awm-ss-block>
+</ng-container>
+

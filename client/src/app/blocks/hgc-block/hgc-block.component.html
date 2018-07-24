@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="mode">
+    <div *ngSwitchCase="'header'" class="awm-hgc-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <mat-icon>directions_walking</mat-icon>
+        <div>HGC</div>
+    </div>
+    <div *ngSwitchCase="'horz'" class="valign-center block" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
+        <mat-icon>directions_walking</mat-icon>
+        <span>HGC: {{block.style}} - {{block.key}} - {{block.work | duration}}</span>
+    </div>
+    <div *ngSwitchCase="'vert'" [ngStyle]="styles">
+        <div>{{block.key}}</div>
+        <div>{{block.style}}</div>
+        <div>{{block.work | duration}}</div>
+        <div>{{block.meta}}</div>
+    </div>
+    <div *ngSwitchDefault class="awm-hgc-block" [ngStyle]="styles">
+        HGC: {{block.style}} - {{block.key}} - {{block.work | duration}}
+    </div>
+</ng-container>

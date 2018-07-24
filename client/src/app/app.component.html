@@ -1,0 +1,65 @@
+<div class="awm-container">
+    <mat-toolbar color="primary" class="awm-toolbar">
+        <button type="button" mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h2 class="awm-title" matTooltip="Awesome Workout Manager">{{title}}</h2>
+        <div fxLayout fxLayoutAlign="center center" fxLayoutGap="20px" fxFlex>
+            <button mat-button [matTooltip]="today | date: 'fullDate'" (click)="doToday()">Today</button>
+            <div fxLayoutGap="2px">
+                <button mat-icon-button (click)="doPrev('year')">
+                    <mat-icon matTooltip="Previous year">fast_rewind</mat-icon>
+                </button>
+                <button mat-icon-button (click)="doPrev('month')">
+                    <mat-icon class="flip-icon" matTooltip="Previous month">play_arrow</mat-icon>
+                </button>
+                <button mat-icon-button (click)="doNext('month')">
+                    <mat-icon matTooltip="Next month">play_arrow</mat-icon>
+                </button>
+                <button mat-icon-button (click)="doNext('year')">
+                    <mat-icon matTooltip="Next year">fast_forward</mat-icon>
+                </button>
+            </div>
+            <div class="current-date">
+                {{current | date: 'MMMM y'}}
+            </div>
+        </div>
+        <div fxLayoutGap="2px">
+            <button mat-icon-button [routerLink]="['/calendar', current.year(), current.month() + 1]">
+                <mat-icon matTooltip="View Calendar">calendar_today</mat-icon>
+            </button>
+            <button mat-icon-button [routerLink]="['/schedule', current.year(), current.month() + 1]">
+                <mat-icon matTooltip="View Schedule">view_list</mat-icon>
+            </button>
+            <button mat-icon-button routerLink="/dashboard">
+                <mat-icon matTooltip="View Dashboard">dashboard</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #sidenav class="sidenav" mode="side" fixedInViewport="false" fixedTopGap="56" closed>
+            <mat-accordion displayMode="flat">
+                <mat-expansion-panel expanded>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Training Blocks
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column">
+                        <mat-checkbox [checked]="showMS">Max Strength</mat-checkbox>
+                        <mat-checkbox [checked]="showEN">Endurance</mat-checkbox>
+                        <mat-checkbox [checked]="showGC">General Conditioning</mat-checkbox>
+                        <mat-checkbox [checked]="showHIC">High Intensity Conditioning</mat-checkbox>
+                        <mat-checkbox [checked]="showHGC">High Intensity GC</mat-checkbox>
+                        <mat-checkbox [checked]="showSE">Strength Endurance</mat-checkbox>
+                        <mat-checkbox [checked]="showSS">Super Sets</mat-checkbox>
+                        <mat-checkbox [checked]="showOFF">Days Off</mat-checkbox>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-sidenav>
+        <mat-sidenav-content class="sidenav-content">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

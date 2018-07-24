@@ -1,0 +1,18 @@
+<div class="awm-dialog-container" fxLayout="column">
+    <mat-toolbar color="primary" class="awm-dialog-toolbar">
+        <div fxLayout fxLayoutGap="12px">
+            <button mat-mini-fab (click)="doEdit(item)"><mat-icon>edit</mat-icon></button>
+            <h2>{{item.date | date: 'mediumDate'}}</h2>
+        </div>
+        <div fxLayout fxLayoutAlign="end center" fxFlex>
+            <button mat-icon-button (click)="doDelete(item)"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button (click)="doClose()"><mat-icon>close</mat-icon></button>
+        </div>
+    </mat-toolbar>
+    <div class="awm-dialog-content" fxLayout fxLayoutGap="12px" fxFill>
+        <div *ngFor="let block of blocks" class="awm-block-border" fxLayout="column">
+            <awm-tr-block [block]="block" mode="header" [styles]="styles"></awm-tr-block>
+            <awm-tr-block [block]="block" mode="vert" fxFlex></awm-tr-block>
+        </div>
+    </div>
+</div>

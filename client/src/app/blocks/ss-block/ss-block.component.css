@@ -1,0 +1,14 @@
+.valign-center {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.block {
+    background-color: #b3d9ff;
+}
+
+.awm-ss-header {
+     background-color: #b3d9ff;
+     padding: 5px;
+}

@@ -1,0 +1,45 @@
+<ng-container [ngSwitch]="mode">
+    <div *ngSwitchCase="'header'" class="awm-ms-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <mat-icon svgIcon="svg-weights"></mat-icon>
+        <div>MS</div>
+    </div>
+    <div *ngSwitchCase="'horz'" class="awm-ms-block" fxLayout fxLayoutGap="12px">
+        <mat-icon svgIcon="svg-weights"></mat-icon>
+        <span *ngFor="let mvmt of mvmts">
+            <div fxLayout="column">{{mvmt.key}}
+                <div *ngFor="let set of mvmt.sets">
+                    {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
+                </div>
+            </div>
+        </span>
+    </div>
+    <div *ngSwitchCase="'vert'" class="awm-ms-vert" [ngStyle]="styles">
+        <table mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="key">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <!-- If we put the padding in the class it doesn't work -->
+                <td mat-cell *matCellDef="let item" class="ms-cell-name" style="padding-left: 10px;">
+                    {{item.key}}
+                </td>
+            </ng-container>            
+            <ng-container matColumnDef="sets">
+                <th mat-header-cell *matHeaderCellDef>Sets</th>
+                <td mat-cell *matCellDef="let item" class="ms-cell-sets">
+                    <div fxLayout="column">
+                        <div *ngFor="let set of item.sets">
+                            {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" style="display: none;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="ms-row"></tr>
+        </table>
+    </div>
+    <div *ngSwitchDefault class="awm-ms-block" [ngStyle]="styles">
+        <div *ngIf="getFirstSet(); let set">
+            MS: {{set.key}} {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
+        </div>
+    </div>
+</ng-container>

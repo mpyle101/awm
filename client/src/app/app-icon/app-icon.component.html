@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="icon">
+    <mat-icon *ngSwitchCase="'TRAINER'" svgIcon="svg-trainer"></mat-icon>
+    <mat-icon *ngSwitchCase="'BIKE'">directions_bike</mat-icon>
+    <mat-icon *ngSwitchCase="'RUN'">directions_running</mat-icon>
+    <mat-icon *ngSwitchCase="'RUCK'">directions_walking</mat-icon>
+    <mat-icon *ngSwitchCase="'HIKE'">directions_walking</mat-icon>
+    <mat-icon *ngSwitchCase="'ROW'">rowing</mat-icon>
+</ng-container>

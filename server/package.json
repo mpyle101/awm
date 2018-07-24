@@ -1,0 +1,25 @@
+{
+    "name": "awn",
+    "version": "1.0.0",
+    "description": "Awesome workout manager - server",
+    "main": "server.mjs",
+    "keywords": [
+        "node",
+        "mongodb",
+        "express"
+    ],
+    "author": "Michael Pyle",
+    "license": "ISC",
+    "scripts": {
+        "start:watch": "nodemon ./server.js"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "folktale": "^2.1.0",
+        "mongodb": "^3.1.1",
+        "query-params-mongo": "^1.0.4"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.3"
+    }
+}
