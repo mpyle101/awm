@@ -59,6 +59,7 @@ export class WorkoutTableComponent implements OnInit {
         start.subtract(start.weekday(), 'day')
         end.add(6 - end.weekday(), 'day')
 
+        // Don't show off days in the table.
         const filter = {'type': {ne: 'OFF'}}
         this.dataSource.load(start, end, filter)
     }

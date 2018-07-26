@@ -45,25 +45,27 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     public doClick(event, item) {
-        const ref = this.dialog.open(WorkoutDialogComponent, {
-            data: { item },
-            height: '400px',
-            width: '448px',
-            autoFocus: true,
-            hasBackdrop: false,
-            disableClose: true,
-            panelClass: 'awm-dialog-container'
-        })
-        ref.afterClosed().subscribe(item => this.edit(item))
-    }
-
-    public blocks(item) {
-        return item.workout.blocks
+        if (item.blocks.length) {
+            const ref = this.dialog.open(WorkoutDialogComponent, {
+                data: { item },
+                height: '400px',
+                width: '448px',
+                autoFocus: true,
+                hasBackdrop: false,
+                disableClose: true,
+                panelClass: 'awm-dialog-container'
+            })
+            ref.afterClosed().subscribe(item => this.edit(item)) 
+        } else {
+            this.edit(item)
+        }
     }
 
     private edit(item) {
-        const date = item.date
-        this.router.navigate(['workout', date.year(), date.month() + 1, date.date()])
+        if (item) {
+            const date = item.date
+            this.router.navigate(['workout', date.year(), date.month() + 1, date.date()])
+        }
     }
 
     private load(params) {
@@ -90,10 +92,17 @@ export class WorkoutCalendarComponent implements OnInit {
                 return m
             }, new Map())
 
+            const none = { cycle: null, type: null, blocks: [] }
             const days = Array.from(range.by('day'))
             this.items = days.map((date:any) => {
-                const workout = workouts.get(date.format('YYYY-MM-DD')) || { blocks:[] }
-                return { date, num: date.date(), workout }
+                const workout = workouts.get(date.format('YYYY-MM-DD')) || none
+                return { 
+                    date,
+                    num: date.date(),
+                    type: workout.type,
+                    cycle: workout.cycle,
+                    blocks: workout.blocks
+                }
             })
 
             this.weeks = []

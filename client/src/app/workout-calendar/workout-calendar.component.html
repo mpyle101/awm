@@ -8,10 +8,10 @@
                         <div *ngIf="item.num == 1 ? 'LLL d' : 'd'; let fmt" fxFlex>
                             {{item.date | date: fmt}}
                         </div>
-                        <div class="awm-block-cycle">{{item.workout.cycle}}</div>
+                        <div class="awm-block-cycle">{{item.cycle}}</div>
                     </div>
                 </div>
-                <div class="day-content" *ngFor="let block of blocks(item)">
+                <div class="day-content" *ngFor="let block of item.blocks">
                     <div [class.awm-block]="block.type != 'OFF'" fxLayout>
                         <awm-tr-block [block]="block" [styles]="styles" fxFlex></awm-tr-block>
                     </div>

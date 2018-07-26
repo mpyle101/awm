@@ -25,7 +25,7 @@ export class WorkoutDialogComponent implements OnInit {
     ngOnInit() {}
 
     public get blocks() {
-        return this.item.workout.blocks
+        return this.item.blocks
     }
 
     public doEdit() {

@@ -13,7 +13,7 @@ import { WorkoutDataSource }  from '../data/workout-datasource'
 })
 export class WorkoutEditorComponent {
 
-    public item:any = {}
+    public item:any = {date: moment()}
     public date = new FormControl()
     private current: any
 
@@ -27,12 +27,14 @@ export class WorkoutEditorComponent {
 
     private load(params) {
         this.current = moment([params['year'], params['month'] - 1, params['day']])
+        this.date.setValue(this.current)
         this.dataSource.get(this.current).subscribe(items => this.refresh(items))
     }
 
     private refresh(items) {
-        this.item = items[0]
-        this.date.setValue(this.item.date)
+        if (items.length) {
+            this.item = items[0]
+        }
         this.currentDate.next(this.current)
     }
 }
