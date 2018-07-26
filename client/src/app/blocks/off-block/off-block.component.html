@@ -1,13 +1,16 @@
 <ng-container [ngSwitch]="mode">
-    <mat-icon *ngSwitchCase="'icon'">local_cafe</mat-icon>
-    <div *ngSwitchCase="'horz'" class="valign-center" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
+    <div *ngSwitchCase="'header'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <mat-icon>local_cafe</mat-icon>
+        <div>OFF</div>
+    </div>
+    <div *ngSwitchCase="'horz'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
         <mat-icon>local_cafe</mat-icon>
         <span>{{block.comment}}</span>
     </div>
     <div *ngSwitchCase="'vert'" [ngStyle]="styles">
         {{block.comment}}
     </div>
-    <div *ngSwitchDefault class="block" [ngStyle]="styles">
+    <div *ngSwitchDefault class="awm-off-block" [ngStyle]="styles">
         {{block.comment}}
     </div>
 </ng-container>

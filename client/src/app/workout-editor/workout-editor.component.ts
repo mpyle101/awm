@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { FormControl } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import * as moment from 'moment'
 
@@ -12,7 +13,8 @@ import { WorkoutDataSource }  from '../data/workout-datasource'
 })
 export class WorkoutEditorComponent {
 
-    public items = []
+    public item:any = {}
+    public date = new FormControl()
     private current: any
 
     constructor(
@@ -29,7 +31,8 @@ export class WorkoutEditorComponent {
     }
 
     private refresh(items) {
-        this.items = items
+        this.item = items[0]
+        this.date.setValue(this.item.date)
         this.currentDate.next(this.current)
     }
 }

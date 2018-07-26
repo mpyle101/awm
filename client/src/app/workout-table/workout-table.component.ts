@@ -29,7 +29,7 @@ export class WorkoutTableComponent implements OnInit {
         private route: ActivatedRoute,
         private dataSource: WorkoutDataSource
     ) {
-        this.route.params.subscribe(params => this.load(params))
+        route.params.subscribe(params => this.load(params))
     }
 
     ngOnInit() {
@@ -59,7 +59,8 @@ export class WorkoutTableComponent implements OnInit {
         start.subtract(start.weekday(), 'day')
         end.add(6 - end.weekday(), 'day')
 
-        this.dataSource.load(start, end)
+        const filter = {'type': {ne: 'OFF'}}
+        this.dataSource.load(start, end, filter)
     }
 
 }

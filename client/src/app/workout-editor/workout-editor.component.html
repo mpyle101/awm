@@ -1,3 +1,19 @@
-<div *ngFor="let item of items">
+
+<mat-form-field *ngIf="item.date">
+    <input matInput [matDatepicker]="picker" placeholder="Workout date" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker [startAt]="item.date"></mat-datepicker>
+</mat-form-field>
+
+<h2>Cycle {{item.cycle}}</h2>
+
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Raw JSON
+        </mat-panel-title>
+    </mat-expansion-panel-header>
     <ngx-json-viewer [json]="item"></ngx-json-viewer>
-</div>
+</mat-expansion-panel>

@@ -2,6 +2,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { FlexLayoutModule } from "@angular/flex-layout"
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { LayoutModule } from '@angular/cdk/layout'
 import { NgModule } from '@angular/core'
@@ -14,7 +15,9 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatGridListModule,
     MatListModule,
     MatMenuModule,
@@ -111,8 +114,10 @@ const app_routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
+        FormsModule,
         HttpClientModule,
         LayoutModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(app_routes),
 
         // Material Modules
@@ -122,9 +127,11 @@ const app_routes: Routes = [
         MatCheckboxModule,
         MatDatepickerModule,
         MatDialogModule,
+        MatFormFieldModule,
         MatExpansionModule,
         MatGridListModule,
         MatIconModule,
+        MatInputModule,
         MatListModule,
         MatMenuModule,
         MatMomentDateModule,
