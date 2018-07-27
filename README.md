@@ -19,5 +19,5 @@ Run `npm run start:watch` for a dev server. Navigate to `http://localhost:9000/`
 Sample data has been provided in the 'workouts' directory along with a script to import the JSON files into mongodb.
 
 ## Software
-node: 10.5.0<br/>
-mongodb: 3.6.5
+node: 10.7.0<br/>
+mongodb: 4.0.0
