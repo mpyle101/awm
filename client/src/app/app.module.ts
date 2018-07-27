@@ -23,6 +23,7 @@ import {
     MatMenuModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     MatSlideToggleModule,
     MatSidenavModule,
     MatSortModule,
@@ -62,12 +63,14 @@ import {
 // Services
 import {
     CurrentDateService,
+    ExerciseService,
     MaxStrengthService,
     MomentRangeService,
     WorkoutService
 } from './services'
 
-import { WorkoutDataSource } from './data/workout-datasource'
+import { ExerciseDataSource } from './data/exercise-datasource'
+import { WorkoutDataSource }  from './data/workout-datasource'
 
 // Pipes
 import { DurationPipe } from './pipes/duration.pipe'
@@ -137,6 +140,7 @@ const app_routes: Routes = [
         MatMomentDateModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
+        MatSelectModule,
         MatSidenavModule,
         MatSlideToggleModule,
         MatSortModule,
@@ -148,6 +152,8 @@ const app_routes: Routes = [
     ],
     providers: [
         CurrentDateService,
+        ExerciseDataSource,
+        ExerciseService,
         MaxStrengthService,
         MomentRangeService,
         WorkoutDataSource,

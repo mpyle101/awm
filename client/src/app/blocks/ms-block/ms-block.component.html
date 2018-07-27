@@ -3,6 +3,10 @@
         <mat-icon svgIcon="svg-weights"></mat-icon>
         <div>MS</div>
     </div>
+    <div *ngSwitchCase="'title'" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+        <mat-icon svgIcon="svg-weights"></mat-icon>
+        <div>Max Strength</div>
+    </div>
     <div *ngSwitchCase="'horz'" class="awm-ms-block" fxLayout fxLayoutGap="12px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
         <span *ngFor="let mvmt of mvmts">

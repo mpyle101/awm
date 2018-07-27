@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { DataSource } from '@angular/cdk/collections'
 import { BehaviorSubject, Observable, of } from 'rxjs'
-import { catchError, finalize } from 'rxjs/operators'
+import { catchError, finalize, map } from 'rxjs/operators'
 
 import { Workout } from '../models/workout.model'
 import { WorkoutService } from '../services'
@@ -64,7 +64,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
                 gte: date.format('YYYY-MM-DD'),
                 lt:  date.add(1, 'day').format('YYYY-MM-DD')        
             }
-        })
+        }).pipe(map(items => items.length ? items[0] : null))
     }
 
     /**

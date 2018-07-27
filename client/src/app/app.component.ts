@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { MatIconRegistry } from '@angular/material/icon'
 import * as moment from "moment"
 
+import { ExerciseDataSource } from './data/exercise-datasource'
 import { CurrentDateService } from './services'
 
 @Component({
@@ -22,6 +23,7 @@ export class AppComponent {
     constructor(
         registry: MatIconRegistry,
         sanitizer: DomSanitizer,
+        dataSource: ExerciseDataSource,
         private router: Router,
         private currentDate: CurrentDateService)
     {
@@ -32,6 +34,9 @@ export class AppComponent {
         registry.addSvgIcon('svg-trainer', path)
 
         this.currentDate.connect().subscribe(date => this.refresh(date))
+
+        // Prefetch the exercise data
+        dataSource.load()
     }
 
     public onToday() {

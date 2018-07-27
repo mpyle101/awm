@@ -12,13 +12,47 @@
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
-        <mat-form-field *ngIf="item.date">
-            <input matInput [matDatepicker]="picker" placeholder="Workout date" [formControl]="date">
-            <mat-datepicker-toggle matSuffix [for]="picker">
-                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker [startAt]="item.date"></mat-datepicker>
-        </mat-form-field>
-        <h2>Cycle {{item.cycle}}</h2>
+        <mat-card>
+            <mat-card-title>{{datestr | date: 'longDate'}}</mat-card-title>
+            <mat-card-subtitle>Cycle: {{cycle}}</mat-card-subtitle>
+        </mat-card>
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout>
+                <mat-card formArrayName="blocks" *ngFor="let block of getBlocks(form); let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field>
+                            <mat-select disableRipple placeHolder="Workout type" formControlName="type">
+                                <mat-option *ngFor="let workout of workouts" [value]="workout.value" >
+                                    {{workout.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div formArrayName="sets">
+                            <div [formGroupName]="j" *ngFor="let set of getSets(block); let j=index">
+                                <div fxLayout fxLayoutGap="20px">
+                                    <mat-form-field>
+                                        <mat-select disableRipple placeHolder="Exercise" formControlName="key">
+                                            <mat-option *ngFor="let ex of exercises" [value]="ex.key" >
+                                                {{ex.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input matInput placeholder="sets x wt x reps" formControlName="action">
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-select disableRipple placeHolder="Unit" formControlName="unit">
+                                            <mat-option value="KG">KG</mat-option>
+                                            <mat-option value="LB">LB</mat-option>
+                                            <mat-option value="BW">BW</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </form>
+        </mat-card-content>
     </mat-sidenav-content>
 </mat-sidenav-container>

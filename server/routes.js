@@ -57,10 +57,10 @@ module.exports = db => {
 
     router.get('/workouts', async (req, res, next) => {
         const {status, q} = process(req)
-        const coll = db.collection('workouts')
+        const coll    = db.collection('workouts')
         const options = {limit: q.limit, skip: q.offset, sort: q.sort}
 
-        let total = 0
+        let total  = 0
         let result = await _try(() => coll.countDocuments(q.filter))
         result.matchWith({
             Ok:    ({value}) => total = value,
@@ -82,6 +82,16 @@ module.exports = db => {
         result.matchWith({
             Ok:    ({value}) => value ? res.send(value) : next({status: 404}),
             Error: ({value}) => next({message: 'Not found', error: value})
+        })
+    })
+
+
+    router.get('/exercises', async (req, res, next) => {
+        const coll   = db.collection('exercises')
+        const result = await _try(() => coll.find().toArray())
+        result.matchWith({
+            Ok:    ({value}) => send(res, 200, value, 0, value.length),
+            Error: ({value}) => next({message: 'Internal error', error: value})
         })
     })
 
