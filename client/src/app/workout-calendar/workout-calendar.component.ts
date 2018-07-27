@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ViewChild } from '@angular/core'
 import { MatDialog } from "@angular/material"
 import { ActivatedRoute, Router } from '@angular/router'
 import { Observable } from 'rxjs'
@@ -16,6 +16,8 @@ import { WorkoutDialogComponent } from '../workout-dialog'
     styleUrls: ['./workout-calendar.component.css']
 })
 export class WorkoutCalendarComponent implements OnInit {
+
+    @ViewChild('sidenav') sidenav
 
     public loaded = false
     public items  = []
@@ -44,7 +46,7 @@ export class WorkoutCalendarComponent implements OnInit {
         this.dataSource.disconnect()
     }
 
-    public doClick(event, item) {
+    public onClick(event, item) {
         if (item.blocks.length) {
             const ref = this.dialog.open(WorkoutDialogComponent, {
                 data: { item },
@@ -59,6 +61,14 @@ export class WorkoutCalendarComponent implements OnInit {
         } else {
             this.edit(item)
         }
+    }
+
+    public show(type) {
+        return true
+    }
+
+    public toggleSidenav() {
+        this.sidenav.toggle()
     }
 
     private edit(item) {

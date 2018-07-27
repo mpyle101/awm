@@ -20,6 +20,8 @@ export class WorkoutTableComponent implements OnInit {
     @ViewChild('HIC') typeHIC: TemplateRef<any>
     @ViewChild('HGC') typeHGC: TemplateRef<any>
 
+    @ViewChild('sidenav') sidenav
+
     private refs
 
     /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -47,6 +49,14 @@ export class WorkoutTableComponent implements OnInit {
 
     getTemplate(block) {
         return this.refs[block.type]
+    }
+
+    public show(type) {
+        return true
+    }
+
+    public toggleSidenav() {
+        this.sidenav.toggle()
     }
 
     private load(params) {

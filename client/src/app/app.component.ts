@@ -17,15 +17,7 @@ export class AppComponent {
     public today   = moment()
     public current = moment()
 
-    public showMS  = true
-    public showEN  = true
-    public showGC  = true
-    public showHIC = true
-    public showHGC = true
-    public showSE  = true
-    public showSS  = true
-    public showOFF = true
-
+    private component
 
     constructor(
         registry: MatIconRegistry,
@@ -42,23 +34,31 @@ export class AppComponent {
         this.currentDate.connect().subscribe(date => this.refresh(date))
     }
 
-    public doToday() {
+    public onToday() {
         const path = this.router.url.split('/')[1]
         this.router.navigate([path, this.today.year(), this.today.month() + 1])
     }
 
-    public doPrev(unit) {
+    public onPrev(unit) {
         // Clone so change detection gets kicked
         const path = this.router.url.split('/')[1]
         this.current.subtract(1, unit)
         this.router.navigate([path, this.current.year(), this.current.month() + 1])
     }
 
-    public doNext(unit) {
+    public onNext(unit) {
         // Clone so change detection gets kicked
         const path = this.router.url.split('/')[1]
         this.current.add(1, unit)
         this.router.navigate([path, this.current.year(), this.current.month() + 1])
+    }
+
+    public onToggle() {
+        this.component.toggleSidenav()
+    }
+
+    public onActivate(componentRef) {
+        this.component = componentRef
     }
 
     private refresh(date) {

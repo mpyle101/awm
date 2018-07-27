@@ -19,3 +19,17 @@ table {
 th.mat-sort-header-sorted {
     color: black;
 }
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+}
+
+.sidenav-container {
+    /* This causes <mat-sidenav-content> to act as our scrolling element */
+    flex: 1;
+}
+
+.sidenav {
+    /* Drawer slide out size */
+    width: 250px;
+}

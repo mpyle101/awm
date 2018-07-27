@@ -10,6 +10,7 @@
 }
 
 .awm-toolbar {
+    flex: none;
     position: fixed;
 
     /* Make sure the toolbar will stay on top of the content as it scrolls past */
@@ -19,16 +20,6 @@
 .awm-title {
     /* Put a little gap between the icon and the title */
     margin-left: 8px;
-}
-
-.sidenav-container {
-    /* This causes <mat-sidenav-content> to act as our scrolling element */
-    flex: 1;
-}
-
-.sidenav {
-    /* Drawer slide out size */
-    width: 250px;
 }
 
 .mat-toolbar.mat-primary {
@@ -42,10 +33,4 @@
     -webkit-transform: scaleX(-1);
     -ms-transform: scaleX(-1);
     transform: scaleX(-1);
-}
-
-.valign-center {
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: center;
 }

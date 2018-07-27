@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ViewChild } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import * as moment from 'moment'
@@ -13,6 +13,8 @@ import { WorkoutDataSource }  from '../data/workout-datasource'
 })
 export class WorkoutEditorComponent {
 
+    @ViewChild('sidenav') sidenav
+
     public item:any = {date: moment()}
     public date = new FormControl()
     private current: any
@@ -23,6 +25,10 @@ export class WorkoutEditorComponent {
         private currentDate: CurrentDateService
     ) {
         route.params.subscribe(params => this.load(params))
+    }
+
+    public toggleSidenav() {
+        this.sidenav.toggle()
     }
 
     private load(params) {
