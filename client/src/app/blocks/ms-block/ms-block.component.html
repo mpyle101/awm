@@ -1,17 +1,17 @@
 <ng-container [ngSwitch]="mode">
     <div *ngSwitchCase="'header'" class="awm-ms-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
-        <div>MS</div>
+        <div>STR</div>
     </div>
     <div *ngSwitchCase="'title'" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
-        <div>Max Strength</div>
+        <div>Strength</div>
     </div>
     <div *ngSwitchCase="'horz'" class="awm-ms-block" fxLayout fxLayoutGap="12px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
-        <span *ngFor="let mvmt of mvmts">
-            <div fxLayout="column">{{mvmt.key}}
-                <div *ngFor="let set of mvmt.sets">
+        <span *ngFor="let action of block.actions">
+            <div fxLayout="column">{{action.key}}
+                <div *ngFor="let set of action.sets">
                     {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
                 </div>
             </div>
@@ -43,7 +43,7 @@
     </div>
     <div *ngSwitchDefault class="awm-ms-block" [ngStyle]="styles">
         <div *ngIf="getFirstSet(); let set">
-            MS: {{set.key}} {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
+            STR: {{set.key}} {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
         </div>
     </div>
 </ng-container>

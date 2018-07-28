@@ -13,10 +13,10 @@ export class BlockDataSource extends DataSource<Movement> {
 
     private blockSubject = new BehaviorSubject<Movement[]>([])
 
-    constructor(mvmts: any[]) {
+    constructor(block) {
         super()
 
-        this.blockSubject.next(mvmts)
+        this.blockSubject.next(block.actions)
     }
 
     /**

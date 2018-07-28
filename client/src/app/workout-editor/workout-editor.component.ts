@@ -49,7 +49,7 @@ export class WorkoutEditorComponent implements OnInit{
         this.form = this.fb.group({
             blocks: this.fb.array([this.fb.group({
                 type: 'MS',
-                sets: this.fb.array([])
+                actions: this.fb.array([])
             })])
         })
     }
@@ -58,8 +58,8 @@ export class WorkoutEditorComponent implements OnInit{
         return (<FormArray>this.form.controls.blocks).controls
     }
 
-    public getSets(block) {
-        return (<FormArray>block.controls.sets).controls
+    public getActions(block) {
+        return (<FormArray>block.controls.actions).controls
     }
 
     public toggleSidenav() {
@@ -69,7 +69,7 @@ export class WorkoutEditorComponent implements OnInit{
     private load(params) {
         this.date = moment([params['year'], params['month'] - 1, params['day']])
         this.datestr = this.date.toISOString()
-        this.dataSource.get(this.date).subscribe(item => this.refresh(item))
+        this.dataSource.get(this.date).subscribe(items => this.refresh(items[0]))
     }
 
     private refresh(item) {
@@ -88,21 +88,31 @@ export class WorkoutEditorComponent implements OnInit{
             blocks.removeAt(0)
             item.blocks.map(block => blocks.push(this.fb.group({
                 type: block.type,
-                sets: this.createSets(block.sets)                
+                actions: this.createActions(block.actions)                
             })))
         }
     }
 
-    private createSets(sets): FormArray {
-        if (sets) {
-            return this.fb.array(sets.map(set => this.fb.group({
-                key: set.key,
-                action: set.wt ? `1x${set.wt}x${set.reps}` : `1x${set.reps}`,
-                unit: set.wt ? set.unit : 'BW'
-            })))
+    private createActions(actions): FormArray {
+        let groups = []
+        if (actions) {
+            groups = actions.reduce((acc, action) => {
+                const key  = action.key
+                const unit = action.unit
+                const sets = action.sets.map(set => this.fb.group({
+                    key:  key,
+                    work: set.wt ? `${set.count}x${set.wt}x${set.reps}` : `${set.count}x${set.reps}`,
+                    unit: set.wt ? unit : 'BW'
+                }))
+
+                // Because Chrome doesn't support flat or concat.
+                sets.map(set => acc.push(set))
+
+                return acc
+            }, [])
         }
 
-        return this.fb.array([])
+        return this.fb.array(groups)
     }
 
 }

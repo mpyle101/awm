@@ -13,7 +13,6 @@ import { TrainingBlockComponent } from '../training-block.component'
 })
 export class MaxStrengthComponent extends TrainingBlockComponent {
 
-    public mvmts = []
     public dataSource: BlockDataSource
     public displayedColumns = ['key', 'sets']
 
@@ -22,13 +21,12 @@ export class MaxStrengthComponent extends TrainingBlockComponent {
     }
 
     ngOnInit() {
-        this.mvmts = this.service.process(this.block)
-        this.dataSource = new BlockDataSource(this.mvmts)
+        this.dataSource = new BlockDataSource(this.block)
     }
 
     public getFirstSet() {
-        const set = this.mvmts[0].sets[0]
-        const key = this.mvmts[0].key
+        const set = this.block.actions[0].sets[0]
+        const key = this.block.actions[0].key
         return { key, ...set }
     }
     

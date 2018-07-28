@@ -15,7 +15,3 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
 mat-card {
     margin: 15px;
 }
-
-mat-card-subtitle {
-    margin-bottom: 50px;
-}

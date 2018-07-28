@@ -27,8 +27,8 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div formArrayName="sets">
-                            <div [formGroupName]="j" *ngFor="let set of getSets(block); let j=index">
+                        <div formArrayName="actions">
+                            <div [formGroupName]="j" *ngFor="let action of getActions(block); let j=index">
                                 <div fxLayout fxLayoutGap="20px">
                                     <mat-form-field>
                                         <mat-select disableRipple placeHolder="Exercise" formControlName="key">
@@ -38,7 +38,7 @@
                                         </mat-select>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="sets x wt x reps" formControlName="action">
+                                        <input matInput placeholder="sets x wt x reps" formControlName="work">
                                     </mat-form-field>
                                     <mat-form-field>
                                         <mat-select disableRipple placeHolder="Unit" formControlName="unit">

@@ -64,7 +64,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
                 gte: date.format('YYYY-MM-DD'),
                 lt:  date.add(1, 'day').format('YYYY-MM-DD')        
             }
-        }).pipe(map(items => items.length ? items[0] : null))
+        }).pipe(map(workouts => workouts.map(workout => this.processWorkout(workout))))
     }
 
     /**
@@ -82,10 +82,61 @@ export class WorkoutDataSource extends DataSource<Workout> {
 
         this.workoutSvc.find(filter)
             .pipe(
+                map(workouts => workouts.map(workout => this.processWorkout(workout))),
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )
             .subscribe(workouts => this.workoutSubject.next(workouts))
+    }
+
+    private processWorkout(workout) {
+        workout.blocks = workout.blocks.map(block => {
+            if (block.type == 'MS') {
+                block.actions = this.processMSBlock(block)
+            }
+            return block
+        })
+
+        return workout
+    }
+
+    private processMSBlock(block) {
+        const eq = (a, b) => a.wt == b.wt && a.reps == b.reps
+
+        const first = block.sets[0]
+        const mvmts = block.sets.slice(1).reduce((mvmts, set) => {
+            
+            let curr = mvmts[mvmts.length - 1]
+            if (curr.key == set.key) {
+                let curr_set = curr.sets[curr.sets.length - 1]
+                if (eq(curr_set, set)) {
+                    curr_set.count += 1
+                } else {
+                    curr.sets.push({wt: set.wt, reps: set.reps, count: 1})
+                }
+            } else {
+                mvmts.push(this.createAction(set))
+            }
+
+            return mvmts
+
+        }, [this.createAction(first)])
+
+        return mvmts
+    }
+
+    private createAction(set) {
+        console.log(set)
+        return {
+            key: set.key,
+            unit: set.unit,
+            style: set.style,
+            sets: [{
+                wt: set.wt,
+                reps: set.reps,
+                count: 1
+            }]
+        }
     }
 }
 
