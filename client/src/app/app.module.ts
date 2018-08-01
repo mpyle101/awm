@@ -63,11 +63,16 @@ import {
 // Services
 import {
     CurrentDateService,
+    DragService,
     ExerciseService,
     MaxStrengthService,
     MomentRangeService,
     WorkoutService
 } from './services'
+
+// Directives
+import { DraggableDirective } from './directives'
+import { DroppableDirective } from './directives'
 
 import { ExerciseDataSource } from './data/exercise-datasource'
 import { WorkoutDataSource }  from './data/workout-datasource'
@@ -109,6 +114,10 @@ const app_routes: Routes = [
         WorkoutEditorComponent,
         WorkoutTableComponent,
         UnderConstruction,
+
+        // Directives
+        DraggableDirective,
+        DroppableDirective,
 
         // Pipes
         DurationPipe
@@ -152,6 +161,7 @@ const app_routes: Routes = [
     ],
     providers: [
         CurrentDateService,
+        DragService,
         ExerciseDataSource,
         ExerciseService,
         MaxStrengthService,

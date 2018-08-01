@@ -1,4 +1,5 @@
 export { CurrentDateService } from './current-date.service'
+export { DragService }        from './drag.service'
 export { ExerciseService }    from './exercise.service'
 export { MaxStrengthService } from './ms-block.service'
 export { MomentRangeService } from './moment-range.service'

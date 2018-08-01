@@ -14,7 +14,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 export class MaxStrengthComponent extends TrainingBlockComponent {
 
     public dataSource: BlockDataSource
-    public displayedColumns = ['key', 'sets']
+    public displayedColumns = ['key', 'sets', 'unit']
 
     constructor(private service: MaxStrengthService) {
         super()

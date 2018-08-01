@@ -126,7 +126,6 @@ export class WorkoutDataSource extends DataSource<Workout> {
     }
 
     private createAction(set) {
-        console.log(set)
         return {
             key: set.key,
             unit: set.unit,

@@ -1,7 +1,7 @@
 <ng-container [ngSwitch]="mode">
     <div *ngSwitchCase="'header'" class="awm-ms-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
-        <div>STR</div>
+        <div>Strength</div>
     </div>
     <div *ngSwitchCase="'title'" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
@@ -34,6 +34,17 @@
                             {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
                         </div>
                     </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="unit">
+                <th mat-header-cell *matHeaderCellDef>Unit</th>
+                <td mat-cell *matCellDef="let item" class="ms-cell-sets">
+                    <div fxLayout="column">
+                        <div *ngFor="let set of item.sets">
+                            <span *ngIf="set.wt">{{item.unit}}</span>
+                            <span *ngIf="set.wt == 0">BW</span>
+                        </div>
+                    </div>                
                 </td>
             </ng-container>
 
