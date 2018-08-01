@@ -63,9 +63,10 @@ export class WorkoutCalendarComponent implements OnInit {
         }
     }
 
-    public onDrop(event) {
+    public onDrop(event, item) {
         const data = JSON.parse(event)
         console.log(data)
+        console.log(item)
     }
 
     public show(type) {

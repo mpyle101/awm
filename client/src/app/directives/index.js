@@ -1,2 +1,2 @@
 export { DraggableDirective } from './draggable.directive'
-export { DroppableDirective } from './droppable.directive'
+export { DropzoneDirective }  from './dropzone.directive'

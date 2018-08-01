@@ -2,12 +2,11 @@ import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } fro
 import { DragService } from '../services'
 
 @Directive({
-    selector: '[awm-droppable]'
+    selector: '[awm-dropzone]'
 })
-export class DroppableDirective {
+export class DropzoneDirective {
 
-    @Input('awm-droppable') data = {}
-    @Input('awm-dropzone')  zone: string
+    @Input('awm-dropzone') zone: string
     @Output('awm-dropped') dropped = new EventEmitter()
 
     // Enable HTML 5 drag and drop

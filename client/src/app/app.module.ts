@@ -72,7 +72,7 @@ import {
 
 // Directives
 import { DraggableDirective } from './directives'
-import { DroppableDirective } from './directives'
+import { DropzoneDirective }  from './directives'
 
 import { ExerciseDataSource } from './data/exercise-datasource'
 import { WorkoutDataSource }  from './data/workout-datasource'
@@ -117,7 +117,7 @@ const app_routes: Routes = [
 
         // Directives
         DraggableDirective,
-        DroppableDirective,
+        DropzoneDirective,
 
         // Pipes
         DurationPipe

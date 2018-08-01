@@ -23,8 +23,8 @@
         <div class="awm-calendar" fxLayout="column">
             <div *ngFor="let week of weeks; let i = index" fxFlex>
                 <div *ngFor="let item of week" fxFlex fxLayout="row nowrap">
-                    <div awm-droppable
-                         (awm-dropped)="onDrop($event)"
+                    <div awm-dropzone
+                         (awm-dropped)="onDrop($event, item)"
                          (click)="onClick($event, item)"
                          class="week-day"
                          fxLayout="column"
