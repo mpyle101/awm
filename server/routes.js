@@ -80,7 +80,7 @@ module.exports = db => {
     }
 
 
-    const insert = async (cname, doc, res, next) => {
+    const create = async (cname, doc, res, next) => {
         const coll = db.collection(cname)
         const result = await _try(() => coll.insertOne(doc))
         result.matchWith({
@@ -103,7 +103,19 @@ module.exports = db => {
 
         result = await _try(() => coll.update({_id:doc_id}, doc))
         result.matchWith({
-            Ok:    ({value}) => value ? res.send(doc) : next({status: 404}),
+            Ok:    ({value}) => res.send(doc),
+            Error: ({value}) => next({message: 'Internal error', error: value})
+        })
+    }
+
+
+    const remove = async (cname, req, res, next) => {
+        const coll = db.collection(cname)
+        const doc_id = to_oid(req.params.id)
+
+        let result = await _try(() => coll.deleteOne({_id:doc_id}))
+        result.matchWith({
+            Ok:    ({value}) => res.status(204).send(),
             Error: ({value}) => next({message: 'Internal error', error: value})
         })
     }
@@ -114,28 +126,31 @@ module.exports = db => {
     })
 
     router.route('/cycles')
-        .get((req, res, next)  => find('cycles', {'start': -1}, req, res, next))
-        .post((req, res, next) => insert('cycles', req, res, next))
+        .get((req, res, next) => find('cycles', {'start': -1}, req, res, next))
+        .post((req, res, next) => create('cycles', req, res, next))
 
     router.route('/cycles/:id')
         .get((req, res, next) => findOne('cycles', req, res, next))
         .put((req, res, next) => update('cycles', req, res, next))
+        .delete((req, res, next) => remove('cycles', req, res, next))
 
     router.route('/exercises')
-        .get((req, res, next)  => find('exercises', {'name': -1}, req, res, next))
-        .post((req, res, next) => insert('exercises', req.body, res, next))
+        .get((req, res, next) => find('exercises', {'name': -1}, req, res, next))
+        .post((req, res, next) => create('exercises', req.body, res, next))
 
     router.route('/exercises/:id')
         .get((req, res, next) => findOne('exercises', req, res, next))
         .put((req, res, next) => update('exercises', req, res, next))
+        .delete((req, res, next) => remove('exercises', req, res, next))
 
     router.route('/workouts')
-        .get((req, res, next)  => find('workouts', {'date':-1}, req, res, next))
-        .post((req, res, next) => insert('workouts', req.body, res, next))
+        .get((req, res, next) => find('workouts', {'date':-1}, req, res, next))
+        .post((req, res, next) => create('workouts', req.body, res, next))
 
     router.route('/workouts/:id')
         .get((req, res, next) => findOne('workouts', req, res, next))
         .put((req, res, next) => update('workouts', req, res, next))
+        .delete((req, res, next) => remove('workouts', req, res, next))
 
 
     return router
