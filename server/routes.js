@@ -84,9 +84,12 @@ module.exports = db => {
         const coll = db.collection(cname)
         const result = await _try(() => coll.insertOne(doc))
         result.matchWith({
-            Ok:    ({value}) => {doc._id = value.insertedId; res.status(201).send(doc)},
+            Ok:    ({value}) => doc._id = value.insertedId,
             Error: ({value}) => next({message: 'Internal error', error: value})
         })
+
+        res.set({'Location': `${req.protocol}://${req.get("host")}${req.originalUrl}/${doc._id}`})
+        res.status(201).send(doc)
     }
 
 
