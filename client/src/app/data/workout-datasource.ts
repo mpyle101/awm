@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs'
 import { catchError, finalize, map } from 'rxjs/operators'
 
 import { Workout } from '../models/workout.model'
-import { WorkoutService } from '../services'
+import { HttpService } from '../services'
 import { MomentRangeService } from '../services'
 
 
@@ -24,12 +24,14 @@ export class WorkoutDataSource extends DataSource<Workout> {
     public loading$ = this.loadingSubject.asObservable()
 
     private _range
+    private url = 'http://localhost:9000/api/workouts'
 
     constructor(
-        private workoutSvc: WorkoutService,
-        private momentSvc: MomentRangeService)
+        private momentSvc: MomentRangeService,
+        private http: HttpService<Workout[]>)
     {
         super()
+        http.init(this.url)
     }
 
     /**
@@ -48,7 +50,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
     disconnect() {}
 
     get total() {
-        return this.workoutSvc.total
+        return this.http.total
     }
 
     get range() {
@@ -59,7 +61,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
      * Return the workouts for single day.
      */
     get(date) {
-        return this.workoutSvc.find({
+        return this.http.get({
             date: {
                 gte: date.format('YYYY-MM-DD'),
                 lt:  date.add(1, 'day').format('YYYY-MM-DD')        
@@ -80,7 +82,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
             lt:  end.add(1, 'day').format('YYYY-MM-DD')
         }
 
-        this.workoutSvc.find(filter)
+        this.http.get(filter)
             .pipe(
                 map(workouts => workouts.map(workout => this.processWorkout(workout))),
                 catchError(() => of([])),

@@ -3,26 +3,24 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-import { Workout } from '../models/workout.model'
-
-@Injectable({
-    providedIn: 'root'
-})
-export class WorkoutService {
+@Injectable()
+export class HttpService<T> {
 
     public meta = {start: 0, end: 0, total: 0}
-
-    private url = 'http://localhost:9000/api/workouts'
+    private url
 
     constructor(private http: HttpClient) {}
+
+    init(url) {
+        this.url = url
+    }
 
     get total() {
         return this.meta.total
     }
 
-    find(filter={}, sort={}, pageIndex=0, pageSize=0): Observable<Workout[]> {
-
-        return this.http.get<Workout[]>(this.url, {
+    get(filter={}, sort={}, pageIndex=0, pageSize=0): Observable<T> {
+        return this.http.get<T>(this.url, {
             observe: 'response',
             headers: this.setupHeaders(pageIndex, pageSize),
             params:  this.setupParams(filter, sort)

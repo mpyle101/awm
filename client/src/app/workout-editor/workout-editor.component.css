@@ -15,3 +15,7 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
 mat-card {
     margin: 15px;
 }
+
+.awm-editor-unit {
+    width: 50px;
+}

@@ -64,10 +64,9 @@ import {
 import {
     CurrentDateService,
     DragService,
-    ExerciseService,
+    HttpService,
     MaxStrengthService,
-    MomentRangeService,
-    WorkoutService
+    MomentRangeService
 } from './services'
 
 // Directives
@@ -163,11 +162,10 @@ const app_routes: Routes = [
         CurrentDateService,
         DragService,
         ExerciseDataSource,
-        ExerciseService,
+        HttpService,
         MaxStrengthService,
         MomentRangeService,
-        WorkoutDataSource,
-        WorkoutService
+        WorkoutDataSource
     ],
     bootstrap: [AppComponent],
     entryComponents: [WorkoutDialogComponent]

@@ -3,7 +3,7 @@ export const WorkoutTypes = [
     { value: 'GC',  viewValue: 'General Conditioning' },
     { value: 'HGC', viewValue: 'High Intensity GC' },
     { value: 'HIC', viewValue: 'High Intensity Conditioning' },
-    { value: 'MS',  viewValue: 'Max Strength' },
+    { value: 'MS',  viewValue: 'Strength' },
     { value: 'OFF', viewValue: 'Off' },
     { value: 'SE',  viewValue: 'Strength Endurance' },
     { value: 'SS',  viewValue: 'Super Sets' }

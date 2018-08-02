@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs'
 import { catchError, finalize } from 'rxjs/operators'
 
 import { Exercise } from '../models/exercise.model'
-import { ExerciseService } from '../services'
+import { HttpService } from '../services'
 
 
 /**
@@ -20,11 +20,14 @@ export class ExerciseDataSource extends DataSource<Exercise> {
     private dataSubject    = new BehaviorSubject<Exercise[]>([])
     private loadingSubject = new BehaviorSubject<boolean>(false)
 
+    private url = 'http://localhost:9000/api/exercises'
+
     public loading$ = this.loadingSubject.asObservable()
 
-    constructor(private service: ExerciseService)
+    constructor(private http: HttpService<Exercise[]>)
     {
         super()
+        http.init(this.url)
     }
 
     /**
@@ -43,7 +46,7 @@ export class ExerciseDataSource extends DataSource<Exercise> {
     disconnect() {}
 
     get total() {
-        return this.service.total
+        return this.http.total
     }
 
     /**
@@ -51,7 +54,7 @@ export class ExerciseDataSource extends DataSource<Exercise> {
      */
     load() {
         this.loadingSubject.next(true)
-        this.service.load()
+        this.http.get()
             .pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
