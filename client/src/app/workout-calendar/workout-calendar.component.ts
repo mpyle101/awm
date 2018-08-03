@@ -48,7 +48,7 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     public onClick(event, item) {
-        if (item.blocks.length) {
+        if (item.blocks) {
             const ref = this.dialog.open(WorkoutDialogComponent, {
                 data: { item },
                 height: '400px',
@@ -65,18 +65,19 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     public onDrop(event, item) {
-        const block = JSON.parse(event)
+        const block   = JSON.parse(event)
+        const datestr = item.date.format('MMM D, YYYY')
         if (item.blocks) {
             item.blocks.push(block)
             this.dataSource.update(item).subscribe(
-                () => this.openSnackBar('Workout updated'),
+                () => this.openSnackBar(`Workout updated for ${datestr}`),
                 err => this.openSnackBar(`Failed to update workout: ${err}`)
             )
         } else {
             item.type   = block.type
             item.blocks = [block]
             this.dataSource.create(item).subscribe(
-                () => this.openSnackBar('Workout created'),
+                () => this.openSnackBar(`Workout created for ${datestr}`),
                 err => this.openSnackBar(`Failed to create workout: ${err}`)
             )
         }
@@ -90,8 +91,8 @@ export class WorkoutCalendarComponent implements OnInit {
         this.sidenav.toggle()
     }
 
-    public openSnackBar(message, duration=2000) {
-        this.snackbar.open(message, '', {duration})
+    public openSnackBar(message, action='', duration=2000) {
+        this.snackbar.open(message, action, {duration})
     }
 
     private edit(item) {

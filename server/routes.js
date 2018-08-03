@@ -15,7 +15,7 @@ module.exports = db => {
      *   Range: items=0-5   # get the first 6 items
      *   Range: items=5-    # get the items from 6 on (subject to limit)
      */
-    const process = (req, sort) => {
+    const processRequest = (req, sort) => {
         const q = parseq(req.query)
         if (q.sort == undefined) {
             q.sort = sort
@@ -40,6 +40,18 @@ module.exports = db => {
     }
 
 
+    const processDocument = (cname, doc) => {
+        if (cname == 'workouts') {
+            doc.date = new Date(doc.date)
+        } else if (cname == 'cycles') {
+            doc.start = new Date(doc.start)
+            doc.end   = new Date(doc.end)
+        }
+
+        return doc
+    }
+
+
     const send = (res, status, items, offset, total) => {
         const end = offset + items.length - 1
         res.set({
@@ -50,8 +62,8 @@ module.exports = db => {
     }
 
 
-    const find = async (cname, sort, req, res, next) => {
-        const {status, q} = process(req, sort)
+    const getall = async (cname, sort, req, res, next) => {
+        const {status, q} = processRequest(req, sort)
         const coll    = db.collection(cname)
         const options = {limit: q.limit, skip: q.offset, sort: q.sort}
 
@@ -70,7 +82,7 @@ module.exports = db => {
     }
 
 
-    const findOne = async (cname, req, res, next) => {
+    const getone = async (cname, req, res, next) => {
         const coll   = db.collection(cname)
         const result = await _try(() => coll.findOne({_id:to_oid(req.params.id)}))
         result.matchWith({
@@ -81,9 +93,7 @@ module.exports = db => {
 
 
     const create = async (cname, req, res, next) => {
-        const doc = req.body
-        doc.date = new Date(doc.date)
-
+        const doc  = processDocument(cname, req.body)
         const coll = db.collection(cname)
         const result = await _try(() => coll.insertOne(doc))
         result.matchWith({
@@ -132,29 +142,29 @@ module.exports = db => {
     })
 
     router.route('/cycles')
-        .get((req, res, next) => find('cycles', {'start': -1}, req, res, next))
+        .get((req, res, next) => getall('cycles', {'start': -1}, req, res, next))
         .post((req, res, next) => create('cycles', req, res, next))
 
     router.route('/cycles/:id')
-        .get((req, res, next) => findOne('cycles', req, res, next))
+        .get((req, res, next) => getone('cycles', req, res, next))
         .put((req, res, next) => update('cycles', req, res, next))
         .delete((req, res, next) => remove('cycles', req, res, next))
 
     router.route('/exercises')
-        .get((req, res, next) => find('exercises', {'name': -1}, req, res, next))
+        .get((req, res, next) => getall('exercises', {'name': -1}, req, res, next))
         .post((req, res, next) => create('exercises', req, res, next))
 
     router.route('/exercises/:id')
-        .get((req, res, next) => findOne('exercises', req, res, next))
+        .get((req, res, next) => getone('exercises', req, res, next))
         .put((req, res, next) => update('exercises', req, res, next))
         .delete((req, res, next) => remove('exercises', req, res, next))
 
     router.route('/workouts')
-        .get((req, res, next) => find('workouts', {'date':-1}, req, res, next))
+        .get((req, res, next) => getall('workouts', {'date':-1}, req, res, next))
         .post((req, res, next) => create('workouts', req, res, next))
 
     router.route('/workouts/:id')
-        .get((req, res, next) => findOne('workouts', req, res, next))
+        .get((req, res, next) => getone('workouts', req, res, next))
         .put((req, res, next) => update('workouts', req, res, next))
         .delete((req, res, next) => remove('workouts', req, res, next))
 
