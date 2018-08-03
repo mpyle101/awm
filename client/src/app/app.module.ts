@@ -34,6 +34,7 @@ import {
 import { MatExpansionModule }  from '@angular/material/expansion'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
+import { MatSnackBarModule }   from '@angular/material/snack-bar'
 
 import { NgxJsonViewerModule } from 'ngx-json-viewer'
 
@@ -149,6 +150,7 @@ const app_routes: Routes = [
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatSelectModule,
+        MatSnackBarModule,
         MatSidenavModule,
         MatSlideToggleModule,
         MatSortModule,

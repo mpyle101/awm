@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core'
-import { MatDialog } from "@angular/material"
+import { MatDialog, MatSnackBar } from "@angular/material"
 import { ActivatedRoute, Router } from '@angular/router'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
@@ -31,6 +31,7 @@ export class WorkoutCalendarComponent implements OnInit {
     constructor(
         route: ActivatedRoute,
         private dialog: MatDialog,
+        private snackbar: MatSnackBar,
         private router: Router,
         private dataSource: WorkoutDataSource,
         private currentDate: CurrentDateService
@@ -64,9 +65,21 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     public onDrop(event, item) {
-        const data = JSON.parse(event)
-        console.log(data)
-        console.log(item)
+        const block = JSON.parse(event)
+        if (item.blocks) {
+            item.blocks.push(block)
+            this.dataSource.update(item).subscribe(
+                () => this.openSnackBar('Workout updated'),
+                err => this.openSnackBar(`Failed to update workout: ${err}`)
+            )
+        } else {
+            item.type   = block.type
+            item.blocks = [block]
+            this.dataSource.create(item).subscribe(
+                () => this.openSnackBar('Workout created'),
+                err => this.openSnackBar(`Failed to create workout: ${err}`)
+            )
+        }
     }
 
     public show(type) {
@@ -75,6 +88,10 @@ export class WorkoutCalendarComponent implements OnInit {
 
     public toggleSidenav() {
         this.sidenav.toggle()
+    }
+
+    public openSnackBar(message, duration=2000) {
+        this.snackbar.open(message, '', {duration})
     }
 
     private edit(item) {
@@ -111,7 +128,8 @@ export class WorkoutCalendarComponent implements OnInit {
             const none = { cycle: null, type: null, blocks: [] }
             const days = Array.from(range.by('day'))
             this.items = days.map((date:any) => {
-                const workout = workouts.get(date.format('YYYY-MM-DD')) || none
+                date.utcOffset('-0600').set({hour: 12, minute: 0, second: 0, millisecond: 0})
+                const workout = workouts.get(date.format('YYYY-MM-DD')) || {}
                 return { 
                     date,
                     num: date.date(),

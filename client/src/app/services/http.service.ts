@@ -19,7 +19,7 @@ export class HttpService<T> {
         return this.meta.total
     }
 
-    get(filter={}, sort={}, pageIndex=0, pageSize=0): Observable<T> {
+    get(filter={}, sort={}, pageIndex=0, pageSize=0): Observable<T[]> {
         return this.http.get<T>(this.url, {
             observe: 'response',
             headers: this.setupHeaders(pageIndex, pageSize),
@@ -27,6 +27,10 @@ export class HttpService<T> {
         }).pipe(
             map(resp => this.processResponse(resp))
         )
+    }
+
+    post(item, headers?: HttpHeaders): Observable<T> {
+        return this.http.post<T>(this.url, item, {headers})
     }
 
     private setupParams(filter, sort) {

@@ -1,9 +1,5 @@
 export interface Workout {
     date: string
-    cycle: string
+    type: string
     blocks: any[]
-    range: {
-        start: Date
-        end: Date
-    }
 }

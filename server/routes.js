@@ -80,7 +80,10 @@ module.exports = db => {
     }
 
 
-    const create = async (cname, doc, res, next) => {
+    const create = async (cname, req, res, next) => {
+        const doc = req.body
+        doc.date = new Date(doc.date)
+
         const coll = db.collection(cname)
         const result = await _try(() => coll.insertOne(doc))
         result.matchWith({
@@ -139,7 +142,7 @@ module.exports = db => {
 
     router.route('/exercises')
         .get((req, res, next) => find('exercises', {'name': -1}, req, res, next))
-        .post((req, res, next) => create('exercises', req.body, res, next))
+        .post((req, res, next) => create('exercises', req, res, next))
 
     router.route('/exercises/:id')
         .get((req, res, next) => findOne('exercises', req, res, next))
@@ -148,7 +151,7 @@ module.exports = db => {
 
     router.route('/workouts')
         .get((req, res, next) => find('workouts', {'date':-1}, req, res, next))
-        .post((req, res, next) => create('workouts', req.body, res, next))
+        .post((req, res, next) => create('workouts', req, res, next))
 
     router.route('/workouts/:id')
         .get((req, res, next) => findOne('workouts', req, res, next))

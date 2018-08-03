@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
 import { DataSource } from '@angular/cdk/collections'
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs'
 import { catchError, finalize, map } from 'rxjs/operators'
+import * as clone from "clone-deep"
 
 import { Workout } from '../models/workout.model'
 import { HttpService } from '../services'
@@ -28,7 +29,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
 
     constructor(
         private momentSvc: MomentRangeService,
-        private http: HttpService<Workout[]>)
+        private http: HttpService<Workout>)
     {
         super()
         http.init(this.url)
@@ -60,13 +61,35 @@ export class WorkoutDataSource extends DataSource<Workout> {
     /**
      * Return the workouts for single day.
      */
-    get(date) {
+    get(date): Observable<Workout[]> {
         return this.http.get({
             date: {
                 gte: date.format('YYYY-MM-DD'),
                 lt:  date.add(1, 'day').format('YYYY-MM-DD')        
             }
         }).pipe(map(workouts => workouts.map(workout => this.processWorkout(workout))))
+    }
+
+    /**
+     * Create a new workout.
+     */
+    create(item): Observable<Workout> {
+        const doc = {
+            date: item.date.toDate(),
+            type: item.type,
+            blocks: clone(item.blocks)
+        }
+
+        doc.blocks.forEach(block => delete block.actions)
+
+        return this.http.post(doc)
+    }
+
+    /**
+     * Update an existing workout.
+     */
+    update(item): Observable<Workout> {
+        return throwError('Not Implemented')
     }
 
     /**
@@ -94,7 +117,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
     private processWorkout(workout) {
         workout.blocks = workout.blocks.map(block => {
             if (block.type == 'MS') {
-                block.actions = this.processMSBlock(block)
+                block.actions = this.processMS(block)
             }
             return block
         })
@@ -102,7 +125,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
         return workout
     }
 
-    private processMSBlock(block) {
+    private processMS(block) {
         const eq = (a, b) => a.wt == b.wt && a.reps == b.reps
 
         const first = block.sets[0]

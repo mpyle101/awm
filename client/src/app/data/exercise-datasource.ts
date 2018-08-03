@@ -24,7 +24,7 @@ export class ExerciseDataSource extends DataSource<Exercise> {
 
     public loading$ = this.loadingSubject.asObservable()
 
-    constructor(private http: HttpService<Exercise[]>)
+    constructor(private http: HttpService<Exercise>)
     {
         super()
         http.init(this.url)
