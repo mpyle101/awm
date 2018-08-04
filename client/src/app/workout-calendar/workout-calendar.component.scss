@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .awm-calendar {
     display: flex;
     min-height: 100%;
@@ -17,7 +19,7 @@
 
 .today {
     /* indigo-pink accent color */
-    border: 1px solid #ff4081;
+    border: 1px solid mat-color($awm-accent);
 }
 
 .day-name {
