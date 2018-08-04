@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators'
 import * as moment from "moment"
 
 import { CurrentDateService }     from '../services'
+import { CycleDataSource }        from '../data/cycle-datasource'
 import { WorkoutDataSource }      from '../data/workout-datasource'
 import { WorkoutDialogComponent } from '../workout-dialog'
 
@@ -34,18 +35,19 @@ export class WorkoutCalendarComponent implements OnInit {
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private router: Router,
-        private dataSource: WorkoutDataSource,
+        private cycles: CycleDataSource,
+        private workouts: WorkoutDataSource,
         private currentDate: CurrentDateService
     ) {
         route.params.subscribe(params => this.load(params))
     }
 
     ngOnInit() {
-        this.dataSource.connect().subscribe(items => this.refresh(items))
+        this.workouts.connect().subscribe(items => this.refresh(items))
     }
 
     ngOnDestroy() {
-        this.dataSource.disconnect()
+        this.workouts.disconnect()
     }
 
     public onClick(event, item) {
@@ -70,14 +72,14 @@ export class WorkoutCalendarComponent implements OnInit {
         const datestr = item.date.format('MMM D, YYYY')
         if (item.blocks) {
             item.blocks.push(block)
-            this.dataSource.update(item).subscribe(
+            this.workouts.update(item).subscribe(
                 () => this.openSnackBar(`Workout updated for ${datestr}`),
                 err => this.openSnackBar(`Failed to update workout: ${err}`)
             )
         } else {
             item.type   = block.type
             item.blocks = [block]
-            this.dataSource.create(item).subscribe(
+            this.workouts.create(item).subscribe(
                 () => this.openSnackBar(`Workout created for ${datestr}`),
                 err => this.openSnackBar(`Failed to create workout: ${err}`)
             )
@@ -106,10 +108,8 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     private edit(item) {
-        if (item) {
-            const date = item.date
-            this.router.navigate(['workout', date.year(), date.month() + 1, date.date()])
-        }
+        const d = item.date
+        this.router.navigate(['workout', d.year(), d.month() + 1, d.date()])
     }
 
     private load(params) {
@@ -124,11 +124,11 @@ export class WorkoutCalendarComponent implements OnInit {
         start.subtract(start.weekday(), 'day')
         end.add(6 - end.weekday(), 'day')
 
-        this.dataSource.load(start, end)
+        this.workouts.load(start, end)
     }
 
     private refresh(items) {
-        const range = this.dataSource.range
+        const range = this.workouts.range
         if (range) {
             const workouts = items.reduce((m, v) => {
                 const [day,...rest] = v.date.split('T')

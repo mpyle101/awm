@@ -74,6 +74,7 @@ import {
 import { DraggableDirective } from './directives'
 import { DropzoneDirective }  from './directives'
 
+import { CycleDataSource }    from './data/cycle-datasource'
 import { ExerciseDataSource } from './data/exercise-datasource'
 import { WorkoutDataSource }  from './data/workout-datasource'
 
@@ -161,12 +162,16 @@ const app_routes: Routes = [
         NgxJsonViewerModule
     ],
     providers: [
+        // Services
         CurrentDateService,
         DragService,
-        ExerciseDataSource,
         HttpService,
         MaxStrengthService,
         MomentRangeService,
+
+        // Data Sources
+        CycleDataSource,
+        ExerciseDataSource,
         WorkoutDataSource
     ],
     bootstrap: [AppComponent],
