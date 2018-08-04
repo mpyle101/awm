@@ -11,12 +11,22 @@
     border: 1px solid #e6e6e6;
 }
 
+.week-end {
+    background-color: #F2F2F3;
+}
+
+.today {
+    /* indigo-pink accent color */
+    border: 1px solid #ff4081;
+}
+
 .day-name {
     color: #7e7e7e;
+    margin-bottom: 6px;
 }
 
 .day-header {
-    margin: 4px 6px 4px 6px;
+    margin: 8px 8px 6px 6px;
 }
 
 .day-content {

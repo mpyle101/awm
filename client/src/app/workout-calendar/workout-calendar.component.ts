@@ -27,6 +27,7 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     private current: any
+    private today = moment()
 
     constructor(
         route: ActivatedRoute,
@@ -85,6 +86,15 @@ export class WorkoutCalendarComponent implements OnInit {
 
     public show(type) {
         return true
+    }
+
+    public isToday(item) {
+        return item.date.isSame(this.today, 'day')
+    }
+
+    public isWeekend(item) {
+        const num = item.date.day()
+        return num == 0 || num == 6
     }
 
     public toggleSidenav() {
