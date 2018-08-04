@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material"
 @Component({
     selector: 'awm-workout-dialog',
     templateUrl: './workout-dialog.component.html',
-    styleUrls: ['./workout-dialog.component.css']
+    styleUrls: ['./workout-dialog.component.scss']
 })
 export class WorkoutDialogComponent implements OnInit {
 

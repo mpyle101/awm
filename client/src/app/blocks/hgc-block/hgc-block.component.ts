@@ -8,7 +8,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-hgc-block',
     templateUrl: './hgc-block.component.html',
-    styleUrls: ['./hgc-block.component.css']
+    styleUrls: ['./hgc-block.component.scss']
 })
 export class HighIntensityGCComponent extends TrainingBlockComponent {
 

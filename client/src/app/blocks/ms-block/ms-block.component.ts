@@ -9,7 +9,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-ms-block',
     templateUrl: './ms-block.component.html',
-    styleUrls: ['./ms-block.component.css']
+    styleUrls: ['./ms-block.component.scss']
 })
 export class MaxStrengthComponent extends TrainingBlockComponent {
 

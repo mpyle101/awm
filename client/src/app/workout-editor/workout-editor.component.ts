@@ -18,7 +18,7 @@ import { WorkoutTypes } from './workout-consts'
 @Component({
   selector: 'awm-workout-editor',
   templateUrl: './workout-editor.component.html',
-  styleUrls: ['./workout-editor.component.css']
+  styleUrls: ['./workout-editor.component.scss']
 })
 export class WorkoutEditorComponent implements OnInit{
 

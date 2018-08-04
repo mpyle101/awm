@@ -8,7 +8,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-gc-block',
     templateUrl: './gc-block.component.html',
-    styleUrls: ['./gc-block.component.css']
+    styleUrls: ['./gc-block.component.scss']
 })
 export class GeneralConditionComponent extends TrainingBlockComponent {
 

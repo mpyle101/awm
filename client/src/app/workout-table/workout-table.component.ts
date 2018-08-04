@@ -7,7 +7,7 @@ import { WorkoutDataSource } from '../data/workout-datasource'
 @Component({
     selector: 'awm-workout-table',
     templateUrl: './workout-table.component.html',
-    styleUrls: ['./workout-table.component.css']
+    styleUrls: ['./workout-table.component.scss']
 })
 export class WorkoutTableComponent implements OnInit {
     

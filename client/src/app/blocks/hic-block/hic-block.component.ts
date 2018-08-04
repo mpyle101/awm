@@ -9,7 +9,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-hic-block',
     templateUrl: './hic-block.component.html',
-    styleUrls: ['./hic-block.component.css'],
+    styleUrls: ['./hic-block.component.scss'],
     providers: [DurationPipe]
 })
 export class HighIntensityComponent extends TrainingBlockComponent {

@@ -8,7 +8,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-se-block',
     templateUrl: './se-block.component.html',
-    styleUrls: ['./se-block.component.css']
+    styleUrls: ['./se-block.component.scss']
 })
 export class StrengthEnduranceComponent extends TrainingBlockComponent {
 

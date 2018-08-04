@@ -8,7 +8,7 @@ import { TrainingBlockComponent } from '../training-block.component'
 @Component({
     selector: 'awm-off-block',
     templateUrl: './off-block.component.html',
-    styleUrls: ['./off-block.component.css']
+    styleUrls: ['./off-block.component.scss']
 })
 export class DayOffComponent extends TrainingBlockComponent {
 

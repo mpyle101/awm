@@ -14,7 +14,7 @@ import { WorkoutDialogComponent } from '../workout-dialog'
 @Component({
     selector: 'awm-workout-calendar',
     templateUrl: './workout-calendar.component.html',
-    styleUrls: ['./workout-calendar.component.css']
+    styleUrls: ['./workout-calendar.component.scss']
 })
 export class WorkoutCalendarComponent implements OnInit {
 
