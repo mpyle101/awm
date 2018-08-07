@@ -33,6 +33,7 @@ import {
 } from '@angular/material'
 import { MatExpansionModule }  from '@angular/material/expansion'
 import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDividerModule }    from '@angular/material/divider'
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatSnackBarModule }   from '@angular/material/snack-bar'
 
@@ -139,6 +140,7 @@ const app_routes: Routes = [
         MatCardModule,
         MatCheckboxModule,
         MatDatepickerModule,
+        MatDividerModule,
         MatDialogModule,
         MatFormFieldModule,
         MatExpansionModule,
