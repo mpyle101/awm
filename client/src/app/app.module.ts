@@ -37,6 +37,7 @@ import { MatDividerModule }    from '@angular/material/divider'
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatSnackBarModule }   from '@angular/material/snack-bar'
 
+import { DragulaModule } from 'ng2-dragula'
 import { NgxJsonViewerModule } from 'ngx-json-viewer'
 
 // Application Components
@@ -125,6 +126,7 @@ const app_routes: Routes = [
         DurationPipe
     ],
     imports: [
+        // Angular Modules
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
@@ -161,6 +163,8 @@ const app_routes: Routes = [
         MatToolbarModule,
         MatTooltipModule,
 
+        // Third party modules
+        DragulaModule.forRoot(),
         NgxJsonViewerModule
     ],
     providers: [

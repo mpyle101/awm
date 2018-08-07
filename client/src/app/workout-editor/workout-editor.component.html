@@ -12,47 +12,57 @@
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
-        <mat-card>
-            <mat-card-title>{{datestr | date: 'longDate'}}</mat-card-title>
-            <mat-card-subtitle>Cycle: {{cycle}}</mat-card-subtitle>
-        </mat-card>
-        <mat-card-content>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout>
-                <mat-card formArrayName="blocks" *ngFor="let block of getBlocks(form); let i=index">
-                    <div [formGroupName]="i">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <mat-card>
+                <mat-card-title fxLayout>
+                    <div>{{datestr | date: 'longDate'}}</div>
+                    <span fxFlex></span>
+                    <button mat-raised-button type="submit" color="primary">Save</button>
+                </mat-card-title>
+            </mat-card>
+            <mat-card-content fxLayout>
+                <mat-card *ngFor="let block of blocks; index as i">
+                    <div>
                         <mat-form-field>
-                            <mat-select disableRipple placeHolder="Workout type" formControlName="type">
+                            <mat-select disableRipple placeHolder="Workout type" [value]="block.type">
                                 <mat-option *ngFor="let workout of workouts" [value]="workout.value" >
                                     {{workout.viewValue}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div formArrayName="actions">
-                            <div [formGroupName]="j" *ngFor="let action of getActions(block); let j=index">
-                                <div fxLayout fxLayoutGap="20px">
-                                    <mat-form-field>
-                                        <mat-select disableRipple placeHolder="Exercise" formControlName="key">
-                                            <mat-option *ngFor="let ex of exercises" [value]="ex.key" >
-                                                {{ex.name}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                    <mat-form-field>
-                                        <input matInput placeholder="sets x wt x reps" formControlName="work">
-                                    </mat-form-field>
-                                    <mat-form-field class="awm-editor-unit">
-                                        <mat-select disableRipple placeHolder="Unit" formControlName="unit">
-                                            <mat-option value="KG">KG</mat-option>
-                                            <mat-option value="LB">LB</mat-option>
-                                            <mat-option value="BW">BW</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
+                        <span fxFlex></span>
+                        <div fxLayout="nowrap">
+                            <button mat-mini-fab type="button" matTooltip="Delete Block" (click)="onDeleteBlock(i)"><mat-icon>delete_sweep</mat-icon></button>
+                            <button mat-mini-fab type="button" matTooltip="Add Block" (click)="onCreateAction(block)"><mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                    <div dragula="ACTIONS" [(dragulaModel)]="block.actions">
+                        <div *ngFor="let action of block.actions; index as j">
+                            <div fxLayout="nowrap" fxLayoutGap="20px" fxLayoutAlign="start center">
+                                <mat-icon class="awm-dragger">drag_indicator</mat-icon>       
+                                <mat-form-field>
+                                    <mat-select disableRipple placeHolder="Exercise" [value]="action.key">
+                                        <mat-option *ngFor="let ex of exercises" [value]="ex.key">
+                                            {{ex.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="awm-editor-work">
+                                    <input matInput placeholder="sets x wt x reps" [value]="action.work">
+                                </mat-form-field>
+                                <mat-form-field class="awm-editor-unit">
+                                    <mat-select disableRipple placeHolder="Unit" [value]="action.unit" >
+                                        <mat-option value="KG">KG</mat-option>
+                                        <mat-option value="LB">LB</mat-option>
+                                        <mat-option value="BW">BW</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-icon-button type="button" (click)="onDeleteAction(block, j)"><mat-icon>delete</mat-icon></button>
                             </div>
                         </div>
                     </div>
                 </mat-card>
-            </form>
-        </mat-card-content>
+            </mat-card-content>
+        </form>
     </mat-sidenav-content>
 </mat-sidenav-container>

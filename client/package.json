@@ -31,6 +31,7 @@
         "moment": "^2.22.2",
         "moment-duration-format": "^2.2.2",
         "moment-range": "^4.0.1",
+        "ng2-dragula": "^2.0.2",
         "ngx-json-viewer": "^2.3.0",
         "rxjs": "^6.2.2",
         "zone.js": "^0.8.26"
