@@ -35,9 +35,9 @@ export class HttpService<T> {
 
     private setupParams(filter, sort) {
         let params = new HttpParams()
-        if (sort.active) {
-            params = params.set('__sort', sort.direction == 'asc' ? `${sort.active}` : `-${sort.active}`)
-        }
+        Object.keys(sort).forEach(key => {
+            params = params.set('__sort', sort[key] == 'asc' ? `${key}` : `-${key}`)
+        })
 
         for (let key in filter) {
             const attr = filter[key]
