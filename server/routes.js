@@ -151,7 +151,7 @@ module.exports = db => {
         .delete((req, res, next) => remove('cycles', req, res, next))
 
     router.route('/exercises')
-        .get((req, res, next) => getall('exercises', {'name': -1}, req, res, next))
+        .get((req, res, next) => getall('exercises', {'name': 1}, req, res, next))
         .post((req, res, next) => create('exercises', req, res, next))
 
     router.route('/exercises/:id')
