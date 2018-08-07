@@ -1,4 +1,5 @@
 export const WorkoutTypes = [
+    { value: 'BR',  viewValue: 'Break' },
     { value: 'EN',  viewValue: 'Endurance' },
     { value: 'GC',  viewValue: 'General Conditioning' },
     { value: 'HGC', viewValue: 'High Intensity GC' },
