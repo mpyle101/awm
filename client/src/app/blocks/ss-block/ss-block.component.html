@@ -1,16 +1,16 @@
 <ng-container [ngSwitch]="mode">
-    <div *ngSwitchCase="'header'" class="awm-ss-header" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+    <div *ngSwitchCase="'header'" class="awm-ss-block" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon>fitness_center</mat-icon>
         <div>SS</div>
     </div>
-    <div *ngSwitchCase="'horz'" class="block" fxLayout fxLayoutGap="12px">
+    <div *ngSwitchCase="'horz'" class="awm-ss-block" fxLayout fxLayoutGap="12px">
         <mat-icon>fitness_center</mat-icon>
         <span>SS: {{block.sets.length}} sets</span>
     </div>
-    <div *ngSwitchCase="'vert'" class="block" [ngStyle]="styles">
+    <div *ngSwitchCase="'vert'" class="awm-ss-vert" [ngStyle]="styles">
         SS - {{block.sets.length}} sets
     </div>
-    <div *ngSwitchDefault class="block" [ngStyle]="styles">
+    <div *ngSwitchDefault class="awm-ss-block" [ngStyle]="styles">
         Super Set
     </div>
 </ng-container>

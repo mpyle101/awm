@@ -1,6 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav" mode="side" fixedInViewport="false" fixedTopGap="56" closed>
         <mat-accordion displayMode="flat">
+            <mat-expansion-panel expanded>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Workouts
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <awm-tr-block dragula="BLOCKS" class="awm-draggable" mode="item" [block]="workout" *ngFor="let workout of workouts"></awm-tr-block>
+            </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -9,7 +17,7 @@
                 </mat-expansion-panel-header>
                 <ngx-json-viewer [json]="item"></ngx-json-viewer>
             </mat-expansion-panel>
-            <mat-expansion-panel expanded>
+            <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Model
@@ -31,18 +39,9 @@
             <mat-card-content fxLayout>
                 <mat-card *ngFor="let block of blocks; index as i">
                     <div>
-                        <mat-form-field>
-                            <mat-select disableRipple placeHolder="Workout type" [value]="block.type">
-                                <mat-option *ngFor="let workout of workouts" [value]="workout.value" >
-                                    {{workout.viewValue}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        <awm-tr-block mode="label" [block]="block"></awm-tr-block>
                         <span fxFlex></span>
-                        <div fxLayout="nowrap">
-                            <button mat-mini-fab type="button" matTooltip="Delete Block" (click)="onDeleteBlock(i)"><mat-icon>delete_sweep</mat-icon></button>
-                            <button mat-mini-fab type="button" matTooltip="Add Block" (click)="onCreateAction(block)"><mat-icon>add</mat-icon></button>
-                        </div>
+                        <button mat-mini-fab type="button" matTooltip="Delete workout" (click)="onDeleteBlock(i)"><mat-icon>delete</mat-icon></button>
                     </div>
                     <div dragula="ACTIONS" [(dragulaModel)]="block.actions">
                         <div *ngFor="let action of block.actions; index as j">

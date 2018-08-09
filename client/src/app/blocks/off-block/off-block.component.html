@@ -1,9 +1,9 @@
 <ng-container [ngSwitch]="mode">
-    <div *ngSwitchCase="'header'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+    <div *ngSwitchCase="'header'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon>local_cafe</mat-icon>
         <div>OFF</div>
     </div>
-    <div *ngSwitchCase="'horz'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
+    <div *ngSwitchCase="'horz'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutGap="12px">
         <mat-icon>local_cafe</mat-icon>
         <span>{{block.comment}}</span>
     </div>

@@ -2,7 +2,7 @@
  * Max Strength Component
  */
 import { Component, Input, OnInit } from '@angular/core'
-import { MaxStrengthService } from '../../services/ms-block.service'
+import { WorkoutService } from '../../services'
 import { BlockDataSource } from '../block-datasource'
 import { TrainingBlockComponent } from '../training-block.component'
 
@@ -16,8 +16,8 @@ export class MaxStrengthComponent extends TrainingBlockComponent {
     public dataSource: BlockDataSource
     public displayedColumns = ['key', 'sets', 'unit']
 
-    constructor(private service: MaxStrengthService) {
-        super()
+    constructor(ws: WorkoutService) {
+        super(ws)
     }
 
     ngOnInit() {

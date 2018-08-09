@@ -3,6 +3,7 @@
  */
 
 import { Component } from '@angular/core'
+import { WorkoutService } from '../../services'
 import { TrainingBlockComponent } from '../training-block.component'
 
 @Component({
@@ -12,8 +13,8 @@ import { TrainingBlockComponent } from '../training-block.component'
 })
 export class SuperSetComponent extends TrainingBlockComponent {
 
-    constructor() {
-        super()
+    constructor(ws: WorkoutService) {
+        super(ws)
     }
 
     ngOnInit() {}

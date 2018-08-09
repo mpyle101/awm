@@ -68,8 +68,8 @@ import {
     CurrentDateService,
     DragService,
     HttpService,
-    MaxStrengthService,
-    MomentRangeService
+    MomentRangeService,
+    WorkoutService
 } from './services'
 
 // Directives
@@ -81,7 +81,11 @@ import { ExerciseDataSource } from './data/exercise-datasource'
 import { WorkoutDataSource }  from './data/workout-datasource'
 
 // Pipes
-import { DurationPipe } from './pipes/duration.pipe'
+import {
+    BlockIconPipe,
+    BlockLabelPipe,
+    DurationPipe
+} from './pipes'
 
 const app_routes: Routes = [
     { path: '', redirectTo: 'calendar', pathMatch: 'full' },
@@ -123,6 +127,8 @@ const app_routes: Routes = [
         DropzoneDirective,
 
         // Pipes
+        BlockIconPipe,
+        BlockLabelPipe,
         DurationPipe
     ],
     imports: [
@@ -172,8 +178,8 @@ const app_routes: Routes = [
         CurrentDateService,
         DragService,
         HttpService,
-        MaxStrengthService,
         MomentRangeService,
+        WorkoutService,
 
         // Data Sources
         CycleDataSource,

@@ -5,12 +5,10 @@ import { DragulaService } from 'ng2-dragula'
 import * as moment from 'moment'
 import { v4 as uuid } from 'uuid'
 
-import { CurrentDateService } from '../services'
+import { CurrentDateService, WorkoutService } from '../services'
 import { Exercise } from '../models/exercise.model'
 import { ExerciseDataSource } from '../data/exercise-datasource'
 import { WorkoutDataSource }  from '../data/workout-datasource'
-
-import { WorkoutTypes } from './workout-consts'
 
 @Component({
     selector: 'awm-workout-editor',
@@ -27,7 +25,8 @@ export class WorkoutEditorComponent implements OnDestroy {
     public datestr
     public exercises
     public item
-    public workouts = WorkoutTypes
+
+    public styles = {'font-size': '16px'}
 
     private date
     private subs = new Subscription()
@@ -36,6 +35,7 @@ export class WorkoutEditorComponent implements OnDestroy {
         ds: ExerciseDataSource,
         route: ActivatedRoute,
         dragula: DragulaService,
+        private workoutSvc: WorkoutService,
         private dataSource: WorkoutDataSource,
         private currentDate: CurrentDateService
     ) {
@@ -50,6 +50,10 @@ export class WorkoutEditorComponent implements OnDestroy {
 
     ngOnDestroy() {
         this.subs.unsubscribe()
+    }
+
+    get workouts() {
+        return this.workoutSvc
     }
 
     public toggleSidenav() {

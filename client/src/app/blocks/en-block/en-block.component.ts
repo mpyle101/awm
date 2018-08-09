@@ -3,6 +3,7 @@
  */
 
 import { Component } from '@angular/core'
+import { WorkoutService } from '../../services'
 import { TrainingBlockComponent } from '../training-block.component'
 
 @Component({
@@ -12,8 +13,8 @@ import { TrainingBlockComponent } from '../training-block.component'
 })
 export class EnduranceComponent extends TrainingBlockComponent {
 
-    constructor() {
-        super()
+    constructor(ws: WorkoutService) {
+        super(ws)
     }
 
     ngOnInit() {}
@@ -29,11 +30,14 @@ export class EnduranceComponent extends TrainingBlockComponent {
     }
 
     public get icon() {
-        if (typeof this.block.meta === 'string') {
-            return this.block.meta.toUpperCase()
+        if (this.block.meta) {
+            if (typeof this.block.meta === 'string') {
+                return this.block.meta.toUpperCase()
+            } else {
+                return this.block.key.toUpperCase()
+            }
         } else {
-            return this.block.key.toUpperCase()
+            return 'BIKE'
         }
     }
-    
 }

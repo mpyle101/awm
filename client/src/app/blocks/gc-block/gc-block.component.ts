@@ -3,6 +3,7 @@
  */
 
 import { Component } from '@angular/core'
+import { WorkoutService } from '../../services'
 import { TrainingBlockComponent } from '../training-block.component'
 
 @Component({
@@ -12,10 +13,13 @@ import { TrainingBlockComponent } from '../training-block.component'
 })
 export class GeneralConditionComponent extends TrainingBlockComponent {
 
-    constructor() {
-        super()
+    constructor(ws: WorkoutService) {
+        super(ws)
     }
 
     ngOnInit() {}
 
+    public get icon() {
+        return this.block.key ? this.block.key : 'RUN'
+    }
 }

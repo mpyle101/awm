@@ -108,8 +108,10 @@ export class WorkoutCalendarComponent implements OnInit {
     }
 
     private edit(item) {
-        const d = item.date
-        this.router.navigate(['workout', d.year(), d.month() + 1, d.date()])
+        if (item) {
+            const d = item.date
+            this.router.navigate(['workout', d.year(), d.month() + 1, d.date()])
+        }
     }
 
     private load(params) {

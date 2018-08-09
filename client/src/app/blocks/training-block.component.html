@@ -1,12 +1,22 @@
-<ng-container [ngSwitch]="block.type">
-    <awm-en-block  *ngSwitchCase="'EN'"  [block]="block" [mode]="mode" [styles]="styles"></awm-en-block>
-    <awm-gc-block  *ngSwitchCase="'GC'"  [block]="block" [mode]="mode" [styles]="styles"></awm-gc-block>
-    <awm-hgc-block *ngSwitchCase="'HGC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hgc-block>
-    <awm-hic-block *ngSwitchCase="'HIC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hic-block>
-    <awm-ms-block  *ngSwitchCase="'MS'"  [block]="block" [mode]="mode" [styles]="styles"></awm-ms-block>
-    <awm-off-block *ngSwitchCase="'OFF'" [block]="block" [mode]="mode" [styles]="styles"></awm-off-block>
-    <awm-se-block  *ngSwitchCase="'SE'"  [block]="block" [mode]="mode" [styles]="styles"></awm-se-block>
-    <awm-ss-block  *ngSwitchCase="'SS'"  [block]="block" [mode]="mode" [styles]="styles"></awm-ss-block>
-    <mat-divider   *ngSwitchCase="'BR'"  class="awm-br-block" [vertical]="mode == 'vert'" [ngStyle]="styles"></mat-divider>
+<ng-container [ngSwitch]="mode">
+    <div *ngSwitchCase="'label'" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+        <mat-icon>{{block | blockIcon}}</mat-icon>
+        <h3>{{block | blockLabel}}</h3>
+    </div>
+    <div *ngSwitchCase="'item'" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+        <mat-icon>{{block | blockIcon}}</mat-icon>
+        <div>{{block | blockLabel}}</div>
+    </div>
+    <ng-container *ngSwitchDefault [ngSwitch]="block.type">
+        <awm-en-block  *ngSwitchCase="'EN'"  [block]="block" [mode]="mode" [styles]="styles"></awm-en-block>
+        <awm-gc-block  *ngSwitchCase="'GC'"  [block]="block" [mode]="mode" [styles]="styles"></awm-gc-block>
+        <awm-hgc-block *ngSwitchCase="'HGC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hgc-block>
+        <awm-hic-block *ngSwitchCase="'HIC'" [block]="block" [mode]="mode" [styles]="styles"></awm-hic-block>
+        <awm-ms-block  *ngSwitchCase="'MS'"  [block]="block" [mode]="mode" [styles]="styles"></awm-ms-block>
+        <awm-off-block *ngSwitchCase="'OFF'" [block]="block" [mode]="mode" [styles]="styles"></awm-off-block>
+        <awm-se-block  *ngSwitchCase="'SE'"  [block]="block" [mode]="mode" [styles]="styles"></awm-se-block>
+        <awm-ss-block  *ngSwitchCase="'SS'"  [block]="block" [mode]="mode" [styles]="styles"></awm-ss-block>
+        <mat-divider   *ngSwitchCase="'BR'"  class="awm-br-block" [vertical]="mode == 'vert'" [ngStyle]="styles"></mat-divider>
+    </ng-container>
 </ng-container>
 

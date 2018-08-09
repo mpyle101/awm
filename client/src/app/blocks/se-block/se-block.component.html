@@ -1,17 +1,17 @@
 <ng-container [ngSwitch]="mode">
-    <div *ngSwitchCase="'header'" class="awm-se-header" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
+    <div *ngSwitchCase="'header'" class="awm-se-block" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon>360</mat-icon>
         <div>SE</div>
     </div>
-    <div *ngSwitchCase="'horz'" class="valign-center block" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
+    <div *ngSwitchCase="'horz'" class="awm-se-block" [ngStyle]="styles" fxLayout fxLayoutGap="8px">
         <mat-icon>360</mat-icon>
         <span>SE: {{block.style}} - {{block.key}}</span>
     </div>
-    <div *ngSwitchCase="'vert'" [ngStyle]="styles">
+    <div *ngSwitchCase="'vert'" class="awm-se-cert" [ngStyle]="styles">
         <div>SE: {{block.style}}</div>
         <div>{{block.key}}</div>
     </div>
-    <div *ngSwitchDefault class="block" [ngStyle]="styles">
+    <div *ngSwitchDefault class="awm-se-block" [ngStyle]="styles">
         Strength Endurance
     </div>
 </ng-container>

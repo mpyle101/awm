@@ -4,6 +4,7 @@
 
 import { Component } from '@angular/core'
 import { DurationPipe } from '../../pipes'
+import { WorkoutService } from '../../services'
 import { TrainingBlockComponent } from '../training-block.component'
 
 @Component({
@@ -16,8 +17,8 @@ export class HighIntensityComponent extends TrainingBlockComponent {
 
     public work: string
 
-    constructor(private duration: DurationPipe) {
-        super()
+    constructor(ws: WorkoutService, private duration: DurationPipe) {
+        super(ws)
     }
 
     ngOnInit() {
