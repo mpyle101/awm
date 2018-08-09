@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { of as observableOf, Subscription } from 'rxjs'
 import { DragulaService } from 'ng2-dragula'
 import * as moment from 'moment'
+import { v4 as uuid } from 'uuid'
 
 import { CurrentDateService } from '../services'
 import { Exercise } from '../models/exercise.model'
@@ -97,6 +98,7 @@ export class WorkoutEditorComponent implements OnDestroy {
                 type: block.type,
                 actions: block.actions.reduce((acc, action) => {
                     const sets = action.sets.map(set => ({
+                        id:   uuid(),
                         key:  action.key,
                         work: set.wt ? `${set.count}x${set.wt}x${set.reps}` : `${set.count}x${set.reps}`,
                         unit: set.wt ? action.unit : 'BW' 

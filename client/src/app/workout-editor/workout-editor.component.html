@@ -56,7 +56,7 @@
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-work">
-                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange()" name="work">
+                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange()" [name]="action.id">
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-unit">
                                     <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit" (selectionChange)="onChange()">
