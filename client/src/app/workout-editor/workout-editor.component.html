@@ -1,13 +1,21 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav" mode="side" fixedInViewport="false" fixedTopGap="56" closed>
         <mat-accordion displayMode="flat">
-            <mat-expansion-panel expanded>
+            <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        JSON
+                        Item
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <ngx-json-viewer [json]="item"></ngx-json-viewer>
+            </mat-expansion-panel>
+            <mat-expansion-panel expanded>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Model
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ngx-json-viewer [json]="model"></ngx-json-viewer>
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>
@@ -41,17 +49,17 @@
                             <div fxLayout="nowrap" fxLayoutGap="20px" fxLayoutAlign="start center">
                                 <mat-icon class="awm-dragger">drag_indicator</mat-icon>       
                                 <mat-form-field>
-                                    <mat-select disableRipple placeHolder="Exercise" [value]="action.key">
+                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key" (selectionChange)="onChange()">
                                         <mat-option *ngFor="let ex of exercises" [value]="ex.key">
                                             {{ex.name}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-work">
-                                    <input matInput placeholder="sets x wt x reps" [value]="action.work">
+                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange()" name="work">
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-unit">
-                                    <mat-select disableRipple placeHolder="Unit" [value]="action.unit" >
+                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit" (selectionChange)="onChange()">
                                         <mat-option value="KG">KG</mat-option>
                                         <mat-option value="LB">LB</mat-option>
                                         <mat-option value="BW">BW</mat-option>

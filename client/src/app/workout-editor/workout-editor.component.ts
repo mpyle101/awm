@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core'
+import { Component, OnDestroy, ViewChild } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { of as observableOf } from 'rxjs'
+import { of as observableOf, Subscription } from 'rxjs'
+import { DragulaService } from 'ng2-dragula'
 import * as moment from 'moment'
 
 import { CurrentDateService } from '../services'
@@ -13,32 +14,41 @@ import { WorkoutTypes } from './workout-consts'
 @Component({
     selector: 'awm-workout-editor',
     templateUrl: './workout-editor.component.html',
-    styleUrls: ['./workout-editor.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ['./workout-editor.component.scss']
 })
-export class WorkoutEditorComponent {
+export class WorkoutEditorComponent implements OnDestroy {
 
     @ViewChild('sidenav') sidenav
 
-    public datestr
+    public model
+    public blocks
     public cycle
-
-    public blocks = []
+    public datestr
     public exercises
+    public item
     public workouts = WorkoutTypes
 
-    public item
     private date
+    private subs = new Subscription()
 
     constructor(
         ds: ExerciseDataSource,
         route: ActivatedRoute,
+        dragula: DragulaService,
         private dataSource: WorkoutDataSource,
-        private currentDate: CurrentDateService,
-        private changeDetector: ChangeDetectorRef
+        private currentDate: CurrentDateService
     ) {
         route.params.subscribe(params => this.load(params))
         ds.connect().subscribe(items => this.exercises = items)
+
+        // Create a new model object each time an action is moved
+        // so the json view will update.
+        this.subs.add(dragula.drop()
+            .subscribe(() => this.model = {blocks: this.blocks}))
+    }
+
+    ngOnDestroy() {
+        this.subs.unsubscribe()
     }
 
     public toggleSidenav() {
@@ -51,18 +61,26 @@ export class WorkoutEditorComponent {
 
     public onCreateBlock() {
         this.blocks.push({type: 'MS', actions: []})
+        this.model = {blocks: this.blocks}
     }
 
     public onDeleteBlock(idx) {
         this.blocks.splice(idx, 1)
+        this.model = {blocks: this.blocks}
     }
 
     public onCreateAction(block) {
-        block.actions.push({type: 'BSS', work: '', unit: 'KG'})
+        block.actions.push({key: 'BSS', work: '', unit: 'KG'})
+        this.model = {blocks: this.blocks}
     }
 
     public onDeleteAction(block, idx) {
         block.actions.splice(idx, 1)
+        this.model = {blocks: this.blocks}
+    }
+
+    public onChange() {
+        this.model = {blocks: this.blocks}
     }
 
     private load(params) {
@@ -73,7 +91,7 @@ export class WorkoutEditorComponent {
 
     private refresh(item) {
         if (item) {
-            this.item   = item
+            this.item = item
             this.cycle  = item.cycle
             this.blocks = item.blocks.map(block => ({
                 type: block.type,
@@ -91,7 +109,7 @@ export class WorkoutEditorComponent {
                 }, [])
             }))
 
-            this.changeDetector.markForCheck()
+            this.model = {blocks: this.blocks}
         }
 
         this.currentDate.next(this.date)
