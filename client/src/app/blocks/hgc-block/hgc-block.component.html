@@ -12,6 +12,7 @@
         <div>{{block.style}}</div>
         <div>{{block.work | duration}}</div>
         <div>{{block.meta}}</div>
+        <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
     <div *ngSwitchDefault class="awm-hgc-block" [ngStyle]="styles">
         HGC: {{block.style}} - {{block.key}} - {{block.work | duration}}

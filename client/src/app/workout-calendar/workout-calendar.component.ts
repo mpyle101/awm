@@ -5,10 +5,10 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import * as moment from "moment"
 
-import { CurrentDateService }     from '../services'
-import { CycleDataSource }        from '../data/cycle-datasource'
-import { WorkoutDataSource }      from '../data/workout-datasource'
-import { WorkoutDialogComponent } from '../workout-dialog'
+import { CurrentDateService } from '../services'
+import { CycleDataSource }    from '../data/cycle-datasource'
+import { WorkoutDataSource }  from '../data/workout-datasource'
+import { WorkoutViewDialog }  from '../dialogs'
 
 
 @Component({
@@ -52,8 +52,8 @@ export class WorkoutCalendarComponent implements OnInit {
 
     public onClick(event, item) {
         if (item.blocks) {
-            const ref = this.dialog.open(WorkoutDialogComponent, {
-                data: { item },
+            const ref = this.dialog.open(WorkoutViewDialog, {
+                data: {item},
                 height: '400px',
                 width: '448px',
                 autoFocus: true,

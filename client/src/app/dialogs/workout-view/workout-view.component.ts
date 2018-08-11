@@ -2,11 +2,11 @@ import { Component, Inject, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material"
 
 @Component({
-    selector: 'awm-workout-dialog',
-    templateUrl: './workout-dialog.component.html',
-    styleUrls: ['./workout-dialog.component.scss']
+    selector: 'awm-workout-view-dialog',
+    templateUrl: './workout-view.component.html',
+    styleUrls: ['./workout-view.component.scss']
 })
-export class WorkoutDialogComponent implements OnInit {
+export class WorkoutViewDialog implements OnInit {
 
     public item: any
     public styles = {
@@ -16,7 +16,7 @@ export class WorkoutDialogComponent implements OnInit {
     }
 
     constructor(
-        private dialogRef: MatDialogRef<WorkoutDialogComponent>,
+        private dialogRef: MatDialogRef<WorkoutViewDialog>,
         @Inject(MAT_DIALOG_DATA) data
     ) {
         this.item = data.item

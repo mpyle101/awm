@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-import { WorkoutDialogComponent } from './workout-dialog.component'
+import { WorkoutViewDialogComponent } from './workout-dialog.component'
 
-describe('WorkoutDialogComponent', () => {
-    let component: WorkoutDialogComponent
-    let fixture: ComponentFixture<WorkoutDialogComponent>
+describe('WorkoutViewDialogComponent', () => {
+    let component: WorkoutViewDialogComponent
+    let fixture: ComponentFixture<WorkoutViewDialogComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ WorkoutDialogComponent ]
+            declarations: [ WorkoutViewDialogComponent ]
         })
         .compileComponents()
     }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(WorkoutDialogComponent)
+        fixture = TestBed.createComponent(WorkoutViewDialogComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

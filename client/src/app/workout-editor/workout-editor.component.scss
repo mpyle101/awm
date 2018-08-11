@@ -12,8 +12,12 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     width: 350px;
 }
 
-mat-card {
-    margin: 15px;
+.awm-editor-header {
+    margin: 10px 10px 0px 10px;
+}
+
+.awm-editor-block {
+    margin: 10px 0px 0px 10px !important;
 }
 
 .awm-editor-work {

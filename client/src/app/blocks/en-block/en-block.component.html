@@ -11,6 +11,7 @@
         <div>{{block.key}}</div>
         <div>{{meta}}</div>
         <div>{{block.work | duration}}</div>
+        <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
     <div *ngSwitchDefault class="awm-en-block" [ngStyle]="styles">
         EN: {{block.key}} - {{meta}} - {{block.work | duration}}

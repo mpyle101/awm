@@ -45,10 +45,13 @@ import { AppComponent }             from './app.component'
 import { AppIconComponent }         from './app-icon'
 import { DashboardComponent }       from './dashboard'
 import { WorkoutCalendarComponent } from './workout-calendar'
-import { WorkoutDialogComponent }   from './workout-dialog'
 import { WorkoutEditorComponent }   from './workout-editor'
 import { WorkoutTableComponent }    from './workout-table'
 import { UnderConstruction }        from './under-construction'
+
+import {
+    WorkoutViewDialog
+} from './dialogs'
 
 // Training Blocks
 import {
@@ -117,10 +120,12 @@ const app_routes: Routes = [
         SuperSetComponent,
         TrainingBlockComponent,
         WorkoutCalendarComponent,
-        WorkoutDialogComponent,
         WorkoutEditorComponent,
         WorkoutTableComponent,
         UnderConstruction,
+
+        // Dialogs
+        WorkoutViewDialog,
 
         // Directives
         DraggableDirective,
@@ -187,6 +192,8 @@ const app_routes: Routes = [
         WorkoutDataSource
     ],
     bootstrap: [AppComponent],
-    entryComponents: [WorkoutDialogComponent]
+    entryComponents: [
+        WorkoutViewDialog
+    ]
 })
 export class AppModule { }

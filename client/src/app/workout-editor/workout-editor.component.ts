@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core'
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { of as observableOf, Subscription } from 'rxjs'
 import { DragulaService } from 'ng2-dragula'
@@ -13,13 +13,13 @@ import { WorkoutDataSource }  from '../data/workout-datasource'
 @Component({
     selector: 'awm-workout-editor',
     templateUrl: './workout-editor.component.html',
-    styleUrls: ['./workout-editor.component.scss']
+    styleUrls: ['./workout-editor.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WorkoutEditorComponent implements OnDestroy {
 
     @ViewChild('sidenav') sidenav
 
-    public model
     public blocks
     public cycle
     public datestr
@@ -35,17 +35,13 @@ export class WorkoutEditorComponent implements OnDestroy {
         ds: ExerciseDataSource,
         route: ActivatedRoute,
         dragula: DragulaService,
+        private cdRef: ChangeDetectorRef,
         private workoutSvc: WorkoutService,
         private dataSource: WorkoutDataSource,
         private currentDate: CurrentDateService
     ) {
         route.params.subscribe(params => this.load(params))
         ds.connect().subscribe(items => this.exercises = items)
-
-        // Create a new model object each time an action is moved
-        // so the json view will update.
-        this.subs.add(dragula.drop()
-            .subscribe(() => this.model = {blocks: this.blocks}))
     }
 
     ngOnDestroy() {
@@ -58,34 +54,39 @@ export class WorkoutEditorComponent implements OnDestroy {
 
     public toggleSidenav() {
         this.sidenav.toggle()
+        this.cdRef.markForCheck()
     }
 
     public onSubmit() {
         console.log(this.blocks)
     }
 
-    public onCreateBlock() {
-        this.blocks.push({type: 'MS', actions: []})
-        this.model = {blocks: this.blocks}
+    public onCreateBlock(type) {
+        const actions = []
+        this.blocks = [...this.blocks, {type, actions}]
     }
 
-    public onDeleteBlock(idx) {
-        this.blocks.splice(idx, 1)
-        this.model = {blocks: this.blocks}
+    public onDeleteBlock(block) {
+        this.blocks = this.blocks.filter(blk => blk != block)
     }
 
     public onCreateAction(block) {
-        block.actions.push({key: 'BSS', work: '', unit: 'KG'})
-        this.model = {blocks: this.blocks}
+        const key  = '', work = '', unit = ''
+        this.blocks = this.blocks.map(blk => ({
+            type: blk.type,
+            actions: blk == block ? [...blk.actions, {key, work, unit}] : [...blk.actions]
+        }))
     }
 
-    public onDeleteAction(block, idx) {
-        block.actions.splice(idx, 1)
-        this.model = {blocks: this.blocks}
+    public onDeleteAction(block, action) {
+        this.blocks = this.blocks.map(blk => ({
+            type: blk.type,
+            actions: blk == block ? blk.actions.filter(act => act != action) : [...blk.actions]
+        }))
     }
 
-    public onChange() {
-        this.model = {blocks: this.blocks}
+    public onChange(action) {
+        console.log(action)
     }
 
     private load(params) {
@@ -96,7 +97,7 @@ export class WorkoutEditorComponent implements OnDestroy {
 
     private refresh(item) {
         if (item) {
-            this.item = item
+            this.item   = item
             this.cycle  = item.cycle
             this.blocks = item.blocks.map(block => ({
                 type: block.type,
@@ -114,9 +115,9 @@ export class WorkoutEditorComponent implements OnDestroy {
                     return acc
                 }, [])
             }))
-
-            this.model = {blocks: this.blocks}
         }
+
+        this.cdRef.markForCheck()
 
         this.currentDate.next(this.date)
     }

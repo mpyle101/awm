@@ -8,8 +8,9 @@
         <span>SE: {{block.style}} - {{block.key}}</span>
     </div>
     <div *ngSwitchCase="'vert'" class="awm-se-cert" [ngStyle]="styles">
-        <div>SE: {{block.style}}</div>
+        <div>{{block.style}}</div>
         <div>{{block.key}}</div>
+        <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
     <div *ngSwitchDefault class="awm-se-block" [ngStyle]="styles">
         Strength Endurance

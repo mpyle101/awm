@@ -20,51 +20,54 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Model
+                        Blocks
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <ngx-json-viewer [json]="model"></ngx-json-viewer>
+                <ngx-json-viewer [json]="blocks"></ngx-json-viewer>
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <mat-card>
-                <mat-card-title fxLayout>
-                    <div>{{datestr | date: 'longDate'}}</div>
-                    <span fxFlex></span>
+            <mat-card class="awm-editor-header">
+                <mat-card-title fxLayout fxLayoutGap="40px">
                     <button mat-raised-button type="submit" color="primary">Save</button>
+                    <div fxFlex style="text-align: center">{{datestr | date: 'longDate'}}</div>
+                    <div fxLayoutGap="15px">
+                        <button mat-mini-fab type="button" (click)="onCreateBlock()"><mat-icon>add</mat-icon></button>
+                        <button mat-mini-fab type="button" (click)="onViewWorkout()"><mat-icon>visibility</mat-icon></button>
+                    </div>
                 </mat-card-title>
             </mat-card>
             <mat-card-content fxLayout>
-                <mat-card *ngFor="let block of blocks; index as i">
-                    <div>
+                <mat-card class="awm-editor-block" *ngFor="let block of blocks">
+                    <div fxLayoutGap="20px">
                         <awm-tr-block mode="label" [block]="block"></awm-tr-block>
                         <span fxFlex></span>
-                        <button mat-mini-fab type="button" matTooltip="Delete workout" (click)="onDeleteBlock(i)"><mat-icon>delete</mat-icon></button>
+                        <button mat-mini-fab type="button" matTooltip="Delete workout" (click)="onDeleteBlock(block)"><mat-icon>delete</mat-icon></button>
                     </div>
                     <div dragula="ACTIONS" [(dragulaModel)]="block.actions">
-                        <div *ngFor="let action of block.actions; index as j">
+                        <div *ngFor="let action of block.actions">
                             <div fxLayout="nowrap" fxLayoutGap="20px" fxLayoutAlign="start center">
                                 <mat-icon class="awm-dragger">drag_indicator</mat-icon>       
                                 <mat-form-field>
-                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key" (selectionChange)="onChange()">
+                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key" (selectionChange)="onChange(action)">
                                         <mat-option *ngFor="let ex of exercises" [value]="ex.key">
                                             {{ex.name}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-work">
-                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange()" [name]="action.id">
+                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange(action)" [name]="action.id">
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-unit">
-                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit" (selectionChange)="onChange()">
+                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit" (selectionChange)="onChange(action)">
                                         <mat-option value="KG">KG</mat-option>
                                         <mat-option value="LB">LB</mat-option>
                                         <mat-option value="BW">BW</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <button mat-icon-button type="button" (click)="onDeleteAction(block, j)"><mat-icon>delete</mat-icon></button>
+                                <button mat-icon-button type="button" (click)="onDeleteAction(block, action)"><mat-icon>delete</mat-icon></button>
                             </div>
                         </div>
                     </div>

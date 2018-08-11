@@ -12,6 +12,7 @@
         <div>{{block.key}}</div>
         <div>{{work}}</div>
         <div>{{block.meta}}</div>
+        <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
     <div *ngSwitchDefault class="awm-hic-block" [ngStyle]="styles">
         HIC: {{block.style}} - {{block.key}} - {{work}}
