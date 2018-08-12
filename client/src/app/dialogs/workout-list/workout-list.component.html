@@ -1,0 +1,13 @@
+<div class="awm-dialog-container" fxLayout="column">
+    <mat-toolbar color="primary" class="awm-dialog-toolbar">
+        <h3 class="awm-dialog-title" fxFill>Add Workout</h3>
+    </mat-toolbar>
+    <div class="awm-dialog-content" fxLayout="column" fxLayoutGap="2px" fxFill>
+        <div *ngFor="let workout of workouts">
+            <div fxLayoutAlign="start center" fxLayoutGap="5px">
+                <mat-icon>{{workout | blockIcon}}</mat-icon>
+                <button mat-button (click)="onClose(workout)" fxFlex style="text-align: left">{{workout | blockLabel}}</button>
+            </div>
+        </div>
+    </div>
+</div>

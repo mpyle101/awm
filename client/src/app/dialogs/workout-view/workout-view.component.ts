@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material"
 
 @Component({
@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material"
     templateUrl: './workout-view.component.html',
     styleUrls: ['./workout-view.component.scss']
 })
-export class WorkoutViewDialog implements OnInit {
+export class WorkoutViewDialog {
 
     public item: any
     public styles = {
@@ -21,8 +21,6 @@ export class WorkoutViewDialog implements OnInit {
     ) {
         this.item = data.item
     }
-
-    ngOnInit() {}
 
     public get blocks() {
         return this.item.blocks

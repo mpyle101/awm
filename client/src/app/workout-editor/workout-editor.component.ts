@@ -1,14 +1,13 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core'
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { of as observableOf, Subscription } from 'rxjs'
+import { MatDialog, MatSnackBar } from "@angular/material"
 import { DragulaService } from 'ng2-dragula'
 import * as moment from 'moment'
-import { v4 as uuid } from 'uuid'
 
 import { CurrentDateService, WorkoutService } from '../services'
-import { Exercise } from '../models/exercise.model'
 import { ExerciseDataSource } from '../data/exercise-datasource'
 import { WorkoutDataSource }  from '../data/workout-datasource'
+import { WorkoutListDialog }  from '../dialogs'
 
 @Component({
     selector: 'awm-workout-editor',
@@ -16,7 +15,7 @@ import { WorkoutDataSource }  from '../data/workout-datasource'
     styleUrls: ['./workout-editor.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WorkoutEditorComponent implements OnDestroy {
+export class WorkoutEditorComponent {
 
     @ViewChild('sidenav') sidenav
 
@@ -29,27 +28,19 @@ export class WorkoutEditorComponent implements OnDestroy {
     public styles = {'font-size': '16px'}
 
     private date
-    private subs = new Subscription()
 
     constructor(
         ds: ExerciseDataSource,
         route: ActivatedRoute,
         dragula: DragulaService,
         private cdRef: ChangeDetectorRef,
+        private dialog: MatDialog,
         private workoutSvc: WorkoutService,
         private dataSource: WorkoutDataSource,
         private currentDate: CurrentDateService
     ) {
         route.params.subscribe(params => this.load(params))
         ds.connect().subscribe(items => this.exercises = items)
-    }
-
-    ngOnDestroy() {
-        this.subs.unsubscribe()
-    }
-
-    get workouts() {
-        return this.workoutSvc
     }
 
     public toggleSidenav() {
@@ -61,9 +52,19 @@ export class WorkoutEditorComponent implements OnDestroy {
         console.log(this.blocks)
     }
 
-    public onCreateBlock(type) {
-        const actions = []
-        this.blocks = [...this.blocks, {type, actions}]
+    public onCreateBlock(event) {
+        console.log(event)
+        const ref = this.dialog.open(WorkoutListDialog, {
+            autoFocus: false,
+            hasBackdrop: true,
+            panelClass: 'awm-dialog-container'
+        })
+        ref.afterClosed().subscribe(item => {
+            if (item) {
+                this.blocks = [...this.blocks, {type: item.type, actions: []}]
+                this.cdRef.markForCheck()
+            }
+        })
     }
 
     public onDeleteBlock(block) {
@@ -85,10 +86,6 @@ export class WorkoutEditorComponent implements OnDestroy {
         }))
     }
 
-    public onChange(action) {
-        console.log(action)
-    }
-
     private load(params) {
         this.date = moment([params['year'], params['month'] - 1, params['day']])
         this.datestr = this.date.toISOString()
@@ -103,7 +100,6 @@ export class WorkoutEditorComponent implements OnDestroy {
                 type: block.type,
                 actions: block.actions.reduce((acc, action) => {
                     const sets = action.sets.map(set => ({
-                        id:   uuid(),
                         key:  action.key,
                         work: set.wt ? `${set.count}x${set.wt}x${set.reps}` : `${set.count}x${set.reps}`,
                         unit: set.wt ? action.unit : 'BW' 

@@ -34,7 +34,7 @@
                     <button mat-raised-button type="submit" color="primary">Save</button>
                     <div fxFlex style="text-align: center">{{datestr | date: 'longDate'}}</div>
                     <div fxLayoutGap="15px">
-                        <button mat-mini-fab type="button" (click)="onCreateBlock()"><mat-icon>add</mat-icon></button>
+                        <button mat-mini-fab type="button" (click)="onCreateBlock($event)"><mat-icon>add</mat-icon></button>
                         <button mat-mini-fab type="button" (click)="onViewWorkout()"><mat-icon>visibility</mat-icon></button>
                     </div>
                 </mat-card-title>
@@ -51,17 +51,17 @@
                             <div fxLayout="nowrap" fxLayoutGap="20px" fxLayoutAlign="start center">
                                 <mat-icon class="awm-dragger">drag_indicator</mat-icon>       
                                 <mat-form-field>
-                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key" (selectionChange)="onChange(action)">
+                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key">
                                         <mat-option *ngFor="let ex of exercises" [value]="ex.key">
                                             {{ex.name}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-work">
-                                    <input matInput placeholder="sets x wt x reps" [(ngModel)]="action.work" (change)="onChange(action)" [name]="action.id">
+                                    <input matInput placeholder="sets x wt x reps" [(value)]="action.work">
                                 </mat-form-field>
                                 <mat-form-field class="awm-editor-unit">
-                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit" (selectionChange)="onChange(action)">
+                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit">
                                         <mat-option value="KG">KG</mat-option>
                                         <mat-option value="LB">LB</mat-option>
                                         <mat-option value="BW">BW</mat-option>

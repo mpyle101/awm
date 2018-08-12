@@ -50,6 +50,7 @@ import { WorkoutTableComponent }    from './workout-table'
 import { UnderConstruction }        from './under-construction'
 
 import {
+    WorkoutListDialog,
     WorkoutViewDialog
 } from './dialogs'
 
@@ -125,6 +126,7 @@ const app_routes: Routes = [
         UnderConstruction,
 
         // Dialogs
+        WorkoutListDialog,
         WorkoutViewDialog,
 
         // Directives
@@ -193,6 +195,7 @@ const app_routes: Routes = [
     ],
     bootstrap: [AppComponent],
     entryComponents: [
+        WorkoutListDialog,
         WorkoutViewDialog
     ]
 })
