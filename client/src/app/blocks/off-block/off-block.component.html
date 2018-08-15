@@ -5,12 +5,12 @@
     </div>
     <div *ngSwitchCase="'horz'" class="awm-off-block" [ngStyle]="styles" fxLayout fxLayoutGap="12px">
         <mat-icon>local_cafe</mat-icon>
-        <span>{{block.comment}}</span>
+        <span>{{block.notes}}</span>
     </div>
     <div *ngSwitchCase="'vert'" [ngStyle]="styles">
-        {{block.comment}}
+        {{block.notes}}
     </div>
     <div *ngSwitchDefault class="awm-off-block" [ngStyle]="styles">
-        {{block.comment}}
+        {{block.notes}}
     </div>
 </ng-container>
