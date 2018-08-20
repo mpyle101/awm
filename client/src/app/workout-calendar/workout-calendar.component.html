@@ -24,7 +24,6 @@
             <div *ngFor="let week of weeks; let i = index" fxFlex>
                 <div *ngFor="let item of week" fxFlex fxLayout="row nowrap">
                     <div awm-dropzone (awm-dropped)="onDrop($event, item)"
-                         (click)="onClick($event, item)"
                          class="week-day" [class.week-end]="isWeekend(item)" [class.today]="isToday(item)"
                          fxLayout="column" fxFlex>
                         <div class="day-header">
@@ -37,10 +36,21 @@
                             </div>
                         </div>
                         <div class="day-content" *ngFor="let block of item.blocks">
-                            <div [class.awm-block]="block.type != 'OFF'" fxLayout>
+                            <div [class.awm-block]="block.type != 'OFF'" (click)="onOpen(item, block)" fxLayout>
                                 <awm-tr-block [awm-draggable]="block" [block]="block" [styles]="styles" fxFlex></awm-tr-block>
                             </div>
                         </div>
+                        <button class="day-button" mat-flat-button [matMenuTriggerFor]="menu" disableRipple fxFlex></button>
+                        <mat-menu #menu="matMenu">
+                            <div *ngFor="let workout of workouts" fxLayout fxLayoutAlign="row center">
+                                <mat-icon>{{workout.icon}}</mat-icon>
+                                <button mat-menu-item disableRipple 
+                                    class="day-button-item"
+                                    (click)="onCreate(item, workout.type)">
+                                    {{workout.label}}
+                                </button>
+                            </div>
+                        </mat-menu>
                     </div>
                 </div>
             </div>

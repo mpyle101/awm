@@ -1,0 +1,70 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" mode="side" fixedInViewport="false" fixedTopGap="56" closed>
+        <ngx-json-viewer [json]="block"></ngx-json-viewer>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <mat-card class="awm-editor-header">
+                <mat-card-title fxLayout>
+                    <div fxFlex="40">{{datestr | date: 'longDate'}}</div>
+                    <awm-tr-block fxFlex="60" mode="item" [block]="block"></awm-tr-block>
+                    <span fxFlex></span>
+                    <button mat-raised-button type="submit" color="primary">Save</button>
+                </mat-card-title>
+            </mat-card>
+            <mat-card-content fxLayout>
+                <mat-card class="awm-editor-block">
+                    <mat-card-subtitle class="awm-editor-inst">Drag and drop to reorder</mat-card-subtitle>
+                    <mat-card-content dragula="ACTIONS" [(dragulaModel)]="actions">
+                        <div *ngFor="let action of actions">
+                            <div fxLayout="nowrap" fxLayoutGap="20px" fxLayoutAlign="start center">
+                                <mat-icon class="awm-dragger">drag_indicator</mat-icon>       
+                                <mat-form-field>
+                                    <mat-select disableRipple placeHolder="Exercise" [(value)]="action.key">
+                                        <mat-option *ngFor="let ex of exercises" [value]="ex.key">
+                                            {{ex.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="awm-editor-work">
+                                    <input matInput placeholder="sets x wt x reps" [(value)]="action.work">
+                                </mat-form-field>
+                                <mat-form-field class="awm-editor-unit">
+                                    <mat-select disableRipple placeHolder="Unit" [(value)]="action.unit">
+                                        <mat-option value="KG">KG</mat-option>
+                                        <mat-option value="LB">LB</mat-option>
+                                        <mat-option value="BW">BW</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-icon-button type="button" (click)="onDeleteAction(action)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="awm-editor-block">
+                    <mat-card-subtitle class="awm-editor-inst">Click to add an exercise</mat-card-subtitle>
+                    <mat-card-content class="awm-exercise-list">
+                        <div *ngFor="let exercise of exercises">
+                            <div class="awm-exercise-item" fxLayout fxLayoutGap="5px"
+                                fxLayoutAlign="start center" 
+                                (click)="onCreateAction(exercise)">
+                                <div>{{exercise.name}}</div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <div fxLayout="column">
+                    <mat-card class="awm-editor-buttons">
+                        <mat-card-content fxLayout="column" fxLayoutGap="50px">
+                            <button mat-fab type="button" color="accent"><mat-icon matTooltip="Delete workout">delete</mat-icon></button>
+                            <button mat-fab type="button" color="accent"><mat-icon matTooltip="View JSON">visibility</mat-icon></button>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div fxFlex></div>
+            </mat-card-content>
+        </form>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -44,8 +44,8 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer'
 import { AppComponent }             from './app.component'
 import { AppIconComponent }         from './app-icon'
 import { DashboardComponent }       from './dashboard'
+import { NotFoundComponent }        from './not-found'
 import { WorkoutCalendarComponent } from './workout-calendar'
-import { WorkoutEditorComponent }   from './workout-editor'
 import { WorkoutTableComponent }    from './workout-table'
 import { UnderConstruction }        from './under-construction'
 
@@ -67,6 +67,11 @@ import {
     TrainingBlockComponent
 } from './blocks'
 
+// Editors
+import {
+    MaxStrengthEditor
+} from './editors'
+
 // Services
 import {
     CurrentDateService,
@@ -80,9 +85,9 @@ import {
 import { DraggableDirective } from './directives'
 import { DropzoneDirective }  from './directives'
 
-import { CycleDataSource }    from './data/cycle-datasource'
-import { ExerciseDataSource } from './data/exercise-datasource'
-import { WorkoutDataSource }  from './data/workout-datasource'
+import { CycleDataSource }    from './data'
+import { ExerciseDataSource } from './data'
+import { WorkoutDataSource }  from './data'
 
 // Pipes
 import {
@@ -100,9 +105,12 @@ const app_routes: Routes = [
     { path: 'schedule',  component: WorkoutTableComponent },
     { path: 'schedule/:year/:month', component: WorkoutTableComponent },
 
-    { path: 'workout/:year/:month/:day', component: WorkoutEditorComponent },
+    { path: 'workout/:year/:month/:day/ms', component: MaxStrengthEditor },
+    { path: 'workout/:year/:month/:day/ms/:id', component: MaxStrengthEditor },
+    { path: 'workout/:year/:month/:day', component: UnderConstruction },
 
-    { path: 'dashboard', component: UnderConstruction }
+    { path: 'dashboard', component: UnderConstruction },
+    { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({
@@ -117,11 +125,11 @@ const app_routes: Routes = [
         HighIntensityComponent,
         HighIntensityGCComponent,
         MaxStrengthComponent,
+        NotFoundComponent,
         StrengthEnduranceComponent,
         SuperSetComponent,
         TrainingBlockComponent,
         WorkoutCalendarComponent,
-        WorkoutEditorComponent,
         WorkoutTableComponent,
         UnderConstruction,
 
@@ -132,6 +140,9 @@ const app_routes: Routes = [
         // Directives
         DraggableDirective,
         DropzoneDirective,
+
+        // Editors
+        MaxStrengthEditor,
 
         // Pipes
         BlockIconPipe,

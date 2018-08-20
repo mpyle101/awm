@@ -5,7 +5,7 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import * as moment from "moment"
 
-import { CurrentDateService } from '../services'
+import { CurrentDateService, WorkoutService } from '../services'
 import { CycleDataSource }    from '../data/cycle-datasource'
 import { WorkoutDataSource }  from '../data/workout-datasource'
 import { WorkoutViewDialog }  from '../dialogs'
@@ -23,48 +23,44 @@ export class WorkoutCalendarComponent implements OnInit {
     public loaded = false
     public items  = []
     public weeks  = []
-    public styles = {
-        'padding': '2px 6px 2px 2px',
-    }
+    public styles = { 'padding': '2px 6px 2px 2px' }
 
     private current: any
     private today = moment()
 
     constructor(
-        route: ActivatedRoute,
+        private route: ActivatedRoute,
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private router: Router,
         private cycles: CycleDataSource,
-        private workouts: WorkoutDataSource,
+        private workoutSvc: WorkoutService,
+        private workoutDataSvc: WorkoutDataSource,
         private currentDate: CurrentDateService
-    ) {
-        route.params.subscribe(params => this.load(params))
-    }
+    ) {}
 
     ngOnInit() {
-        this.workouts.connect().subscribe(items => this.refresh(items))
+        this.workoutDataSvc.connect().subscribe(items => this.refresh(items))
+        this.route.params.subscribe(params => this.load(params))    
     }
 
     ngOnDestroy() {
-        this.workouts.disconnect()
+        this.workoutDataSvc.disconnect()
     }
 
-    public onClick(event, item) {
-        if (item.blocks) {
-            const ref = this.dialog.open(WorkoutViewDialog, {
-                data: {item},
-                height: '400px',
-                width: '448px',
-                autoFocus: true,
-                hasBackdrop: false,
-                disableClose: true,
-                panelClass: 'awm-dialog-container'
-            })
-            ref.afterClosed().subscribe(item => this.edit(item)) 
-        } else {
-            this.edit(item)
-        }
+    get workouts() {
+        return this.workoutSvc
+    }
+
+    public onCreate(item, type) {
+        const d = item.date
+        this.router.navigate(['workout', d.year(), d.month() + 1, d.date(), type.toLowerCase()])
+    }
+
+    public onOpen(item, block) {
+        const d = item.date
+        const type = block.type.toLowerCase()
+        this.router.navigate(['workout', d.year(), d.month() + 1, d.date(), type, block.id])
     }
 
     public onDrop(event, item) {
@@ -72,14 +68,14 @@ export class WorkoutCalendarComponent implements OnInit {
         const datestr = item.date.format('MMM D, YYYY')
         if (item.blocks) {
             item.blocks.push(block)
-            this.workouts.update(item).subscribe(
+            this.workoutDataSvc.update(item).subscribe(
                 () => this.openSnackBar(`Workout updated for ${datestr}`),
                 err => this.openSnackBar(`Failed to update workout: ${err}`)
             )
         } else {
             item.type   = block.type
             item.blocks = [block]
-            this.workouts.create(item).subscribe(
+            this.workoutDataSvc.create(item).subscribe(
                 () => this.openSnackBar(`Workout created for ${datestr}`),
                 err => this.openSnackBar(`Failed to create workout: ${err}`)
             )
@@ -126,11 +122,11 @@ export class WorkoutCalendarComponent implements OnInit {
         start.subtract(start.weekday(), 'day')
         end.add(6 - end.weekday(), 'day')
 
-        this.workouts.load(start, end)
+        this.workoutDataSvc.load(start, end)
     }
 
     private refresh(items) {
-        const range = this.workouts.range
+        const range = this.workoutDataSvc.range
         if (range) {
             const workouts = items.reduce((m, v) => {
                 const [day,...rest] = v.date.split('T')
