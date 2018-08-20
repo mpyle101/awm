@@ -69,7 +69,8 @@ import {
 
 // Editors
 import {
-    MaxStrengthEditor
+    MaxStrengthEditor,
+    TrainingBlockEditor
 } from './editors'
 
 // Services
@@ -105,8 +106,8 @@ const app_routes: Routes = [
     { path: 'schedule',  component: WorkoutTableComponent },
     { path: 'schedule/:year/:month', component: WorkoutTableComponent },
 
-    { path: 'workout/:year/:month/:day/ms', component: MaxStrengthEditor },
-    { path: 'workout/:year/:month/:day/ms/:id', component: MaxStrengthEditor },
+    { path: 'workout/:year/:month/:day/:type', component: TrainingBlockEditor },
+    { path: 'workout/:year/:month/:day/:type/:id', component: TrainingBlockEditor },
     { path: 'workout/:year/:month/:day', component: UnderConstruction },
 
     { path: 'dashboard', component: UnderConstruction },
@@ -143,6 +144,7 @@ const app_routes: Routes = [
 
         // Editors
         MaxStrengthEditor,
+        TrainingBlockEditor,
 
         // Pipes
         BlockIconPipe,

@@ -1,12 +1,5 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
-import { MatSnackBar } from "@angular/material"
-import { DragulaService } from 'ng2-dragula'
-import * as moment from 'moment'
-
-import { CurrentDateService } from '../../services'
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component } from '@angular/core'
 import { ExerciseDataSource } from '../../data'
-import { WorkoutDataSource }  from '../../data'
 
 @Component({
     selector: 'awm-ms-editor',
@@ -16,35 +9,15 @@ import { WorkoutDataSource }  from '../../data'
 })
 export class MaxStrengthEditor {
 
-    @ViewChild('sidenav') sidenav
-
     public actions
-    public block = {type: 'MS', sets: [], actions: []}
-    public datestr
+    public _block = {type: 'MS', sets: [], actions: []}
     public exercises
-
-    private item
-    private date
 
     constructor(
         ds: ExerciseDataSource,
-        route: ActivatedRoute,
-        private cdRef: ChangeDetectorRef,
-        private dragula: DragulaService,
-        private dataSource: WorkoutDataSource,
-        private currentDate: CurrentDateService
+        private cdRef: ChangeDetectorRef
     ) {
-        route.params.subscribe(params => this.load(params))
         ds.connect().subscribe(items => this.exercises = items)
-    }
-
-    public toggleSidenav() {
-        this.sidenav.toggle()
-        this.cdRef.markForCheck()
-    }
-
-    public onSubmit() {
-        console.log(this.block)
     }
 
     public onCreateAction(exercise) {
@@ -55,16 +28,13 @@ export class MaxStrengthEditor {
         this.actions = this.actions.filter(a => a != action)
     }
 
-    private load(params) {
-        this.date = moment([params['year'], params['month'] - 1, params['day']])
-        this.datestr = this.date.toISOString()
-        this.dataSource.get(this.date).subscribe(items => this.refresh(items[0], params['id']))
+    get block() {
+        return this._block
     }
 
-    private refresh(item, bid) {
-        this.item = item
-        if (bid) {
-            this.block = item.blocks.filter(b => b.id == bid)[0]
+    set block(block) {
+        if (block) {
+            this._block = block
 
             this.actions = this.block.actions.reduce((acc, action) => {
                 const sets = action.sets.map(set => ({
@@ -83,7 +53,5 @@ export class MaxStrengthEditor {
         }
 
         this.cdRef.markForCheck()
-
-        this.currentDate.next(this.date)
     }
 }

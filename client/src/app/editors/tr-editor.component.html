@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" mode="side" fixedInViewport="false" fixedTopGap="56" closed>
+        <ngx-json-viewer [json]="block"></ngx-json-viewer>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <mat-card class="awm-editor-header">
+                <mat-card-title fxLayout>
+                    <div fxFlex="40">{{datestr | date: 'longDate'}}</div>
+                    <awm-tr-block fxFlex="60" mode="item" [block]="block"></awm-tr-block>
+                    <span fxFlex></span>
+                    <button mat-raised-button type="submit" color="primary">Save</button>
+                </mat-card-title>
+            </mat-card>
+            <mat-card-content>
+                <ng-container [ngSwitch]="block.type">
+                    <awm-ms-editor #editor *ngSwitchCase="'MS'"></awm-ms-editor>
+                    <awm-tr-block  #editor *ngSwitchDefault [block]="block" mode="vert"></awm-tr-block>
+                </ng-container>
+            </mat-card-content>
+        </form>
+    </mat-sidenav-content>
+</mat-sidenav-container>

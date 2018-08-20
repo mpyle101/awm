@@ -15,20 +15,24 @@ import { TrainingBlockComponent } from '../training-block.component'
 })
 export class HighIntensityComponent extends TrainingBlockComponent {
 
-    public work: string
+    public _work: string
 
     constructor(ws: WorkoutService, private duration: DurationPipe) {
         super(ws)
     }
 
-    ngOnInit() {
-        const work = this.block.work
-        if (this.block.style == 'INT') {
-            const duration = this.duration.transform(work[0].reps)
-            this.work = `${work.length}x${duration}`
-        } else {
-            this.work = this.duration.transform(work)
+    get work() {
+        if (this._work === undefined && this.block.work) {
+            const work = this.block.work
+            if (this.block.style == 'INT') {
+                const duration = this.duration.transform(work[0].reps)
+                this._work = `${work.length}x${duration}`
+            } else {
+                this._work = this.duration.transform(work)
+            }   
         }
+
+        return this._work
     }
     
 }
