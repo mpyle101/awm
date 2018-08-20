@@ -5,11 +5,13 @@
     <mat-sidenav-content class="sidenav-content">
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
             <mat-card class="awm-editor-header">
-                <mat-card-title fxLayout>
-                    <div fxFlex="40">{{datestr | date: 'longDate'}}</div>
-                    <awm-tr-block fxFlex="60" mode="item" [block]="block"></awm-tr-block>
-                    <span fxFlex></span>
-                    <button mat-raised-button type="submit" color="primary">Save</button>
+                <mat-card-title fxLayout fxLayoutGap="50px">
+                    <div fxFlex fxLayoutAlign="space-between center">
+                        <button mat-raised-button type="submit" color="primary" [disabled]="!dirty">Save</button>
+                        <awm-tr-block mode="item" [block]="block"></awm-tr-block>
+                        <div>{{datestr | date: 'longDate'}}</div>
+                    </div>
+                    <button mat-mini-fab type="button" color="accent"><mat-icon matTooltip="Delete workout">delete</mat-icon></button>
                 </mat-card-title>
             </mat-card>
             <mat-card-content>

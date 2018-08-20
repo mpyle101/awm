@@ -32,6 +32,10 @@ export class TrainingBlockEditor {
         route.params.subscribe(params => this.load(params))
     }
 
+    get dirty() {
+        return false
+    }
+
     public toggleSidenav() {
         this.sidenav.toggle()
         this.cdRef.markForCheck()

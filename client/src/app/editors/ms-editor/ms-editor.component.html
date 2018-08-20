@@ -41,13 +41,9 @@
             </div>
         </mat-card-content>
     </mat-card>
-    <div fxLayout="column">
-        <mat-card class="awm-editor-buttons">
-            <mat-card-content fxLayout="column" fxLayoutGap="50px">
-                <button mat-fab type="button" color="accent"><mat-icon matTooltip="Delete workout">delete</mat-icon></button>
-                <button mat-fab type="button" color="accent"><mat-icon matTooltip="View JSON">visibility</mat-icon></button>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div fxFlex></div>
+    <mat-card class="awm-editor-notes" fxFlex style="height: 200px">
+        <mat-card-content>
+            <textarea matInput placeholder="Notes"></textarea>
+        </mat-card-content>
+    </mat-card>
 </form>
