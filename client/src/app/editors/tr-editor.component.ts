@@ -53,9 +53,7 @@ export class TrainingBlockEditor {
         this.item = item
 
         this.block = bid ? item.blocks.filter(b => b.id == bid)[0] : undefined
-        console.log('REFRESH1')
         this.editor.block = this.block
-        console.log('REFRESH2')
 
         this.cdRef.markForCheck()
         this.currentDate.next(this.date)
