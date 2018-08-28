@@ -19,7 +19,6 @@ export class TrainingBlockComponent {
 
     get icon() {
         this.count += 1
-        console.log(this.count)
         return this.service.getIcon(this.block.type)
     }
 

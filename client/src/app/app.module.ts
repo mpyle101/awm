@@ -23,6 +23,7 @@ import {
     MatMenuModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
     MatSelectModule,
     MatSlideToggleModule,
     MatSidenavModule,
@@ -69,6 +70,7 @@ import {
 
 // Editors
 import {
+    EnduranceEditor,
     MaxStrengthEditor,
     TrainingBlockEditor
 } from './editors'
@@ -143,6 +145,7 @@ const app_routes: Routes = [
         DropzoneDirective,
 
         // Editors
+        EnduranceEditor,
         MaxStrengthEditor,
         TrainingBlockEditor,
 
@@ -180,6 +183,7 @@ const app_routes: Routes = [
         MatMomentDateModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
+        MatRadioModule,
         MatSelectModule,
         MatSnackBarModule,
         MatSidenavModule,

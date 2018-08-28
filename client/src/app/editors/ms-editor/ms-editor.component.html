@@ -32,18 +32,13 @@
     <mat-card class="awm-editor-block">
         <mat-card-subtitle class="awm-editor-inst">Click to add an exercise</mat-card-subtitle>
         <mat-card-content class="awm-exercise-list">
-            <div *ngFor="let exercise of exercises">
-                <div class="awm-exercise-item" fxLayout fxLayoutGap="5px"
-                    fxLayoutAlign="start center" 
+            <mat-list dense>
+                <mat-list-item class="awm-exercise-item"
+                    *ngFor="let exercise of exercises" 
                     (click)="onCreateAction(exercise)">
-                    <div>{{exercise.name}}</div>
-                </div>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="awm-editor-notes" fxFlex style="height: 200px">
-        <mat-card-content>
-            <textarea matInput placeholder="Notes"></textarea>
+                    {{exercise.name}}
+                </mat-list-item>
+            </mat-list>
         </mat-card-content>
     </mat-card>
 </form>

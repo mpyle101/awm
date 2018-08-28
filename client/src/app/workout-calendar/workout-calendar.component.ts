@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators'
 import * as moment from "moment"
 
 import { CurrentDateService, WorkoutService } from '../services'
-import { CycleDataSource }    from '../data/cycle-datasource'
 import { WorkoutDataSource }  from '../data/workout-datasource'
 import { WorkoutViewDialog }  from '../dialogs'
 
@@ -33,7 +32,6 @@ export class WorkoutCalendarComponent implements OnInit {
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
         private router: Router,
-        private cycles: CycleDataSource,
         private workoutSvc: WorkoutService,
         private workoutDataSvc: WorkoutDataSource,
         private currentDate: CurrentDateService

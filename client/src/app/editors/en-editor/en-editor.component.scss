@@ -8,12 +8,13 @@
     min-width: 200px;
 }
 
-.awm-editor-notes {
-    margin: 10px 10px 0px 10px !important;    
+.awm-editor-last-block {
+    margin: 10px 10px 0px 10px !important;
+    min-width: 200px;
 }
 
-.awm-editor-work {
-    width: 100px;
+.awm-editor-type {
+    margin-bottom: 15px;
 }
 
 .awm-editor-unit {
@@ -25,13 +26,14 @@
 }
 
 .awm-exercise-list {
-    height: calc(100vh - 360px);
+    height: calc(100vh - 270px);
     overflow: auto;
     border: 1px solid #e6e6e6;
 }
 
 .awm-exercise-item {
     cursor: pointer;
+    padding: 3px;
 }
 
 .awm-dragger {

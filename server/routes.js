@@ -53,7 +53,7 @@ module.exports = db => {
 
 
     const send = (res, status, items, offset, total) => {
-        const end = offset + items.length - 1
+        const end = Math.max(0, offset + items.length - 1)
         res.set({
             'Accept-Ranges': 'items',
             'Content-Range': `items ${offset}-${end}/${total}`
