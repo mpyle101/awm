@@ -24,9 +24,11 @@ export class HighIntensityComponent extends TrainingBlockComponent {
     get work() {
         if (this._work === undefined && this.block.work) {
             const work = this.block.work
-            if (this.block.style == 'INT') {
+            if (this.block.key == 'INT') {
                 const duration = this.duration.transform(work[0].reps)
                 this._work = `${work.length}x${duration}`
+            } else if (this.block.key == 'CIR') {
+                this._work = `${work.length} rounds`
             } else {
                 this._work = this.duration.transform(work)
             }   

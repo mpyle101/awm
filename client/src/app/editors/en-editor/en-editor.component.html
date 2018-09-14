@@ -1,39 +1,39 @@
 <form>
-    <mat-radio-group fxLayout value="LSD">
+    <mat-radio-group name="key" [(ngModel)]="key" fxLayout>
         <mat-card class="awm-editor-block" fxFlex="25">
             <mat-radio-button class="awm-editor-type" value="LSD">Long Slow Distance</mat-radio-button>
             <mat-form-field>
-                <input matInput placeholder="Time" value="PT60M">
+                <input matInput name="work-lsd" [disabled]="key !== 'LSD'" placeholder="Duration" [(ngModel)]="work">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Distance" value="3m">
+                <input matInput name="meta-lsd" [disabled]="key !== 'LSD'" placeholder="Type" [(ngModel)]="meta">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Type" value="Trainer">
+                <input matInput name="dist-lst" [disabled]="key !== 'LSD'" placeholder="Distance" [(ngModel)]="distance">
             </mat-form-field>
-            <mat-radio-group fxLayout value="TIMED">
+            <mat-radio-group name="style-lsd" [disabled]="key !== 'LSD'" fxLayout [(ngModel)]="style">
                 <mat-radio-button style="margin-right: 15px" value="TIMED">Timed</mat-radio-button>
                 <mat-radio-button value="DIST">Distance</mat-radio-button>
             </mat-radio-group>
         </mat-card>
         <mat-card class="awm-editor-block" fxFlex="25">
-            <mat-radio-button class="awm-editor-type" value="FNT">Fobbit</mat-radio-button>
+            <mat-radio-button class="awm-editor-type" value="FBT">Fobbit</mat-radio-button>
             <mat-form-field>
-                <input matInput placeholder="Time" value="PT60M">
+                <input matInput name="work-fbt" [disabled]="key !== 'FBT'" placeholder="Duration" [(ngModel)]="work">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Type" value="Trainer">
+                <input matInput name="meta-fbt" [disabled]="key !== 'FBT'" placeholder="Type" [(ngModel)]="meta">
             </mat-form-field>
         </mat-card>
         <mat-card class="awm-editor-block" fxFlex="25">
             <mat-radio-button class="awm-editor-type" value="ROW">Rowing</mat-radio-button>
             <mat-form-field>
-                <input matInput placeholder="Time" value="PT60M">
+                <input matInput name="work-row" [disabled]="key !== 'ROW'" placeholder="Duration" [(ngModel)]="work">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Distance" value="3m">
+                <input matInput name="dist-row" [disabled]="key !== 'ROW'" placeholder="Distance" [(ngModel)]="distance">
             </mat-form-field>
-            <mat-radio-group fxLayout value="TIMED">
+            <mat-radio-group name="style-row" [disabled]="key !== 'ROW'" fxLayout [(ngModel)]="style">
                 <mat-radio-button style="margin-right: 15px" value="TIMED">Timed</mat-radio-button>
                 <mat-radio-button value="DIST">Distance</mat-radio-button>
             </mat-radio-group>
@@ -41,15 +41,15 @@
         <mat-card class="awm-editor-last-block" fxFlex="25">
             <mat-radio-button class="awm-editor-type" value="RCK">Ruck</mat-radio-button>
             <mat-form-field>
-                <input matInput placeholder="Time" value="PT60M">
+                <input matInput name="work-ruck" [disabled]="key !== 'RUCK'" placeholder="Duration" [(ngModel)]="work">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Distance" value="3m">
+                <input matInput name="dist-ruck" [disabled]="key !== 'RUCK'" placeholder="Distance" [(ngModel)]="distance">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Weight (lbs)" value="35">
+                <input matInput [disabled]="key !== 'RUCK'" placeholder="Weight (lbs)" value="35">
             </mat-form-field>
-            <mat-radio-group fxLayout value="TIMED">
+            <mat-radio-group name="style-ruck" [disabled]="key !== 'RUCK'" fxLayout [(ngModel)]="style">
                 <mat-radio-button style="margin-right: 15px" value="TIMED">Timed</mat-radio-button>
                 <mat-radio-button value="DIST">Distance</mat-radio-button>
             </mat-radio-group>

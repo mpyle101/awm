@@ -16,14 +16,15 @@
             </mat-card>
             <mat-card class="awm-editor-section">
                 <mat-card-content>
-                    <textarea matInput placeholder="Notes"></textarea>
+                    <textarea matInput name="notes" placeholder="Notes" [(ngModel)]="notes"></textarea>
                 </mat-card-content>
             </mat-card>            
             <mat-card-content>
                 <ng-container [ngSwitch]="block.type">
-                    <awm-en-editor #editor *ngSwitchCase="'EN'"></awm-en-editor>
-                    <awm-ms-editor #editor *ngSwitchCase="'MS'"></awm-ms-editor>
-                    <awm-tr-block  #editor *ngSwitchDefault [block]="block" mode="vert"></awm-tr-block>
+                    <awm-en-editor  #editor *ngSwitchCase="'EN'"></awm-en-editor>
+                    <awm-hic-editor #editor *ngSwitchCase="'HIC'"></awm-hic-editor>
+                    <awm-ms-editor  #editor *ngSwitchCase="'MS'"></awm-ms-editor>
+                    <awm-tr-block   #editor *ngSwitchDefault [block]="block" mode="vert"></awm-tr-block>
                 </ng-container>
             </mat-card-content>
         </form>

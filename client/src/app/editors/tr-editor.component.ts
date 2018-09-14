@@ -19,6 +19,7 @@ export class TrainingBlockEditor {
 
     public block
     public datestr
+    public notes
 
     private item
     private date
@@ -57,6 +58,7 @@ export class TrainingBlockEditor {
         this.item = item
 
         this.block = bid ? item.blocks.filter(b => b.id == bid)[0] : undefined
+        this.notes = this.block.notes
         this.editor.block = this.block
 
         this.cdRef.markForCheck()

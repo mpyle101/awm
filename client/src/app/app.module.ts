@@ -71,6 +71,7 @@ import {
 // Editors
 import {
     EnduranceEditor,
+    HighIntensityEditor,
     MaxStrengthEditor,
     TrainingBlockEditor
 } from './editors'
@@ -146,6 +147,7 @@ const app_routes: Routes = [
 
         // Editors
         EnduranceEditor,
+        HighIntensityEditor,
         MaxStrengthEditor,
         TrainingBlockEditor,
 

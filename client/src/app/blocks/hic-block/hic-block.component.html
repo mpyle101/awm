@@ -5,16 +5,15 @@
     </div>
     <div *ngSwitchCase="'horz'" class="awm-hic-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">
         <mat-icon>directions_running</mat-icon>
-        <span>HIC: {{block.style}} - {{block.key}} - {{work}}</span>
+        <span>HIC: {{block.key}} - {{block.activity}} - {{work}}</span>
     </div>
     <div *ngSwitchCase="'vert'" class="awm-hic-vert" [ngStyle]="styles">
-        <div>{{block.style}}</div>
         <div>{{block.key}}</div>
+        <div>{{block.activity}}</div>
         <div>{{work}}</div>
-        <div>{{block.meta}}</div>
         <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
     <div *ngSwitchDefault class="awm-hic-block" [ngStyle]="styles">
-        HIC: {{block.style}} - {{block.key}} - {{work}}
+        HIC: {{block.key}} - {{block.activity}} - {{work}}
     </div>
 </ng-container>

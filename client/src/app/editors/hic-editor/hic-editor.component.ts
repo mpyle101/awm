@@ -2,12 +2,12 @@ import { ChangeDetectorRef, ChangeDetectionStrategy, Component } from '@angular/
 import { ExerciseDataSource } from '../../data'
 
 @Component({
-    selector: 'awm-en-editor',
-    templateUrl: './en-editor.component.html',
-    styleUrls: ['./en-editor.component.scss'],
+    selector: 'awm-hic-editor',
+    templateUrl: './hic-editor.component.html',
+    styleUrls: ['./hic-editor.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EnduranceEditor {
+export class HighIntensityEditor {
 
     public distance
     public key

@@ -1,0 +1,46 @@
+<form>
+    <mat-radio-group name="style" [(ngModel)]="style" fxLayout>
+        <mat-card class="awm-editor-block" fxFlex="25">
+            <mat-radio-button class="awm-editor-type" value="INT">Intervals</mat-radio-button>
+            <mat-form-field>
+                <input matInput name="work-lsd" [disabled]="style !== 'INT'" placeholder="Duration" [(ngModel)]="work">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="meta-lsd" [disabled]="style !== 'INT'" placeholder="Type" [(ngModel)]="meta">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="dist-lst" [disabled]="style !== 'INT'" placeholder="Distance" [(ngModel)]="distance">
+            </mat-form-field>
+        </mat-card>
+        <mat-card class="awm-editor-block" fxFlex="25">
+            <mat-radio-button class="awm-editor-type" value="TAB">Tabata</mat-radio-button>
+            <mat-form-field>
+                <input matInput name="work-fbt" [disabled]="style !== 'TAB'" placeholder="Duration" [(ngModel)]="work">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="meta-fbt" [disabled]="style !== 'TAB'" placeholder="Type" [(ngModel)]="key">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [disabled]="style !== 'TAB'" placeholder="Weight (lbs)" value="35">
+            </mat-form-field>
+        </mat-card>
+        <mat-card class="awm-editor-block" fxFlex="25">
+            <mat-radio-button class="awm-editor-type" value="AMRAP">AMRAP</mat-radio-button>
+            <mat-form-field>
+                <input matInput name="time-amrap" [disabled]="style !== 'AMRAP'" placeholder="Duration" [(ngModel)]="time">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="dist-row" [disabled]="style !== 'AMRAP'" placeholder="Distance" [(ngModel)]="distance">
+            </mat-form-field>
+        </mat-card>
+        <mat-card class="awm-editor-last-block" fxFlex="25">
+            <mat-radio-button class="awm-editor-type" value="CIR">Circuit</mat-radio-button>
+            <mat-form-field>
+                <input matInput name="work-ruck" [disabled]="style !== 'CIR'" placeholder="Duration" [(ngModel)]="work">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="dist-ruck" [disabled]="style !== 'CIR'" placeholder="Distance" [(ngModel)]="distance">
+            </mat-form-field>
+        </mat-card>
+    </mat-radio-group>
+</form>
