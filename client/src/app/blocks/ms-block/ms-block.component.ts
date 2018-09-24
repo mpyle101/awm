@@ -25,8 +25,8 @@ export class MaxStrengthComponent extends TrainingBlockComponent {
     }
 
     public getFirstSet() {
-        const set = this.block.actions[0].sets[0]
-        const key = this.block.actions[0].key
+        const key = this.block.work[0].key
+        const set = this.block.work[0].sets[0]
         return { key, ...set }
     }
     

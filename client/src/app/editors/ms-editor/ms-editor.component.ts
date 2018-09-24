@@ -10,7 +10,7 @@ import { ExerciseDataSource } from '../../data'
 export class MaxStrengthEditor {
 
     public actions
-    public _block = {type: 'MS', sets: [], actions: []}
+    public _block = {type: 'MS', work: [], actions: []}
     public exercises
 
     constructor(
@@ -36,11 +36,12 @@ export class MaxStrengthEditor {
         if (block) {
             this._block = block
 
-            this.actions = this.block.actions.reduce((acc, action) => {
+            this.actions = this.block.work.reduce((acc, action) => {
                 const sets = action.sets.map(set => ({
-                    key:  action.key,
-                    work: set.wt ? `${set.count}x${set.wt}x${set.reps}` : `${set.count}x${set.reps}`,
-                    unit: set.wt ? action.unit : 'BW' 
+                    key:   action.key,
+                    work:  set.wt ? `${set.count}x${set.wt}x${set.reps}` : `${set.count}x${set.reps}`,
+                    unit:  set.wt ? set.unit : 'BW',
+                    style: action.style
                 }))
 
                 // Because Chrome doesn't support flat or concat.

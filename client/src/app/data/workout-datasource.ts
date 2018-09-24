@@ -115,52 +115,7 @@ export class WorkoutDataSource extends DataSource<Workout> {
     }
 
     private processWorkout(workout) {
-        workout.blocks = workout.blocks.map(block => {
-            if (block.type == 'MS') {
-                block.actions = this.processMS(block)
-            }
-            return block
-        })
-
         return workout
-    }
-
-    private processMS(block) {
-        const eq = (a, b) => a.wt == b.wt && a.reps == b.reps
-
-        const first = block.sets[0]
-        const mvmts = block.sets.slice(1).reduce((mvmts, set) => {
-            
-            let curr = mvmts[mvmts.length - 1]
-            if (curr.key == set.key) {
-                let curr_set = curr.sets[curr.sets.length - 1]
-                if (eq(curr_set, set)) {
-                    curr_set.count += 1
-                } else {
-                    curr.sets.push({wt: set.wt, reps: set.reps, count: 1})
-                }
-            } else {
-                mvmts.push(this.createAction(set))
-            }
-
-            return mvmts
-
-        }, [this.createAction(first)])
-
-        return mvmts
-    }
-
-    private createAction(set) {
-        return {
-            key: set.key,
-            unit: set.unit,
-            style: set.style,
-            sets: [{
-                wt: set.wt,
-                reps: set.reps,
-                count: 1
-            }]
-        }
     }
 }
 

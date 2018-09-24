@@ -12,6 +12,13 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <mat-form-field class="awm-editor-style">
+                        <mat-select disableRipple placeHolder="Style" [(value)]="action.style">
+                            <mat-option value="STD">Std.</mat-option>
+                            <mat-option value="CLUS">Cluster</mat-option>
+                            <mat-option value="EMOM">EMOM</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <mat-form-field class="awm-editor-work">
                         <input matInput placeholder="sets x wt x reps" [(value)]="action.work">
                     </mat-form-field>

@@ -16,7 +16,7 @@ export class BlockDataSource extends DataSource<Movement> {
     constructor(block) {
         super()
 
-        this.blockSubject.next(block.actions)
+        this.blockSubject.next(block.work)
     }
 
     /**
