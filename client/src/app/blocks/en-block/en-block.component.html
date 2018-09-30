@@ -5,7 +5,21 @@
     </div>
     <div *ngSwitchCase="'horz'" class="awm-en-block" [ngStyle]="styles" fxLayout fxLayoutAlign="start center" fxLayoutGap="12px">        
         <app-icon [icon]="icon"></app-icon>
-        <span>EN: {{block.key}} - {{meta}} - {{block.work | duration}}</span>
+        <span *ngIf="block.key != 'FBT'">EN: {{block.key}} - {{meta}} - {{block.work | duration}}</span>
+        <div *ngIf="block.key == 'FBT'">
+            <div fxLayout="column">
+                <div>EN: FOBBIT</div>
+                <div>{{meta}} - {{block.work | duration}}</div>
+            </div>
+        </div>
+        <span *ngFor="let action of block.actions">
+            <div fxLayout="column">
+                <div>{{action.key}}</div>
+                <div *ngFor="let set of action.sets">
+                    <div>{{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}</div>
+                </div>
+            </div>
+        </span>
     </div>
     <div *ngSwitchCase="'vert'" class="awm-en-vert" [ngStyle]="styles" fxLayout="column">
         <div>{{block.key}}</div>

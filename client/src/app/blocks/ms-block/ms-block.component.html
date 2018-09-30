@@ -5,8 +5,10 @@
     </div>
     <div *ngSwitchCase="'horz'" class="awm-ms-block" fxLayout fxLayoutGap="12px">
         <mat-icon svgIcon="svg-weights"></mat-icon>
-        <span *ngFor="let action of block.actions">
-            <div fxLayout="column">{{action.key}}
+        <span *ngFor="let action of block.work">
+            <div fxLayout="column">
+                <span *ngIf="action.style == 'STD'">{{action.key}}</span>
+                <span *ngIf="action.style != 'STD'">{{action.key}} ({{action.style}})</span>
                 <div *ngFor="let set of action.sets">
                     {{set.count}}x<span *ngIf="set.wt">{{set.wt}}x</span>{{set.reps}}
                 </div>
