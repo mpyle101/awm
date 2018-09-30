@@ -250,6 +250,11 @@
         "unit": "KG"
     },
     {
+        "key": "KBP/1",
+        "name": "Kettle Bell Press - One Handed",
+        "unit": "KG"
+    },
+    {
         "key": "KBS/2",
         "name": "Kettle Bell Swing - Two Handed",
         "unit": "KG"
