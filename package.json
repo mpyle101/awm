@@ -11,11 +11,11 @@
         "express"
     ],
     "scripts": {
-        "build": "npm --prefix ./client run build",
-        "build:watch": "npm --prefix ./client run build:watch",
+        "build-ng": "npm --prefix ./client-ng run build",
+        "build-ng:watch": "npm --prefix ./client-ng run build:watch",
         "clean": "rm -r public/*",
-        "serve": "npm --prefix ./client start",
-        "serve:open": "npm --previx ./client serve:open",
+        "serve-ng": "npm --prefix ./client-ng start",
+        "serve-ng:open": "npm --previx ./client-ng serve:open",
         "start": "npm --prefix ./server start",
         "start:watch": "npm --prefix ./server run start:watch"
     },
