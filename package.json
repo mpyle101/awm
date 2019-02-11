@@ -14,8 +14,9 @@
         "build-ng": "npm --prefix ./client-ng run build",
         "build-ng:watch": "npm --prefix ./client-ng run build:watch",
         "clean": "rm -r public/*",
-        "serve-ng": "npm --prefix ./client-ng start",
-        "serve-ng:open": "npm --previx ./client-ng serve:open",
+        "start-ng": "npm --prefix ./client-ng start",
+        "start-ng:open": "npm --prefix ./client-ng serve:open",
+        "start-rx": "npm --prefix ./client-rx start",
         "start": "npm --prefix ./server start",
         "start:watch": "npm --prefix ./server run start:watch"
     },

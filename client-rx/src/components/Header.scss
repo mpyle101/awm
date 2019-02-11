@@ -1,0 +1,30 @@
+
+#awm-nav-menu {
+    margin-right: 1rem;
+}
+
+.awm-nav-tools {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.awm-nav-title {
+    margin-right: 1rem;
+}
+
+.awm-nav-dates {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.awm-nav-month {
+    margin-left: 1rem;
+}
+
+.awm-nav-views {
+    display: flex;
+    flex-wrap: nowrap;
+}
