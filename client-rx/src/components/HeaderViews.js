@@ -1,14 +1,21 @@
 import React from 'react'
 
-import './Header.scss'
-
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
+import { withStyles } from '@material-ui/core/styles'
 
+const styles = {
+    views: {
+        display: 'flex',
+        flexWrap: 'nowrap'
+    }
+}
 
-const HeaderViews = () => {
+const HeaderViews = props => {
+    const { classes } = props
+
     return (
-        <div className="awm-nav-views">
+        <div className={classes.views}>
             <IconButton color="inherit" aria-label="Event">
                 <Icon>dashboard</Icon>
             </IconButton>
@@ -22,4 +29,4 @@ const HeaderViews = () => {
     )
 }
 
-export default HeaderViews
+export default withStyles(styles)(HeaderViews)

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import './Header.scss'
-
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Typeography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core';
 
 import {
     selectToday,
@@ -16,12 +15,24 @@ import {
     selectPrevYear
 } from '../actions'
 
+const styles = {
+    dates: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexGrow: 1
+    },
+    month: {
+        marginLeft: '1rem'
+    }
+}
+
 class HeaderDates extends Component {
     render() {
-        const date = this.props.date.format('MMMM YYYY')
+        const { classes, date } = this.props
 
         return (
-            <div className="awm-nav-dates">
+            <div className={classes.dates}>
                 <Button onClick={this.props.selectToday} color="inherit">Today</Button>
                 <IconButton onClick={this.props.selectPrevYear} color="inherit">
                     <Icon>fast_rewind</Icon>
@@ -35,9 +46,9 @@ class HeaderDates extends Component {
                 <IconButton onClick={this.props.selectNextYear} color="inherit">
                     <Icon>fast_forward</Icon>
                 </IconButton>
-                <div className="awm-nav-month">
+                <div className={classes.month}>
                     <Typeography color="inherit">
-                        {date}
+                        {date.format('MMMM YYYY')}
                     </Typeography>
                 </div>
             </div>
@@ -55,4 +66,5 @@ const actions = {
     selectPrevYear
 }
 
-export default connect(mapStateToProps, actions)(HeaderDates)
+const styled = withStyles(styles)(HeaderDates)
+export default connect(mapStateToProps, actions)(styled)
