@@ -5,14 +5,12 @@ import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Typeography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 import {
-    selectToday,
-    selectNextMonth,
-    selectPrevMonth,
-    selectNextYear,
-    selectPrevYear
+    selectDate,
+    selectNextDate,
+    selectPrevDate
 } from '../actions'
 
 const styles = {
@@ -29,21 +27,25 @@ const styles = {
 
 class HeaderDates extends Component {
     render() {
-        const { classes, date } = this.props
+        console.log(this.props)
+        const { 
+            classes, date, 
+            selectDate, selectNextDate, selectPrevDate
+        } = this.props
 
         return (
             <div className={classes.dates}>
-                <Button onClick={this.props.selectToday} color="inherit">Today</Button>
-                <IconButton onClick={this.props.selectPrevYear} color="inherit">
+                <Button onClick={() => selectDate()} color="inherit">Today</Button>
+                <IconButton onClick={() => selectPrevDate('year')} color="inherit">
                     <Icon>fast_rewind</Icon>
                 </IconButton>
-                <IconButton onClick={this.props.selectPrevMonth} color="inherit">
+                <IconButton onClick={() => selectPrevDate('month')} color="inherit">
                     <Icon>navigate_before</Icon>
                 </IconButton>
-                <IconButton onClick={this.props.selectNextMonth} color="inherit">
+                <IconButton onClick={() => selectNextDate('month')} color="inherit">
                     <Icon>navigate_next</Icon>
                 </IconButton>
-                <IconButton onClick={this.props.selectNextYear} color="inherit">
+                <IconButton onClick={() => selectNextDate('year')} color="inherit">
                     <Icon>fast_forward</Icon>
                 </IconButton>
                 <div className={classes.month}>
@@ -59,11 +61,9 @@ class HeaderDates extends Component {
 const mapStateToProps = state => ({ date: state.selectedDate })
 
 const actions = {
-    selectToday,
-    selectNextMonth,
-    selectPrevMonth,
-    selectNextYear,
-    selectPrevYear
+    selectDate,
+    selectNextDate,
+    selectPrevDate
 }
 
 const styled = withStyles(styles)(HeaderDates)

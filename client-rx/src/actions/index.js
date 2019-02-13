@@ -1,13 +1,16 @@
-import {
-    SELECT_NEXT_MONTH,
-    SELECT_NEXT_YEAR,
-    SELECT_PREV_MONTH,
-    SELECT_PREV_YEAR,
-    SELECT_TODAY
-} from './types'
+import * as moment from "moment"
+import { createActions } from 'redux-actions'
 
-export const selectToday     = () => ({ type: SELECT_TODAY })
-export const selectNextMonth = () => ({ type: SELECT_NEXT_MONTH })
-export const selectPrevMonth = () => ({ type: SELECT_PREV_MONTH })
-export const selectNextYear  = () => ({ type: SELECT_NEXT_YEAR })
-export const selectPrevYear  = () => ({ type: SELECT_PREV_YEAR })
+const TODAY = moment()
+
+export const {
+    selectDate,
+    selectNextDate,
+    selectPrevDate
+} = createActions(
+    {
+        'SELECT_DATE': (date=TODAY) => ({ date }),
+        'SELECT_NEXT_DATE': (unit='month') => ({ unit }),
+        'SELECT_PREV_DATE': (unit='month') => ({ unit })
+    }
+)
