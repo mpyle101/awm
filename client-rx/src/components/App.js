@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Header from './Header'
 
-const styles = {
+const styles = theme => ({
     root: {
         height: '100vh',
         display: 'grid',
@@ -21,13 +21,13 @@ const styles = {
         }
     },
     footer: {
-        backgroundColor: '#3f51b5',
+        backgroundColor: theme.palette.primary.main,
         gridArea: 'footer',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     }
-}
+})
 
 const App = props => {
     const { classes } = props
@@ -35,10 +35,10 @@ const App = props => {
     return (
         <div className={classes.root}>
             <Header className={classes.header}/>
-            <div className={classes.content}>
+            <main className={classes.content}>
                 <div>CONTENT</div>
-            </div>
-            <div className={classes.footer}></div>
+            </main>
+            <footer className={classes.footer}></footer>
         </div>
     )
 }

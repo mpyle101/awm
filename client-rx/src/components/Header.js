@@ -7,10 +7,10 @@ import { withStyles } from '@material-ui/core/styles'
 import HeaderDates from './HeaderDates'
 import HeaderViews from './HeaderViews'
 
-const styles = {
-    tools: {
+const styles = theme => ({
+    header: {
         color: 'white',
-        backgroundColor: '#3f51b5',
+        backgroundColor: theme.palette.primary.main,
         display: 'flex',
         flexWrap: 'nowrap',
         alignItems: 'center',
@@ -24,14 +24,13 @@ const styles = {
     title: {
         marginRight: '1rem'
     }
-}
+})
 
 const Header = props => {
-    console.log(props)
-    const { menu, title, tools } = props.classes
+    const { menu, title, header } = props.classes
 
     return (
-        <div className={tools}>
+        <div className={header}>
             <IconButton className={menu} color="inherit" aria-label="Menu">
                 <Icon>menu</Icon>
             </IconButton>
