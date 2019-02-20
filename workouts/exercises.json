@@ -285,6 +285,11 @@
         "unit": "KG"
     },
     {
+        "key": "KB/RDL",
+        "name": "Kettle Bell Romanian Deadlift",
+        "unit": "KG"
+    },
+    {
         "key": "LNG",
         "name": "Lunge",
         "unit": "KG"
