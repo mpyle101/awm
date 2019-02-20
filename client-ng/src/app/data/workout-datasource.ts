@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { DataSource } from '@angular/cdk/collections'
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs'
 import { catchError, finalize, map } from 'rxjs/operators'
-import * as clone from "clone-deep"
+import * as clone from 'clone-deep'
 
 import { Workout } from '../models/workout.model'
 import { HttpService } from '../services'
