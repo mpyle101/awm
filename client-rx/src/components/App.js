@@ -6,11 +6,26 @@ import Header from './Header'
 const styles = {
     root: {
         height: '100vh',
-        display: 'flex',
-        flexDirection: 'column'
+        display: 'grid',
+        grid: '3rem auto 2rem / auto',
+        gridTemplateAreas: '"header" "content" "footer"'
+    },
+    header: {
+        gridArea: 'header'
     },
     content: {
-        flexGrow: 1
+        gridArea: 'content',
+        overflow: 'auto',
+        '& div': {
+            height: '1000px'
+        }
+    },
+    footer: {
+        backgroundColor: '#3f51b5',
+        gridArea: 'footer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 }
 
@@ -19,9 +34,11 @@ const App = props => {
 
     return (
         <div className={classes.root}>
-            <Header />
-            <div className={classes.content}>Content</div>
-            <div>Footer</div>
+            <Header className={classes.header}/>
+            <div className={classes.content}>
+                <div>CONTENT</div>
+            </div>
+            <div className={classes.footer}></div>
         </div>
     )
 }

@@ -1,8 +1,6 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
 import Typeography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -11,15 +9,20 @@ import HeaderViews from './HeaderViews'
 
 const styles = {
     tools: {
+        color: 'white',
+        backgroundColor: '#3f51b5',
         display: 'flex',
-        'flex-wrap': 'nowrap',
-        'justify-content': 'space-between'
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingLeft: '10px',
+        paddingRight: '10px'
     },
     menu: {
-        'margin-right': '1rem'
+        marginRight: '1rem'
     },
     title: {
-        'margin-right': '1rem'
+        marginRight: '1rem'
     }
 }
 
@@ -28,19 +31,15 @@ const Header = props => {
     const { menu, title, tools } = props.classes
 
     return (
-        <div>
-            <AppBar>
-                <Toolbar className={tools}>
-                    <IconButton className={menu} color="inherit" aria-label="Menu">
-                        <Icon>menu</Icon>
-                    </IconButton>
-                    <Typeography className={title} variant="h6" color="inherit">
-                        AWM
-                    </Typeography>
-                    <HeaderDates />
-                    <HeaderViews />
-                </Toolbar>
-            </AppBar>
+        <div className={tools}>
+            <IconButton className={menu} color="inherit" aria-label="Menu">
+                <Icon>menu</Icon>
+            </IconButton>
+            <Typeography className={title} variant="h6" color="inherit">
+                AWM
+            </Typeography>
+            <HeaderDates />
+            <HeaderViews />
         </div>
     )
 }
