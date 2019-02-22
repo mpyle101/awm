@@ -27,14 +27,14 @@ const styles = theme => ({
 })
 
 const Header = props => {
-    const { menu, title, header } = props.classes
+    const { classes } = props
 
     return (
-        <div className={header}>
-            <IconButton className={menu} color="inherit" aria-label="Menu">
+        <div className={classes.header}>
+            <IconButton className={classes.menu} color="inherit" aria-label="Menu">
                 <Icon>menu</Icon>
             </IconButton>
-            <Typeography className={title} variant="h6" color="inherit">
+            <Typeography className={classes.title} variant="h6" color="inherit">
                 AWM
             </Typeography>
             <HeaderDates />

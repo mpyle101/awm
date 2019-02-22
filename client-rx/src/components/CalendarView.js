@@ -1,22 +1,24 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
-import Dashboard from './Dashboard'
 import Header from './Header'
 
 const styles = theme => ({
     root: {
         height: '100vh',
         display: 'grid',
-        gridTemplate: '3rem auto 2rem / auto',
-        gridTemplateAreas: '"header" "main" "footer"'
+        grid: '3rem auto 2rem / auto',
+        gridTemplateAreas: '"header" "content" "footer"'
     },
     header: {
         gridArea: 'header'
     },
-    main: {
-        gridArea: 'main',
-        overflow: 'auto'
+    content: {
+        gridArea: 'content',
+        overflow: 'auto',
+        '& div': {
+            height: '1000px'
+        }
     },
     footer: {
         backgroundColor: theme.palette.primary.main,
@@ -33,8 +35,8 @@ const App = props => {
     return (
         <div className={classes.root}>
             <Header className={classes.header}/>
-            <main className={classes.main}>
-                <Dashboard />
+            <main className={classes.content}>
+                <div>CONTENT</div>
             </main>
             <footer className={classes.footer}></footer>
         </div>

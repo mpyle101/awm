@@ -27,7 +27,6 @@ const styles = {
 
 class HeaderDates extends Component {
     render() {
-        console.log(this.props)
         const { 
             classes, date, 
             selectDate, selectNextDate, selectPrevDate
