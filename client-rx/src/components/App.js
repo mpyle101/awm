@@ -1,10 +1,10 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 import Dashboard from './Dashboard'
 import Header from './Header'
 
-const styles = theme => ({
+const styles = {
     root: {
         height: '100vh',
         display: 'grid',
@@ -19,13 +19,13 @@ const styles = theme => ({
         overflow: 'auto'
     },
     footer: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#3f51b5',
         gridArea: 'footer',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     }
-})
+}
 
 const App = props => {
     const { classes } = props

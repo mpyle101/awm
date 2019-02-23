@@ -1,42 +1,44 @@
 import React from 'react'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import Typeography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
+import { Button, Icon } from 'semantic-ui-react'
+import withStyles from 'react-jss'
 
 import HeaderDates from './HeaderDates'
 import HeaderViews from './HeaderViews'
 
-const styles = theme => ({
+const styles = {
     header: {
         color: 'white',
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#3f51b5',
         display: 'flex',
         flexWrap: 'nowrap',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingLeft: '10px',
-        paddingRight: '10px'
+        paddingRight: '10px',
     },
     menu: {
+        color: 'white',
+        backgroundColor: '#3f51b5',
         marginRight: '1rem'
     },
     title: {
-        marginRight: '1rem'
+        color: 'inherit',
+        marginRight: '1rem',
+        fontFamily: ['"Roboto"', 'sans-serif'],
+        fontSize: '1.25rem',
+        fontWeight: 500
     }
-})
+}
 
 const Header = props => {
     const { classes } = props
 
     return (
         <div className={classes.header}>
-            <IconButton className={classes.menu} color="inherit" aria-label="Menu">
-                <Icon>menu</Icon>
-            </IconButton>
-            <Typeography className={classes.title} variant="h6" color="inherit">
-                AWM
-            </Typeography>
+            <Button style={styles.menu} circular icon>
+                <Icon name="sidebar" size="large" />
+            </Button>
+            <div className={classes.title}>AWM</div>
             <HeaderDates />
             <HeaderViews />
         </div>

@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import Typeography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from 'react-jss'
+import { Button, Icon } from 'semantic-ui-react'
 
 import {
     selectDate,
@@ -17,11 +13,19 @@ const styles = {
     dates: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         flexGrow: 1
     },
+    button: {
+        color: 'white',
+        backgroundColor: 'inherit',
+        fontFamily: ['"Roboto"', 'sans-serif'],
+        fontWeight: 500
+    },
     month: {
-        marginLeft: '1rem'
+        marginLeft: '1rem',
+        fontFamily: ['"Roboto"', 'sans-serif'],
+        fontWeight: 500
     }
 }
 
@@ -34,23 +38,42 @@ class HeaderDates extends Component {
 
         return (
             <div className={classes.dates}>
-                <Button onClick={() => selectDate()} color="inherit">Today</Button>
-                <IconButton onClick={() => selectPrevDate('year')} color="inherit">
-                    <Icon>fast_rewind</Icon>
-                </IconButton>
-                <IconButton onClick={() => selectPrevDate('month')} color="inherit">
-                    <Icon>navigate_before</Icon>
-                </IconButton>
-                <IconButton onClick={() => selectNextDate('month')} color="inherit">
-                    <Icon>navigate_next</Icon>
-                </IconButton>
-                <IconButton onClick={() => selectNextDate('year')} color="inherit">
-                    <Icon>fast_forward</Icon>
-                </IconButton>
+                <Button
+                    style={styles.button} 
+                    onClick={() => selectDate()}
+                >Today</Button>
+                <div>
+                    <Button
+                        style={styles.button}
+                        onClick={() => selectPrevDate('year')}
+                        circular icon
+                    >
+                        <Icon name="angle double left" size="large" />
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onClick={() => selectPrevDate('month')}
+                        circular icon
+                    >
+                        <Icon name="angle left" size="large" />
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onClick={() => selectNextDate('month')}
+                        circular icon
+                    >
+                        <Icon name="angle right" size="large" />
+                    </Button>
+                    <Button
+                        style={styles.button}
+                        onClick={() => selectNextDate('year')}
+                        circular icon
+                    >
+                        <Icon name="angle double right" size="large" />
+                    </Button>
+                </div>
                 <div className={classes.month}>
-                    <Typeography color="inherit">
-                        {date.format('MMMM YYYY')}
-                    </Typeography>
+                    {date.format('MMMM YYYY')}
                 </div>
             </div>
         )

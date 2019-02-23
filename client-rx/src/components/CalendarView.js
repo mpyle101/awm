@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 import Header from './Header'
 

@@ -1,13 +1,15 @@
 import React from 'react'
-
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
+import { Button, Icon } from 'semantic-ui-react'
 
 const styles = {
     views: {
         display: 'flex',
         flexWrap: 'nowrap'
+    },
+    button: {
+        color: 'white',
+        backgroundColor: 'inherit'
     }
 }
 
@@ -16,15 +18,24 @@ const HeaderViews = props => {
 
     return (
         <div className={classes.views}>
-            <IconButton color="inherit" aria-label="Event">
-                <Icon>dashboard</Icon>
-            </IconButton>
-            <IconButton color="inherit" aria-label="Event">
-                <Icon>event</Icon>
-            </IconButton>
-            <IconButton color="inherit" aria-label="Event">
-                <Icon>view_list</Icon>
-            </IconButton>
+            <Button
+                style={styles.button}
+                circular icon aria-label="Event"
+            >
+                <Icon name="block layout" size="large" />
+            </Button>
+            <Button
+                style={styles.button}
+                circular icon aria-label="Event"
+            >
+                <Icon name="calendar alternate" size="large" />
+            </Button>
+            <Button
+                style={styles.button}
+                circular icon aria-label="Event"
+            >
+                <Icon name="unordered list" size="large" />
+            </Button>
         </div>
     )
 }

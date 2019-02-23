@@ -1,8 +1,7 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
-
-const styles = theme => ({
+const styles = {
     main: {
         height: '100%',
         padding: '10px',
@@ -32,7 +31,7 @@ const styles = theme => ({
     chart: {
         gridArea: 'cht'
     }
-})
+}
 
 const Dashboard = props => {
     const { classes } = props
