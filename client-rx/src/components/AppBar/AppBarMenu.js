@@ -13,7 +13,7 @@ const styles = {
     }
 }
 
-const HeaderViews = props => {
+const AppBarMenu = props => {
     const { classes } = props
 
     return (
@@ -40,4 +40,4 @@ const HeaderViews = props => {
     )
 }
 
-export default withStyles(styles)(HeaderViews)
+export default withStyles(styles)(AppBarMenu)

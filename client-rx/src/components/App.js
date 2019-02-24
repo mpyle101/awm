@@ -1,8 +1,8 @@
 import React from 'react'
 import withStyles from 'react-jss'
 
+import AppBar from './AppBar'
 import Dashboard from './Dashboard'
-import Header from './Header'
 
 const styles = {
     root: {
@@ -32,7 +32,7 @@ const App = props => {
 
     return (
         <div className={classes.root}>
-            <Header className={classes.header}/>
+            <AppBar className={classes.header}/>
             <main className={classes.main}>
                 <Dashboard />
             </main>

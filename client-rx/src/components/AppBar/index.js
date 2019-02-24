@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import withStyles from 'react-jss'
 
-import HeaderDates from './HeaderDates'
-import HeaderViews from './HeaderViews'
+import AppBarDate from './AppBarDate'
+import AppBarMenu from './AppBarMenu'
 
 const styles = {
     header: {
@@ -30,7 +30,7 @@ const styles = {
     }
 }
 
-const Header = props => {
+const AppBar = props => {
     const { classes } = props
 
     return (
@@ -39,10 +39,10 @@ const Header = props => {
                 <Icon name="sidebar" size="large" />
             </Button>
             <div className={classes.title}>AWM</div>
-            <HeaderDates />
-            <HeaderViews />
+            <AppBarDate />
+            <AppBarMenu />
         </div>
     )
 }
 
-export default withStyles(styles)(Header)
+export default withStyles(styles)(AppBar)

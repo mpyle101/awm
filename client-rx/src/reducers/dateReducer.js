@@ -16,7 +16,7 @@ export default handleActions(
             return moment(state).add(1, unit)
         },
         [selectPrevDate]: (state, { payload: { unit }}) => {
-            return moment(state).subtract(1, 'month')
+            return moment(state).subtract(1, unit)
         }
     },
     TODAY
