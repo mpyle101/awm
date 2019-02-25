@@ -35,16 +35,16 @@ const AppBarDate = props => {
             <div>
                 <DateButton
                     onClick={() => selectPrevDate('year')}
-                    icon="angle double left" />
+                    icon="angle double left" tooltip="Previous year" />
                 <DateButton
                     onClick={() => selectPrevDate('month')}
-                    icon="angle left" />
+                    icon="angle left" tooltip="Previous month" />
                 <DateButton
                     onClick={() => selectNextDate('month')}
-                    icon="angle right" />
+                    icon="angle right" tooltip="Next month" />
                 <DateButton
                     onClick={() => selectNextDate('year')}
-                    icon="angle double right" />
+                    icon="angle double right" tooltip="Next year" />
             </div>
             <div className={classes.month}>
                 {date.format('MMMM YYYY')}

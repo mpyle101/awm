@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import withStyles from 'react-jss'
 
+import Tooltip from '../Tooltip'
 import AppBarDate from './AppBarDate'
 import AppBarMenu from './AppBarMenu'
 
@@ -38,7 +39,9 @@ const AppBar = props => {
             <Button style={styles.menu} circular icon>
                 <Icon name="sidebar" size="large" />
             </Button>
-            <div className={classes.title}>AWM</div>
+            <Tooltip content="Awesome Workout Manager">
+                <div className={classes.title}>AWM</div>
+            </Tooltip>
             <AppBarDate />
             <AppBarMenu />
         </div>

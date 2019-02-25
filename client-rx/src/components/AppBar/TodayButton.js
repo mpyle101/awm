@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
+import * as moment from "moment"
 
+import AwmButton from '../AwmButton'
 import { selectDate } from '../../actions'
+
+const TODAY = moment().format('dddd, MMMM Do YYYY')
 
 const styles = {
     color: 'white',
@@ -13,9 +16,13 @@ const styles = {
 
 const TodayButton = props => {
     return (
-        <Button style={styles} onClick={() => props.selectDate()}>
+        <AwmButton
+            style={styles}
+            tooltip={TODAY}
+            onClick={() => props.selectDate()}
+        >
             Today
-        </Button>
+        </AwmButton>
     )
 }
 

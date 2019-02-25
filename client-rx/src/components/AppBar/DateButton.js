@@ -1,5 +1,7 @@
 import React from 'react'
-import { Button, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+
+import AwmButton from '../AwmButton'
 
 const styles = {
     color: 'white',
@@ -9,11 +11,16 @@ const styles = {
 }
 
 export default props => {
-    const { onClick, icon } = props
+    const { onClick, icon, tooltip } = props
 
     return (
-        <Button style={styles} onClick={onClick} circular icon>
-            <Icon name={icon} size="large" />
-        </Button>
+        <AwmButton
+            tooltip={tooltip}
+            style={styles}
+            onClick={onClick}
+            circular icon
+        >
+            <Icon className={icon} size="large" />
+        </AwmButton>
     )
 }
