@@ -1,5 +1,6 @@
 
 const body_parser = require('body-parser')
+const cors    = require('cors')
 const express = require('express')
 const http    = require('http')
 const mongo   = require('mongodb')
@@ -12,6 +13,7 @@ const app = express()
 const server = http.createServer(app)
 
 // Parsers for POST data
+app.use(cors())
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended: false}))
 
@@ -46,6 +48,11 @@ const url  = process.env.MONGO || 'mongodb://localhost:27017';
             console.log('Connected to Mongo')
             mongo_client = client
             const db = client.db('awm')
+
+            app.use('/api', (req, res, next) => {
+                console.log(req.originalUrl)
+                next()
+            })
 
             // Set our api routes
             const router = require('./routes')(db)
