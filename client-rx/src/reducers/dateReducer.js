@@ -1,24 +1,14 @@
 import * as moment from "moment"
-import { handleActions } from 'redux-actions'
+import { SELECT_DATE } from '../actions/types'
 
-import {
-    selectDate,
-    selectNextDate,
-    selectPrevDate
-} from '../actions'
+const TODAY = moment().valueOf()
 
-const TODAY = moment()
+export default (state=TODAY, action) => {
+    switch (action.type) {
+        case SELECT_DATE:
+            return action.payload.valueOf()
 
-export default handleActions(
-    {
-        [selectDate]: (state, { payload: { date }}) => date,
-        [selectNextDate]: (state, { payload: { unit }}) => {
-            return moment(state).add(1, unit)
-        },
-        [selectPrevDate]: (state, { payload: { unit }}) => {
-            return moment(state).subtract(1, unit)
-        }
-    },
-    TODAY
-)
-
+        default:
+            return state
+    }
+}
