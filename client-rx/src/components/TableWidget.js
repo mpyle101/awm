@@ -22,7 +22,7 @@ const TableWidget = props => {
                 {item.date.format('MMM D, Y')}
             </Table.Cell>
             <Table.Cell>
-                BLOCKS
+                {item.type}
             </Table.Cell>
         </Table.Row>
     )
@@ -30,7 +30,7 @@ const TableWidget = props => {
     return (
         <div className={classes.main}>
             <Table
-                tableData={workouts}
+                tableData={workouts.filter(item => item.type !== 'OFF')}
                 renderBodyRow={renderRow}
                 compact="very" striped
             />

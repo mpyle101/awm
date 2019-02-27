@@ -44,7 +44,6 @@ export default (date, filter={}, sort={}) => {
 
     const query = build_query(filter, sort)
     const url = query.length ? encodeURI([URL, query].join('?')) : URL
-    console.log(url)
 
     return ajax.getJSON(url)
 }

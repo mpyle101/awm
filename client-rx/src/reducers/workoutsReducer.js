@@ -11,7 +11,6 @@ const initialState = {
 export default (state=initialState, action) => {
     switch (action.type) {
         case FETCH_WORKOUTS_SUCCESS:
-            console.log(action.payload)
             return {
                 items: [...action.payload],
                 error: null
