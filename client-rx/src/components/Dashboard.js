@@ -3,6 +3,8 @@ import withStyles from 'react-jss'
 
 import { Segment } from 'semantic-ui-react'
 
+import TableWidget from './TableWidget'
+
 const styles = {
     main: {
         height: '100%',
@@ -19,7 +21,10 @@ const styles = {
         }
     },
     calendar: { gridArea: 'cal' },
-    table:    { gridArea: 'tbl' },
+    table:    { 
+        gridArea: 'tbl',
+        overflow: 'auto'
+    },
     editor:   { gridArea: 'edt' },
     chart:    { gridArea: 'cht' }
 }
@@ -33,7 +38,7 @@ const Dashboard = props => {
                 <img src="img/calendar.png" alt="Calender view" />
             </Segment>
             <Segment className={classes.table}>
-                <img src="img/table.png" alt="Table view" />
+                <TableWidget />
             </Segment>
             <Segment className={classes.editor}>
                 <img src="img/editor.png" alt="Editor" />

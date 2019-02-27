@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import withStyles from 'react-jss'
+import { connect } from 'react-redux'
+
+import { selectDate } from '../actions'
 
 import AppBar from './AppBar'
 import Dashboard from './Dashboard'
@@ -8,8 +11,8 @@ const styles = {
     root: {
         height: '100vh',
         display: 'grid',
-        gridTemplate: '3rem auto 2rem / auto',
-        gridTemplateAreas: '"header" "main" "footer"'
+        gridTemplate: '3rem auto / auto',
+        gridTemplateAreas: '"header" "main"'
     },
     header: {
         gridArea: 'header'
@@ -30,15 +33,17 @@ const styles = {
 const App = props => {
     const { classes } = props
 
+    useEffect(() => { props.selectDate() }, [])
+
     return (
         <div className={classes.root}>
             <AppBar className={classes.header}/>
             <main className={classes.main}>
                 <Dashboard />
             </main>
-            <footer className={classes.footer}></footer>
         </div>
     )
 }
 
-export default withStyles(styles)(App)
+const styled = withStyles(styles)(App)
+export default connect(null, { selectDate })(styled)
