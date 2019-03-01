@@ -1,40 +1,52 @@
 import React from 'react'
 import withStyles from 'react-jss'
 import { connect } from 'react-redux'
-
 import { Table } from 'semantic-ui-react'
 
+import COLORS from './colors'
+import Block from './Block'
+
 const styles = {
-    main: {
-        height: '100%'
-    },
     row: {
         fontSize: '0.7rem'
     }
 }
 
+
 const TableWidget = props => {
     const { classes, workouts } = props
 
-    const renderRow = item => (
-        <Table.Row className={classes.row} key={item._id}>
+    const data = workouts
+        .filter(item => item.type !== 'OFF')
+        .flatMap(item => item.blocks.map((block, idx) => {
+            let category = block.type
+            if (category === 'EN' && block.key === 'FBT') {
+                category = 'FBT'
+            }
+            const date = idx > 0 ? null : item.date
+
+            return { ...block, category, date }
+        }))
+        .filter(item => item.type !== 'BR')
+
+    const renderRow = block => (
+        <Table.Row className={classes.row} key={block.id}>
             <Table.Cell collapsing>
-                {item.date.format('MMM D, Y')}
+                {block.date ? block.date.format('MMM D, Y') : ''}
             </Table.Cell>
-            <Table.Cell>
-                {item.type}
+            <Table.Cell style={{ backgroundColor: COLORS[block.category] }}>
+                <Block block={block} />
             </Table.Cell>
         </Table.Row>
     )
 
     return (
-        <div className={classes.main}>
-            <Table
-                tableData={workouts.filter(item => item.type !== 'OFF')}
-                renderBodyRow={renderRow}
-                compact="very" striped
-            />
-        </div>
+        <Table
+            selectable
+            tableData={data}
+            renderBodyRow={renderRow}
+            compact="very"
+        />
     )
 }
 

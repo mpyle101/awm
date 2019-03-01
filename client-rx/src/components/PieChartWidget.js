@@ -1,6 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PieChart, Pie, ResponsiveContainer, Tooltip } from 'recharts'
+import {
+    Cell,
+    Pie,
+    PieChart,
+    ResponsiveContainer,
+    Tooltip
+} from 'recharts'
+
+import COLORS from './colors'
 
 const PieWidget = props => {
     const { workouts } = props
@@ -8,8 +16,17 @@ const PieWidget = props => {
     let total = 0
     const counts = workouts
         .filter(item => item.type !== 'OFF')
+        .flatMap(item => item.blocks.map(block => {
+            let category = block.type
+            if (category === 'EN' && block.key === 'FBT') {
+                category = 'FBT'
+            }
+            return { ...block, category }
+        }))
+        .filter(item => item.type !== 'BR')
         .reduce((acc, item) => {
-            acc[item.type] = acc[item.type] ? acc[item.type] + 1 : 1
+            const category = item.category
+            acc[category] = acc[category] ? acc[category] + 1 : 1
             total += 1
             return acc
         }, {})
@@ -25,9 +42,14 @@ const PieWidget = props => {
                 <Pie
                     data={data}
                     dataKey="value"
-                    fill="#3f51b5"
                     label
-                />
+                    isAnimationActive={false}
+                >
+                    {
+                        data.map((item, index) => 
+                            <Cell key={`cell-${index}`} fill={COLORS[item.name]} />)
+                    }
+                </Pie>
                 <Tooltip />
             </PieChart>
         </ResponsiveContainer>
