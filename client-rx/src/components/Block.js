@@ -10,7 +10,7 @@ const styles = {
         display: 'flex'
     },
     item: {
-        paddingRight: '5px'
+        paddingRight: '0.5rem'
     }
 }
 
@@ -20,9 +20,13 @@ const duration = period => {
 }
 
 const formatReps = reps => Array.isArray(reps) ? `[${reps.join(",")}]` : reps
-const formatSet  = (item, set) => {
+const formatSet  = (item, set, idx) => {
     const reps = formatReps(set.reps)
-    return `${item.key}: ${set.count}x${reps}@${set.wt}`
+    if (set.wt) {
+        return `${item.key}: ${set.count}x${reps}@${set.wt}${set.unit.toLowerCase()}`
+    } else {
+        return `${item.key}: ${set.count}x${reps}`
+    }
 }
 
 const Block = props => {
@@ -46,7 +50,16 @@ const Block = props => {
                 <div className={classes.cell}>
                     <div className={classes.item}>{category}:</div>
                     <div className={classes.item}>{duration(work)}</div>
-                    <div>{meta}</div>
+                    <div className={classes.item}>{meta.toUpperCase()}</div>
+                    {block.actions.map(item => (
+                        <div className={classes.item} key={item.key}>
+                            {item.sets.map((set, idx) => (
+                                <div key={item.key + idx}>
+                                    {formatSet(item, set)}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
                 </div>
             )
 
@@ -54,7 +67,7 @@ const Block = props => {
             return (
                 <Popup trigger={<div>MS</div>}>
                     {work.map(item => (
-                        <div key={item.key}>
+                        <div className={classes.cell} key={item.key}>
                             {item.sets.map((set, idx) => (
                                 <div key={item.key + idx}>
                                     {formatSet(item, set)}

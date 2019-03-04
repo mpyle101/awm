@@ -35,8 +35,11 @@ const get_range = date => {
     return { start, end }
 }
 
-export default (date, filter={}, sort={}) => {
-    const { start, end } = get_range(date)
+export default (state, filter={}, sort={}) => {
+    const date  = moment(state.selectedDate)
+    const start = date.clone().subtract(state.period, 'days')
+    const end   = date.clone().add(1, 'day')
+    
     filter.date = {
         gte: start.format('YYYY-MM-DD'),
         lt:  end.add(1, 'day').format('YYYY-MM-DD')

@@ -5,14 +5,16 @@ import { connect } from 'react-redux'
 import { selectDate } from '../actions'
 
 import AppBar from './AppBar'
+import Footer from './Footer'
 import Dashboard from './Dashboard'
 
 const styles = {
     root: {
+        fontFamily: ['"Roboto"', 'sans-serif'],
         height: '100vh',
         display: 'grid',
-        gridTemplate: '3rem auto / auto',
-        gridTemplateAreas: '"header" "main"'
+        gridTemplate: '3rem auto 2rem / auto',
+        gridTemplateAreas: '"header" "main" "footer"'
     },
     header: {
         gridArea: 'header'
@@ -22,11 +24,7 @@ const styles = {
         overflow: 'auto'
     },
     footer: {
-        backgroundColor: '#3f51b5',
         gridArea: 'footer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
     }
 }
 
@@ -41,6 +39,7 @@ const App = props => {
             <main className={classes.main}>
                 <Dashboard />
             </main>
+            <Footer className={classes.footer}/>
         </div>
     )
 }

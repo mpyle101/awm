@@ -4,10 +4,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import withStyles from 'react-jss'
 
+import { Dropdown } from 'semantic-ui-react'
 import DateButton from './DateButton'
 import TodayButton from './TodayButton'
 
-import { selectDate } from '../../actions'
+import { selectDate, selectPeriod } from '../../actions'
 
 const styles = {
     dates: {
@@ -16,15 +17,23 @@ const styles = {
         justifyContent: 'space-evenly',
         flexGrow: 1
     },
-    month: {
+    period: {
+        color: 'white',
+        backgroundColor: 'inherit',
         marginLeft: '1rem',
         fontFamily: ['"Roboto"', 'sans-serif'],
         fontWeight: 500
     }
 }
 
+const periods = [
+    {text: '30 Days', value: 30},
+    {text: '60 Days', value: 60},
+    {text: '90 Days', value: 90}
+]
+
 const AppBarDate = props => {
-    const { classes, timestamp, selectDate } = props
+    const { classes, period, timestamp, selectDate, selectPeriod } = props
     const date = moment(timestamp)
 
     return (
@@ -44,16 +53,23 @@ const AppBarDate = props => {
                     onClick={() => selectDate(date.add(1, 'year'))}
                     icon="angle double right" tooltip="Next year" />
             </div>
-            <div className={classes.month}>
-                {date.format('MMMM YYYY')}
-            </div>
+            <Dropdown
+                style={styles.period}
+                selection compact
+                options={periods}
+                value={period}
+                onChange={(e, d) => selectPeriod(d.value)}
+            />
         </div>
     )
 }
 
-const mapStateToProps = state => ({ timestamp: state.selectedDate })
+const mapStateToProps = state => ({
+    period: state.period,
+    timestamp: state.selectedDate
+})
 const styled = withStyles(styles)(AppBarDate)
 export default connect(
     mapStateToProps,
-    { selectDate }
+    { selectDate, selectPeriod }
 )(styled)
