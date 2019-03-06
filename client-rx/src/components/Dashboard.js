@@ -11,7 +11,7 @@ const styles = {
         height: '100%',
         padding: '10px',
         display: 'grid',
-        gridTemplate: '1fr 1fr / 1fr 1fr',
+        gridTemplate: 'repeat(2, minmax(0, 1fr)) / 1fr 1fr',
         gridTemplateAreas: '"cal tbl" "edt cht"',
         gridGap: '10px',
         '& img': {
@@ -22,10 +22,7 @@ const styles = {
         }
     },
     calendar: { gridArea: 'cal' },
-    table:    { 
-        gridArea: 'tbl',
-        overflow: 'auto'
-    },
+    table:    { gridArea: 'tbl' },
     editor:   { gridArea: 'edt' },
     chart:    { gridArea: 'cht' }
 }

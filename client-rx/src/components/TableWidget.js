@@ -7,6 +7,10 @@ import COLORS from './colors'
 import Block from './Block'
 
 const styles = {
+    scroller: {
+        height: '100%',
+        overflow: 'auto'
+    },
     row: {
         fontSize: '0.7rem'
     }
@@ -41,12 +45,14 @@ const TableWidget = props => {
     )
 
     return (
-        <Table
-            selectable
-            tableData={data}
-            renderBodyRow={renderRow}
-            compact="very"
-        />
+        <div className={classes.scroller}>
+            <Table
+                selectable
+                tableData={data}
+                renderBodyRow={renderRow}
+                compact="very"
+            />
+        </div>
     )
 }
 
