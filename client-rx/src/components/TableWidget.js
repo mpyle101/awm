@@ -3,6 +3,7 @@ import withStyles from 'react-jss'
 import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
+import { selectBlock } from '../actions'
 import COLORS from './colors'
 import Block from './Block'
 
@@ -16,9 +17,8 @@ const styles = {
     }
 }
 
-
 const TableWidget = props => {
-    const { classes, workouts } = props
+    const { classes, selectBlock, workouts } = props
 
     const data = workouts
         .filter(item => item.type !== 'OFF')
@@ -27,16 +27,17 @@ const TableWidget = props => {
             if (category === 'EN' && block.key === 'FBT') {
                 category = 'FBT'
             }
-            const date = idx > 0 ? null : item.date
+            const date = item.date
+            const show = idx == 0
 
-            return { ...block, category, date }
+            return { ...block, category, date, show }
         }))
         .filter(item => item.type !== 'BR')
 
     const renderRow = block => (
-        <Table.Row className={classes.row} key={block.id}>
+        <Table.Row className={classes.row} onClick={() => selectBlock(block)} key={block.id}>
             <Table.Cell collapsing>
-                {block.date ? block.date.format('MMM D, Y') : ''}
+                {block.show ? block.date.format('MMM D, Y') : ''}
             </Table.Cell>
             <Table.Cell style={{ backgroundColor: COLORS[block.category] }}>
                 <Block block={block} />
@@ -61,4 +62,7 @@ const mapStateToProps = state => ({
 })
 
 const styled = withStyles(styles)(TableWidget)
-export default connect(mapStateToProps)(styled)
+export default connect(
+    mapStateToProps,
+    { selectBlock }
+)(styled)

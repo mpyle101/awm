@@ -2,6 +2,7 @@ import * as moment from "moment"
 
 import {
     SELECT_DATE,
+    SELECT_BLOCK,
     SELECT_PERIOD,
     FETCH_WORKOUTS_SUCCESS,
     FETCH_WORKOUTS_FAILURE
@@ -14,7 +15,12 @@ export const selectDate = (date=TODAY) => ({
     payload: date
 })
 
-export const selectPeriod = (period=30) => ({
+export const selectBlock = block => ({
+    type: SELECT_BLOCK,
+    payload: block
+})
+
+export const selectPeriod = period => ({
     type: SELECT_PERIOD,
     payload: period
 })

@@ -3,6 +3,7 @@ import withStyles from 'react-jss'
 
 import { Segment } from 'semantic-ui-react'
 
+import EditorWidget from './EditorWidget'
 import PieChartWidget from './PieChartWidget'
 import TableWidget from './TableWidget'
 
@@ -39,7 +40,7 @@ const Dashboard = props => {
                 <TableWidget />
             </Segment>
             <Segment className={classes.editor}>
-                <img src="img/editor.png" alt="Editor" />
+                <EditorWidget />
             </Segment>
             <Segment className={classes.chart}>
                 <PieChartWidget />
