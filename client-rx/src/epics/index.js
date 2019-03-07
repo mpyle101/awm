@@ -15,7 +15,6 @@ const process = workouts =>
     workouts.map(item => ({ ...item, date: moment(item.date)}))
 
 const fetchWorkoutsEpic = (action$, state$) => {
-    console.log(state$)
     return action$.pipe(
         ofType(SELECT_DATE, SELECT_PERIOD),
         switchMap(() => fetchWorkouts(state$.value), (action, resp) => resp),

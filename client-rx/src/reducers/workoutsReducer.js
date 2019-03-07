@@ -17,7 +17,6 @@ export default (state=initialState, action) => {
             }
 
         case FETCH_WORKOUTS_FAILURE:
-            console.log(action.payload)
             return {
                 items: [],
                 error: action.payload

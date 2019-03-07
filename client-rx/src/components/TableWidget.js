@@ -18,7 +18,7 @@ const styles = {
 }
 
 const TableWidget = props => {
-    const { classes, selectBlock, workouts } = props
+    const { classes, selectBlock, block, workouts } = props
 
     const data = workouts
         .filter(item => item.type !== 'OFF')
@@ -28,11 +28,15 @@ const TableWidget = props => {
                 category = 'FBT'
             }
             const date = item.date
-            const show = idx == 0
+            const show = idx === 0
 
             return { ...block, category, date, show }
         }))
         .filter(item => item.type !== 'BR')
+
+    if (block === null && data.length) {
+        selectBlock(data[0])
+    }
 
     const renderRow = block => (
         <Table.Row className={classes.row} onClick={() => selectBlock(block)} key={block.id}>
@@ -58,6 +62,7 @@ const TableWidget = props => {
 }
 
 const mapStateToProps = state => ({
+    block: state.block,
     workouts: state.workouts.items
 })
 
