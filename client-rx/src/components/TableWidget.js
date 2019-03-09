@@ -3,10 +3,10 @@ import withStyles from 'react-jss'
 import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
+import COLORS from './colors'
 import { selectBlock } from '../actions'
 import { getBlocks } from '../selectors'
-import COLORS from './colors'
-import Block from './Block'
+import TableWidgetRow from './TableWidgetRow'
 
 const styles = {
     scroller: {
@@ -31,7 +31,7 @@ const TableWidget = props => {
                 {block.show ? block.date.format('MMM D, Y') : ''}
             </Table.Cell>
             <Table.Cell style={{ backgroundColor: COLORS[block.category] }}>
-                <Block block={block} />
+                <TableWidgetRow block={block} />
             </Table.Cell>
         </Table.Row>
     )

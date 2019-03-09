@@ -29,7 +29,7 @@ const formatSet  = (item, set, idx) => {
     }
 }
 
-const Block = props => {
+const TableWidgetRow = props => {
     const { classes, block } = props
     const { category, key, work, meta } = block
 
@@ -92,4 +92,4 @@ const Block = props => {
     }
 }
 
-export default withStyles(styles)(Block)
+export default withStyles(styles)(TableWidgetRow)
