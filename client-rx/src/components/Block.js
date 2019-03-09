@@ -45,6 +45,15 @@ const Block = props => {
                 </div>
             )
 
+        case 'HIC':
+            return (
+                <div className={classes.cell}>
+                    <div className={classes.item}>{category}</div>
+                    <div className={classes.item}>{key}</div>
+                    <div className={classes.item}>{block.activity}</div>
+                </div>
+            )
+
         case 'FBT':
             return (
                 <div className={classes.cell}>

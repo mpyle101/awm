@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 import { selectBlock } from '../actions'
+import { getBlocks } from '../selectors'
 import COLORS from './colors'
 import Block from './Block'
 
@@ -18,24 +19,10 @@ const styles = {
 }
 
 const TableWidget = props => {
-    const { classes, selectBlock, block, workouts } = props
+    const { classes, selectBlock, block, blocks } = props
 
-    const data = workouts
-        .filter(item => item.type !== 'OFF')
-        .flatMap(item => item.blocks.map((block, idx) => {
-            let category = block.type
-            if (category === 'EN' && block.key === 'FBT') {
-                category = 'FBT'
-            }
-            const date = item.date
-            const show = idx === 0
-
-            return { ...block, category, date, show }
-        }))
-        .filter(item => item.type !== 'BR')
-
-    if (block === null && data.length) {
-        selectBlock(data[0])
+    if (block === null && blocks.length) {
+        selectBlock(blocks[0])
     }
 
     const renderRow = block => (
@@ -53,7 +40,7 @@ const TableWidget = props => {
         <div className={classes.scroller}>
             <Table
                 selectable
-                tableData={data}
+                tableData={blocks}
                 renderBodyRow={renderRow}
                 compact="very"
             />
@@ -63,7 +50,7 @@ const TableWidget = props => {
 
 const mapStateToProps = state => ({
     block: state.block,
-    workouts: state.workouts.items
+    blocks: getBlocks(state.workouts.items)
 })
 
 const styled = withStyles(styles)(TableWidget)
