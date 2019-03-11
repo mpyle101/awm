@@ -80,7 +80,7 @@ const TableWidgetRow = props => {
                     return acc
                 }, new Set())
             )
-            const content = exercises.join(' ')
+            const content = exercises.join(' / ')
 
             return (
                 <Popup trigger={<div>MS: {content}</div>}>
