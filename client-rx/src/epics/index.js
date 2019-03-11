@@ -15,9 +15,11 @@ const process = workouts =>
     workouts.map(item => ({ ...item, date: moment(item.date)}))
 
 const fetchWorkoutsEpic = (action$, state$) => {
+    const { selectedDate, period } = state$.value
+
     return action$.pipe(
         ofType(SELECT_DATE, SELECT_PERIOD),
-        switchMap(() => fetchWorkouts(state$.value), (action, resp) => resp),
+        switchMap(() => fetchWorkouts(moment(selectedDate), period), (action, resp) => resp),
         map(workouts => process(workouts)),
         map(workouts => fetchWorkoutsSuccess(workouts)),
         catchError(err => observableOf(fetchWorkoutsFailure(err.message)))

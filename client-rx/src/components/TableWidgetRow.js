@@ -21,11 +21,12 @@ const duration = period => {
 
 const formatReps = reps => Array.isArray(reps) ? `[${reps.join(",")}]` : reps
 const formatSet  = (item, set, idx) => {
+    const style = item.style === 'EMOM' ? ' (EMOM)' : ''
     const reps = formatReps(set.reps)
     if (set.wt) {
-        return `${item.key}: ${set.count}x${reps}@${set.wt}${set.unit.toLowerCase()}`
+        return `${item.key}${style}: ${set.count}x${reps}@${set.wt}${set.unit.toLowerCase()}`
     } else {
-        return `${item.key}: ${set.count}x${reps}`
+        return `${item.key}${style}: ${set.count}x${reps}`
     }
 }
 
@@ -41,7 +42,7 @@ const TableWidgetRow = props => {
                 <div className={classes.cell}>
                     <div className={classes.item}>{category}:</div>
                     <div className={classes.item}>{duration(work)}</div>
-                    <div>{key} - {meta}</div>
+                    <div>{key} {meta}</div>
                 </div>
             )
 
@@ -73,8 +74,16 @@ const TableWidgetRow = props => {
             )
 
         case 'MS':
+            const exercises = Array.from(
+                work.reduce((acc, item) => {
+                    acc.add(item.key)
+                    return acc
+                }, new Set())
+            )
+            const content = exercises.join(' ')
+
             return (
-                <Popup trigger={<div>MS</div>}>
+                <Popup trigger={<div>MS: {content}</div>}>
                     {work.map(item => (
                         <div className={classes.cell} key={item.key}>
                             {item.sets.map((set, idx) => (

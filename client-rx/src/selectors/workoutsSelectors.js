@@ -2,10 +2,10 @@
 /**
  * Return array of blocks for all workouts excluding off days and
  * breaks.
- * @param {*} workouts 
+ * @param {*} state 
  */
-export const getBlocks = workouts =>
-    workouts
+export const getBlocks = state =>
+    state.workouts.items
         .filter(item => item.type !== 'OFF')
         .flatMap(item => item.blocks.map((block, idx) => {
             let category = block.type

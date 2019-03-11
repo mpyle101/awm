@@ -35,9 +35,8 @@ const get_range = date => {
     return { start, end }
 }
 
-export const fetchWorkouts = (state, filter={}, sort={}) => {
-    const date  = moment(state.selectedDate)
-    const start = date.clone().subtract(state.period, 'days')
+export const fetchWorkouts = (date, interval, filter={}, sort={}) => {
+    const start = date.clone().subtract(interval, 'days')
     const end   = date.clone().add(1, 'day')
     
     filter.date = {

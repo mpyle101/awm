@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import ReactJson from 'react-json-view'
 
+import { getSelectedBlock } from '../selectors'
+
 
 const styles = {
     header: {
@@ -17,8 +19,7 @@ const styles = {
 }
 
 const EditorWidget = props => {
-    let { block } = props
-    const { classes, workouts } = props
+    const { classes, block } = props
 
     if (block === null) {
         return <div></div>
@@ -46,8 +47,7 @@ const EditorWidget = props => {
 }
 
 const mapStateToProps = state => ({
-    block: state.block,
-    workouts: state.workouts.items
+    block: getSelectedBlock(state)
 })
 
 const styled = withStyles(styles)(EditorWidget)

@@ -19,11 +19,7 @@ const styles = {
 }
 
 const TableWidget = props => {
-    const { classes, selectBlock, block, blocks } = props
-
-    if (block === null && blocks.length) {
-        selectBlock(blocks[0])
-    }
+    const { classes, selectBlock, blocks } = props
 
     const renderRow = block => (
         <Table.Row className={classes.row} onClick={() => selectBlock(block)} key={block.id}>
@@ -49,8 +45,7 @@ const TableWidget = props => {
 }
 
 const mapStateToProps = state => ({
-    block: state.block,
-    blocks: getBlocks(state.workouts.items)
+    blocks: getBlocks(state)
 })
 
 const styled = withStyles(styles)(TableWidget)
