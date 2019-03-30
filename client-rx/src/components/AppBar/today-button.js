@@ -5,8 +5,6 @@ import * as moment from "moment"
 import AwmButton from '../awm-button'
 import { selectDate } from '../../actions'
 
-const TODAY = moment().format('dddd, MMMM Do YYYY')
-
 const styles = {
     color: 'white',
     backgroundColor: 'inherit',
@@ -18,7 +16,7 @@ const TodayButton = props => {
     return (
         <AwmButton
             style={styles}
-            tooltip={TODAY}
+            tooltip={moment().format('dddd, MMMM Do YYYY')}
             onClick={() => props.selectDate(moment(), props.period)}
         >
             Today
