@@ -33,24 +33,23 @@ const periods = [
 ]
 
 const AppBarDate = props => {
-    const { classes, period, timestamp, selectDate, selectPeriod } = props
-    const date = moment(timestamp)
+    const { classes, period, date, selectDate, selectPeriod } = props
 
     return (
         <div className={classes.dates}>
             <TodayButton />
             <div>
                 <DateButton
-                    onClick={() => selectDate(date.subtract(1, 'year'))}
+                    onClick={() => selectDate(date.subtract(1, 'year'), period)}
                     icon="angle double left" tooltip="Previous year" />
                 <DateButton
-                    onClick={() => selectDate(date.subtract(1, 'month'))}
+                    onClick={() => selectDate(date.subtract(1, 'month'), period)}
                     icon="angle left" tooltip="Previous month" />
                 <DateButton
-                    onClick={() => selectDate(date.add(1, 'month'))}
+                    onClick={() => selectDate(date.add(1, 'month'), period)}
                     icon="angle right" tooltip="Next month" />
                 <DateButton
-                    onClick={() => selectDate(date.add(1, 'year'))}
+                    onClick={() => selectDate(date.add(1, 'year'), period)}
                     icon="angle double right" tooltip="Next year" />
             </div>
             <Dropdown
@@ -58,7 +57,7 @@ const AppBarDate = props => {
                 selection compact
                 options={periods}
                 value={period}
-                onChange={(e, d) => selectPeriod(d.value)}
+                onChange={(e, d) => selectPeriod(date, d.value)}
             />
         </div>
     )
@@ -66,7 +65,7 @@ const AppBarDate = props => {
 
 const mapStateToProps = state => ({
     period: state.period,
-    timestamp: state.selectedDate
+    date: moment(state.selectedDate)
 })
 const styled = withStyles(styles)(AppBarDate)
 export default connect(

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import withStyles from 'react-jss'
 import { connect } from 'react-redux'
 
+import * as moment from "moment"
 import { selectDate } from '../actions'
 
 import AppBar from './AppBar'
@@ -31,7 +32,7 @@ const styles = {
 const App = props => {
     const { classes } = props
 
-    useEffect(() => { props.selectDate() }, [])
+    useEffect(() => { props.selectDate(moment(), 90) }, [])
 
     return (
         <div className={classes.root}>

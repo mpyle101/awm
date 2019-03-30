@@ -19,11 +19,18 @@ const TodayButton = props => {
         <AwmButton
             style={styles}
             tooltip={TODAY}
-            onClick={() => props.selectDate()}
+            onClick={() => props.selectDate(moment(), props.period)}
         >
             Today
         </AwmButton>
     )
 }
 
-export default connect(null, { selectDate })(TodayButton)
+const mapStateToProps = state => ({
+    period: state.period
+})
+
+export default connect(
+    mapStateToProps,
+    { selectDate }
+)(TodayButton)

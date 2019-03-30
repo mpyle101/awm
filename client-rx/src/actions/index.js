@@ -1,5 +1,3 @@
-import * as moment from "moment"
-
 import {
     SELECT_DATE,
     SELECT_BLOCK,
@@ -8,21 +6,20 @@ import {
     FETCH_WORKOUTS_FAILURE
 } from './types'
 
-const TODAY = moment()
-
-export const selectDate = (date=TODAY) => ({
-    type: SELECT_DATE,
-    payload: date
-})
 
 export const selectBlock = block => ({
     type: SELECT_BLOCK,
     payload: block
 })
 
-export const selectPeriod = period => ({
+export const selectDate = (date, period) => ({
+    type: SELECT_DATE,
+    payload: { date, period }
+})
+
+export const selectPeriod = (date, period) => ({
     type: SELECT_PERIOD,
-    payload: period
+    payload: { date, period }
 })
 
 export const fetchWorkoutsSuccess = workouts => ({
