@@ -27,7 +27,8 @@
         <div>{{block.work | duration}}</div>
         <div *ngIf="block.notes">{{block.notes}}</div>
     </div>
-    <div *ngSwitchDefault class="awm-en-block" [ngStyle]="styles">
-        EN: {{block.key}} - {{meta}} - {{block.work | duration}}
+    <div *ngSwitchDefault [ngStyle]="styles">
+        <div class="awm-en-block"  *ngIf="block.key != 'FBT'">EN: {{block.key}} - {{meta}} - {{block.work | duration}}</div>
+        <div class="awm-fbt-block" *ngIf="block.key == 'FBT'">FBT: {{meta}} - {{block.work | duration}}</div>
     </div>
 </ng-container>
