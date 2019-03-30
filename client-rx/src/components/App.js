@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import * as moment from "moment"
 import { selectDate } from '../actions'
 
-import AppBar from './AppBar'
-import Footer from './Footer'
-import Dashboard from './Dashboard'
+import AppBar from './appbar'
+import Footer from './footer'
+import Dashboard from './dashboard'
 
 const styles = {
     root: {

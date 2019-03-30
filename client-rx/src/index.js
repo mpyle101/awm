@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 import { Provider } from 'react-redux'
 
-import App from './components/App'
+import App from './components/app'
 
 import epics from './epics'
 import reducers from './reducers'

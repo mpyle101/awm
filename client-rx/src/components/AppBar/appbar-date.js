@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import withStyles from 'react-jss'
 
 import { Dropdown } from 'semantic-ui-react'
-import DateButton from './DateButton'
-import TodayButton from './TodayButton'
+import DateButton from './date-button'
+import TodayButton from './today-button'
 
 import { selectDate, selectPeriod } from '../../actions'
 

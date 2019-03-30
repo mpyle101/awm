@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as moment from "moment"
 
-import AwmButton from '../AwmButton'
+import AwmButton from '../awm-button'
 import { selectDate } from '../../actions'
 
 const TODAY = moment().format('dddd, MMMM Do YYYY')

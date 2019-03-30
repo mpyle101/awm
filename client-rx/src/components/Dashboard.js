@@ -3,9 +3,9 @@ import withStyles from 'react-jss'
 
 import { Segment } from 'semantic-ui-react'
 
-import EditorWidget from './EditorWidget'
-import PieChartWidget from './PieChartWidget'
-import TableWidget from './TableWidget'
+import EditorWidget from './editor-widget'
+import PieChartWidget from './pie-chart-widget'
+import TableWidget from './table-widget'
 
 const styles = {
     main: {

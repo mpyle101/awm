@@ -1,7 +1,7 @@
 import React from 'react'
 import withStyles from 'react-jss'
 
-import Header from './Header'
+import Header from './header'
 
 const styles = theme => ({
     root: {

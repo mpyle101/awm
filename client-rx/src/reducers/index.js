@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import blockReducer from './blockReducer'
-import dateReducer from './dateReducer'
-import periodReducer from './periodReducer'
-import workoutsReducer from './workoutsReducer'
+import blockReducer from './block-reducer'
+import dateReducer from './date-reducer'
+import periodReducer from './period-reducer'
+import workoutsReducer from './workouts-reducer'
 
 export default combineReducers({
     period: periodReducer,

@@ -6,7 +6,7 @@ import { Table } from 'semantic-ui-react'
 import COLORS from './colors'
 import { selectBlock } from '../actions'
 import { getBlocks } from '../selectors'
-import TableWidgetRow from './TableWidgetRow'
+import TableWidgetRow from './table-widget-row'
 
 const styles = {
     scroller: {

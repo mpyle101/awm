@@ -2,9 +2,9 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import withStyles from 'react-jss'
 
-import Tooltip from '../Tooltip'
-import AppBarDate from './AppBarDate'
-import AppBarMenu from './AppBarMenu'
+import Tooltip from '../tooltip'
+import AppBarDate from './appbar-date'
+import AppBarMenu from './appbar-menu'
 
 const styles = {
     header: {

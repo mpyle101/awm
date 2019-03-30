@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
 
-import AwmButton from '../AwmButton'
+import AwmButton from '../awm-button'
 
 const styles = {
     color: 'white',

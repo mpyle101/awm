@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-import Tooltip from './Tooltip'
+import Tooltip from './tooltip'
 
 const AwmButton = props => {
     const { children, tooltip, ...rest } = props
