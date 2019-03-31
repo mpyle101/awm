@@ -28,11 +28,12 @@ const fetchWorkoutsEpic = action$ =>
     action$.pipe(
         ofType(SELECT_DATE, SELECT_PERIOD),
         debounceTime(200),
-        switchMap(({payload: {date, period}}) => fetchWorkouts(date, period), (a, resp) => resp),
-        takeUntil(action$.ofType(FETCH_WORKOUTS_CANCEL)),
-        map(workouts => process(workouts)),
-        map(workouts => fetchWorkoutsSuccess(workouts)),
-        catchError(err => observableOf(fetchWorkoutsFailure(err.message)))
+        switchMap(({payload: {date, period}}) => fetchWorkouts(date, period).pipe(
+            map(resp => process(resp)),
+            map(workouts => fetchWorkoutsSuccess(workouts)),
+            takeUntil(action$.pipe(ofType(FETCH_WORKOUTS_CANCEL))),
+            catchError(err => observableOf(fetchWorkoutsFailure(err.message)))
+        ))
     )
 
 export default combineEpics(fetchWorkoutsEpic)
