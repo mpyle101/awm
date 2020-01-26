@@ -14,10 +14,10 @@
         "build-ng": "npm --prefix ./client-ng run build",
         "build-ng:watch": "npm --prefix ./client-ng run build:watch",
         "clean": "rm -r public/*",
-        "start-ng": "npm --prefix ./client-ng start",
-        "start-ng:open": "npm --prefix ./client-ng serve:open",
-        "start-rx": "npm --prefix ./client-rx start",
-        "start": "npm --prefix ./server start",
+        "start:client-ng": "npm --prefix ./client-ng start",
+        "start:client-ng:open": "npm --prefix ./client-ng serve:open",
+        "start:client-rx": "npm --prefix ./client-rx start",
+        "start:server": "npm --prefix ./server start",
         "start:watch": "npm --prefix ./server run start:watch"
     },
     "dependencies": {}

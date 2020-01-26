@@ -61074,5 +61074,1935 @@
                 "id": "60e5e436d37f1881688bd61d7538b565"
             }
         ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-19T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "20ccd7788e72362b33c3a3891cc58956"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-20T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 54.0,
+                                "unit": "KG",
+                                "reps": [
+                                    2,
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 15.0,
+                                "unit": "LB",
+                                "reps": [
+                                    2,
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 155.0,
+                                "unit": "KG",
+                                "reps": 8,
+                                "count": 1
+                            }
+                        ]
+                    }
+                ],
+                "id": "db3273103c33082786703fb25d33edfb"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-21T12:00:00-0600"
+        },
+        "type": "HIC",
+        "blocks": [
+            {
+                "type": "HIC",
+                "key": "INT",
+                "activity": "Row",
+                "work": [
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    }
+                ],
+                "rest": "PT1M",
+                "meta": "2138M",
+                "id": "ed837391a5da4a8b0f260fe32ee7231f"
+            },
+            {
+                "type": "BR"
+            },
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT60M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 20,
+                                "count": 4,
+                                "meta": "STD"
+                            },
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 30,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "ce1fd0d760cf3e3362d55c298c920d37"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-22T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "81e197a3dc82de070a50714525bc4e82"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-23T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": [
+                                    3,
+                                    3,
+                                    2
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": [
+                                    3,
+                                    3,
+                                    2
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SGHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 90.0,
+                                "unit": "KG",
+                                "reps": 6,
+                                "count": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "a3910f85268fde680f75c12d1296fd75"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-24T12:00:00-0600"
+        },
+        "type": "GC",
+        "blocks": [
+            {
+                "type": "GC",
+                "key": "BIKE",
+                "style": "TIMED",
+                "work": "PT80M",
+                "notes": null,
+                "meta": "CX",
+                "id": "b3819535146ff16bd8a8862b92006583"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-25T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "51b4ee75efeaa72ea8ea42a83fb4b05e"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-27T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 55.0,
+                                "unit": "KG",
+                                "reps": [
+                                    1,
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 20.0,
+                                "unit": "LB",
+                                "reps": [
+                                    1,
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 160.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "ebb57ac6273fd00d618bb7047bf0cf74"
+            },
+            {
+                "type": "BR"
+            },
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "RD",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 8,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "IR",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 8,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "10b2bfb04899ef78f689e35507e29295"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-02-28T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "cbb730a387f8c97a6e4c57d12649486e"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-01T12:00:00-0600"
+        },
+        "type": "HIC",
+        "blocks": [
+            {
+                "type": "HIC",
+                "key": "TAB",
+                "activity": "Trainer",
+                "work": "PT4M",
+                "wt": 0.0,
+                "unit": "LB",
+                "id": "88ef346da2d5e4800ee0449324f8f302"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-02T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 100.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": [
+                                    3,
+                                    3,
+                                    2
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": [
+                                    3,
+                                    3,
+                                    2
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SGHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 90.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "6c4ee10a39f97c92087ce14d2922e1e4"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-03T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "b7aaabca8b3c8ccbbbce9b6cbf02d22d"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-04T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "f631dcd26558550b150e5844f5e13807"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-06T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 56.0,
+                                "unit": "KG",
+                                "reps": [
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 25.0,
+                                "unit": "LB",
+                                "reps": [
+                                    1,
+                                    1,
+                                    1
+                                ],
+                                "count": 5,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 160.0,
+                                "unit": "KG",
+                                "reps": 6,
+                                "count": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "a73d551b8d90842552c01327d4d19877"
+            },
+            {
+                "type": "BR"
+            },
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT65M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "RD",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 8,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "IR",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 10,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "088f330621ee72752486e52fa2fcfc7d"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-07T12:00:00-0600"
+        },
+        "type": "HIC",
+        "blocks": [
+            {
+                "type": "HIC",
+                "key": "INT",
+                "activity": "Row",
+                "work": [
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    },
+                    {
+                        "reps": "PT1M",
+                        "style": "TIMED"
+                    }
+                ],
+                "rest": "PT1M",
+                "meta": "2070M",
+                "id": "adb2fef058b4b191954b02ec8b822eb5"
+            },
+            {
+                "type": "SE",
+                "sets": [
+                    [
+                        {
+                            "key": "PS",
+                            "reps": 20,
+                            "wt": 0.0,
+                            "unit": "LB",
+                            "style": "STD"
+                        }
+                    ],
+                    [
+                        {
+                            "key": "PS",
+                            "reps": 20,
+                            "wt": 0.0,
+                            "unit": "LB",
+                            "style": "STD"
+                        }
+                    ],
+                    [
+                        {
+                            "key": "PS",
+                            "reps": 20,
+                            "wt": 0.0,
+                            "unit": "LB",
+                            "style": "STD"
+                        }
+                    ]
+                ],
+                "id": "d328579e9fd61526c1e4827d020e605d"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-08T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT70M",
+                "meta": "TRAINER",
+                "id": "5263aebdb24c61fec800aa3e8777912c"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-10T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 100.0,
+                                "unit": "KG",
+                                "reps": 11,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": [
+                                    3,
+                                    3,
+                                    2
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "CLUS",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": [
+                                    3,
+                                    3,
+                                    3
+                                ],
+                                "count": 4,
+                                "meta": "PT20S"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SGHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 92.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "bc595e178ef5524755ca5a534557c3c9"
+            },
+            {
+                "type": "BR"
+            },
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 20,
+                                "count": 3,
+                                "meta": "STD"
+                            },
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 30,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SRR",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 20,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "677e43641b08d2c8d84d27e9cb395a46"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-11T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "d216f934782bd9b1dbd998e2871ffb3f"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-12T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "727efd8880ddd77f9f09d2f121911607"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-13T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 100.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 100.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 9,
+                                "count": 1
+                            },
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 5,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 9,
+                                "count": 1
+                            },
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 120.0,
+                                "unit": "KG",
+                                "reps": 30,
+                                "count": 1
+                            }
+                        ]
+                    }
+                ],
+                "id": "4942903ebb598586e02e3b944306f303"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-16T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT90M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 6,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 6,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "9b2346f7abe9a4ab0b1b783f46dbeb35"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-17T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "c07d6dea6e1a71cf5672bb6f815c80a4"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-18T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT90M",
+                "meta": "TRAINER",
+                "id": "d5a2c37ec6a883bb252b4b2eca799aa1"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-21T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT75M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 6,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 6,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "7da53c60d76c7cf0a3719c452b06819d"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-23T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT90M",
+                "meta": "TRAINER",
+                "id": "eeb573d692b24d987d6148ac35bba0dc"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-25T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "920b8c81426aad08e9c0bfc1f753f0b1"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-28T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 52.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 5
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 5.0,
+                                "unit": "LB",
+                                "reps": 5,
+                                "count": 2
+                            },
+                            {
+                                "wt": 5.0,
+                                "unit": "LB",
+                                "reps": 4,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 140.0,
+                                "unit": "KG",
+                                "reps": 20,
+                                "count": 1
+                            }
+                        ]
+                    }
+                ],
+                "id": "42751b6b81ce5f0c38a1e5e1d3666b8c"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-29T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Guts",
+                "id": "1bc82c8101bab772046120f676809c5a"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-30T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "IR",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 11,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 25,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 6,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "d8a52cad9f26a340d90a05128f2067ca"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-03-31T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT90M",
+                "meta": "TRAINER",
+                "id": "1be0d2dd633ff8336e71e0534c626f69"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-02T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "5f7e76d027ce15a15550334c37e309da"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-03T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 53.5,
+                                "unit": "KG",
+                                "reps": 4,
+                                "count": 5
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 10.0,
+                                "unit": "LB",
+                                "reps": 4,
+                                "count": 5
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 150.0,
+                                "unit": "KG",
+                                "reps": 11,
+                                "count": 1
+                            }
+                        ]
+                    }
+                ],
+                "id": "c0c28b2fe72efedf022bcbb4bdab9039"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-05T12:00:00-0600"
+        },
+        "type": "GC",
+        "blocks": [
+            {
+                "type": "GC",
+                "key": "BIKE",
+                "style": "TIMED",
+                "work": "PT65M",
+                "notes": null,
+                "meta": "GRAVEL",
+                "id": "7a452c490ee0731c641d918b3d8f141f"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-06T12:00:00-0600"
+        },
+        "type": "GC",
+        "blocks": [
+            {
+                "type": "GC",
+                "key": "BIKE",
+                "style": "TIMED",
+                "work": "PT60M",
+                "notes": null,
+                "meta": "CX",
+                "id": "cff0a8ee20b3ce8e1da464baf2563c3c"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-07T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 6,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "RD",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 10,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 150.0,
+                                "unit": "KG",
+                                "reps": 12,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "88a24a6f0b23886dba5a796a5eac8820"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-08T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Bootcamp",
+                "id": "ec1dc1ede7dd0c72e9e85ccbb181cca2"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-09T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Bootcamp",
+                "id": "d6487f9a7485c082ea977497d71f2a31"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-10T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Bootcamp",
+                "id": "e0e02f8ddbef620578b8b5ebe3aec71b"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-11T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Bootcamp",
+                "id": "4ab3d3dfd87aaef738c7a1eb441bdb24"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-12T12:00:00-0600"
+        },
+        "type": "OFF",
+        "blocks": [
+            {
+                "type": "OFF",
+                "notes": "Mojito!",
+                "id": "ca8df866f37d0d6b9765f7892d992761"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-13T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT90M",
+                "meta": "TRAINER",
+                "id": "23e3940635bd23e827161cbeefc65038"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-14T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "5635909f49b5d0e61384000b314ea1de"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-16T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 7,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 150.0,
+                                "unit": "KG",
+                                "reps": 12,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "3dda53ad440ca994f75580e278155a9b"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-17T12:00:00-0600"
+        },
+        "type": "HGC",
+        "blocks": [
+            {
+                "type": "HGC",
+                "key": "ROW",
+                "style": "TIMED",
+                "work": "PT30M",
+                "meta": "6744M",
+                "id": "4fdd56c1de6404226afe21b4d5c9417f"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-18T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT60M",
+                "meta": "TRAINER",
+                "id": "327d75c5c56f618fd18eed071ec58022"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-19T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT70M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "RD",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 10,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "IR",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 10,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 150.0,
+                                "unit": "KG",
+                                "reps": 15,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "caf4840d9af189270c32c290a1789ab3"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-21T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT90M",
+                "meta": "TRAINER",
+                "id": "9ea0e675d103efae6b8bb7e54c281333"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-23T12:00:00-0600"
+        },
+        "type": "MS",
+        "blocks": [
+            {
+                "type": "MS",
+                "work": [
+                    {
+                        "key": "BS",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 107.0,
+                                "unit": "KG",
+                                "reps": 5,
+                                "count": 3
+                            }
+                        ]
+                    },
+                    {
+                        "key": "CDL",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 127.0,
+                                "unit": "KG",
+                                "reps": 3,
+                                "count": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 53.5,
+                                "unit": "KG",
+                                "reps": 4,
+                                "count": 5
+                            }
+                        ]
+                    },
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 10.0,
+                                "unit": "LB",
+                                "reps": 4,
+                                "count": 5
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 150.0,
+                                "unit": "KG",
+                                "reps": 15,
+                                "count": 1
+                            }
+                        ]
+                    }
+                ],
+                "id": "a2bf96684b08a7750a00e5981910bbc0"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-25T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "FBT",
+                "style": "STD",
+                "work": "PT80M",
+                "meta": "Trainer",
+                "actions": [
+                    {
+                        "key": "PU",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 0.0,
+                                "unit": "LB",
+                                "reps": 7,
+                                "count": 4,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "OHP",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 6,
+                                "count": 2,
+                                "meta": "STD"
+                            },
+                            {
+                                "wt": 50.0,
+                                "unit": "KG",
+                                "reps": 7,
+                                "count": 2,
+                                "meta": "STD"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "SH",
+                        "style": "STD",
+                        "sets": [
+                            {
+                                "wt": 160.0,
+                                "unit": "KG",
+                                "reps": 10,
+                                "count": 1,
+                                "meta": "STD"
+                            }
+                        ]
+                    }
+                ],
+                "id": "8f046cdabb1ce9c7a4cf87ff6a5becf7"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-26T12:00:00-0600"
+        },
+        "type": "EN",
+        "blocks": [
+            {
+                "type": "EN",
+                "key": "LSD",
+                "style": "TIMED",
+                "work": "PT70M",
+                "meta": "TRAINER",
+                "id": "f8d480bd4d3c17de77ce6d0ca89ec24f"
+            }
+        ]
+    },
+    {
+        "date": {
+            "$date": "2019-04-27T12:00:00-0600"
+        },
+        "type": "GC",
+        "blocks": [
+            {
+                "type": "GC",
+                "key": "BIKE",
+                "style": "TIMED",
+                "work": "PT65M",
+                "notes": null,
+                "meta": "GRAVEL",
+                "id": "6a952ec3fc038914da6857b334bbc026"
+            }
+        ]
     }
 ]

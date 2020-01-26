@@ -49,6 +49,8 @@ const url  = process.env.MONGO || 'mongodb://localhost:27017';
             mongo_client = client
             const db = client.db('awm')
 
+            // app.use((req, res, next) => setTimeout(next, 1000))
+
             app.use('/api', (req, res, next) => {
                 console.log(req.originalUrl)
                 next()

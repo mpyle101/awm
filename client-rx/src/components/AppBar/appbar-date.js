@@ -7,6 +7,7 @@ import withStyles from 'react-jss'
 import { Dropdown } from 'semantic-ui-react'
 import DateButton from './date-button'
 import TodayButton from './today-button'
+import CancelButton from './cancel-button'
 
 import { selectDate, selectPeriod } from '../../actions'
 
