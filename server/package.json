@@ -17,7 +17,7 @@
         "cors": "^2.8.5",
         "express": "^4.16.3",
         "folktale": "^2.3.0",
-        "mongodb": "^3.1.6",
+        "mongodb": "^3.1.13",
         "query-params-mongo": "^1.0.4"
     },
     "devDependencies": {
