@@ -29,7 +29,7 @@
     "@angular/router": "^7.2.4",
     "clone-deep": "^4.0.0",
     "core-js": "^2.5.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-duration-format": "^2.2.2",
     "moment-range": "^4.0.1",
     "ng2-dragula": "^2.1.0",
